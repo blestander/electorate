@@ -1,0 +1,15 @@
+div.auth-required {
+    text-align: center;
+    color: #FFFFFF;
+    background-color:#7289DA;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+h3 {
+    margin-top: 0px;
+}
