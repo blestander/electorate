@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthRequiredComponent } from './auth-required/auth-required.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { AuthRequiredComponent } from './auth-required/auth-required.component';
         HeaderComponent,
         FooterComponent,
         DashboardComponent,
-        AuthRequiredComponent
+        AuthRequiredComponent,
+        AuthComponent
     ],
     imports: [
         BrowserModule,
