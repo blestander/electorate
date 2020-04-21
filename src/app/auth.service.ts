@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE } from './constants';
+import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL } from './constants';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor() { }
+    constructor(private httpClient: HttpClient) { }
 
     hasToken(): boolean {
         return "token" in localStorage;
@@ -26,7 +27,10 @@ export class AuthService {
     }
 
     retrieveToken(code: string, state: string): void {
-        console.log(`Code: ${code}`)
-        console.log(`State: ${state}`)
+        this.httpClient.post(TOKEN_OBTAIN_URL, {
+            code: code,
+        }, {}).subscribe(response => {
+            console.log(response);
+        })
     }
 }
