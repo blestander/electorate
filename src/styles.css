@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "https://fonts.googleapis.com/css2?family=Quicksand";
+@import "https://fonts.googleapis.com/css2?family=Nunito:wght@300";
 
 body {
     background-color: #2C2F33;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 p {
     color: #FFFFFF;
