@@ -1,3 +1,4 @@
 <div class="dashboard">
     <h2>Dashboard</h2>
+    <app-auth-required *ngIf="!authService.hasToken()"></app-auth-required>
 </div>
