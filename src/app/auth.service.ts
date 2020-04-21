@@ -22,7 +22,7 @@ export class AuthService {
 
         // Generate redirect URI
         let redirect_uri = `${location.origin}/auth`
-        let auth_url = `${DISCORD_AUTH_URL}?response_type=code&scope=${DISCORD_SCOPE}&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect_uri}&state=${state}`
+        let auth_url = `${DISCORD_AUTH_URL}?response_type=code&scope=${DISCORD_SCOPE}&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect_uri}&state=${state}&prompt=none`
 
         location.href = auth_url;
     }
