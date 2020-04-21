@@ -1,0 +1,9 @@
+h1 {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+div.header {
+    background-color: #23272A;
+    border-radius: 15px;
+}
