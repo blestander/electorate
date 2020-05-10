@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthRequiredComponent } from './auth-required/auth-required.component';
 import { AuthComponent } from './auth/auth.component';
+import { PollComponent } from './poll/poll.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { AuthComponent } from './auth/auth.component';
         FooterComponent,
         DashboardComponent,
         AuthRequiredComponent,
-        AuthComponent
+        AuthComponent,
+        PollComponent
     ],
     imports: [
         BrowserModule,
