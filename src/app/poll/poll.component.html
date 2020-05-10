@@ -6,5 +6,9 @@
     <h2 *ngIf="!poll && !error">Loading...</h2>
 
     <!-- Main content -->
-    <h2 *ngIf="poll">{{poll.name}}</h2>
+    <span *ngIf="poll">
+        <h2>{{poll.name}}</h2>
+        <p *ngIf="poll.description" class="desc">{{poll.description}}</p>
+    </span>
+
 </div>
