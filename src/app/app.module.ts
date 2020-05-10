@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthRequiredComponent } from './auth-required/auth-required.component';
 import { AuthComponent } from './auth/auth.component';
 import { PollComponent } from './poll/poll.component';
+import { SingleChoiceComponent } from './single-choice/single-choice.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { PollComponent } from './poll/poll.component';
         DashboardComponent,
         AuthRequiredComponent,
         AuthComponent,
-        PollComponent
+        PollComponent,
+        SingleChoiceComponent
     ],
     imports: [
         BrowserModule,
