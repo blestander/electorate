@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-single-choice-button',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./single-choice-button.component.css']
 })
 export class SingleChoiceButtonComponent implements OnInit {
+
+    @Input() option: string;
 
     constructor() { }
 
