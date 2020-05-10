@@ -9,6 +9,9 @@
     <span *ngIf="poll">
         <h2>{{poll.name}}</h2>
         <p *ngIf="poll.description" class="desc">{{poll.description}}</p>
+        <ul>
+            <li *ngFor="let option of poll.options">{{option}}</li>
+        </ul>
     </span>
 
 </div>
