@@ -21,7 +21,7 @@ export class AuthService {
 
     authorize(): void {
         // Store state and generate state key
-        let state = "alpha"
+        let state = window.btoa(window.crypto.getRandomValues(new Uint8Array(8)).toString())
         sessionStorage.setItem(state, location.href);
 
         // Generate redirect URI
