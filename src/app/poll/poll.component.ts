@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PollService } from '../poll.service';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-poll',
@@ -15,7 +16,8 @@ export class PollComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private pollService: PollService
+        private pollService: PollService,
+        public auth: AuthService
     ) { }
 
     ngOnInit(): void {

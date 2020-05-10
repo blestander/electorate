@@ -1,3 +1,10 @@
-<p *ngIf="poll">Poll: {{poll.name}}</p>
-<p *ngIf="error">Invalid poll</p>
-<p *ngIf="!poll && !error">Loading...</p>
+<div class="poll main-box">
+    <!-- If not authorized yet -->
+    <app-auth-required *ngIf="!auth.hasToken()"></app-auth-required>
+
+    <!-- While still waiting for server -->
+    <h2 *ngIf="!poll && !error">Loading...</h2>
+
+    <!-- Main content -->
+    <h2>{{poll.name}}</h2>
+</div>
