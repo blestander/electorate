@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="main-box">
     <h2>Dashboard</h2>
     <app-auth-required *ngIf="!authService.hasToken(); else elseBlock"></app-auth-required>
     <ng-template #elseBlock>

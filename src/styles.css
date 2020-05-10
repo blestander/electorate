@@ -6,6 +6,11 @@ body {
     background-color: #2C2F33;
     font-family: "Nunito", sans-serif;
 }
+.main-box {
+    background-color: #23272A;
+    border-radius: 15px;
+    padding: 15px;
+}
 p {
     color: #FFFFFF;
 }
