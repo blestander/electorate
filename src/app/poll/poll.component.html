@@ -14,6 +14,9 @@
         <ul *ngIf="!poll.can_vote || poll.has_voted">
             <li *ngFor="let option of poll.options">{{option}}</li>
         </ul>
+
+        <!-- Option list for First Past the Post voters -->
+        <app-single-choice *ngIf="poll.can_vote && poll.method=='fptp'" [options]="poll.options"></app-single-choice>
     </span>
 
 </div>
