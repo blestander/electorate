@@ -15,6 +15,10 @@ export class AuthService {
         return "token" in localStorage;
     }
 
+    getToken(): string {
+        return localStorage.getItem("token")
+    }
+
     authorize(): void {
         // Store state and generate state key
         let state = "alpha"
