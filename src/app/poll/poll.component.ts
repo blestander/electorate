@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { PollService } from '../poll.service';
 
 @Component({
     selector: 'app-poll',
@@ -9,12 +10,21 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class PollComponent implements OnInit {
 
     id: string;
+    poll = null;
+    error = false;
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute,
+        private pollService: PollService
+    ) { }
 
     ngOnInit(): void {
         this.route.paramMap.subscribe((params: ParamMap) => {
-            this.id = params.get("id")
+            let id = this.id = params.get("id")
+            this.pollService.getPoll(id).subscribe({
+                next: poll => this.poll = poll,
+                error: err => this.error = true
+            });
         })
     }
 
