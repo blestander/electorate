@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     selector: 'app-poll',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PollComponent implements OnInit {
 
-    constructor() { }
+    id: string;
+
+    constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+        this.route.paramMap.subscribe((params: ParamMap) => {
+            this.id = params.get("id")
+        })
     }
 
 }
