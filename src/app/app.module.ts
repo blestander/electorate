@@ -11,6 +11,7 @@ import { AuthRequiredComponent } from './auth-required/auth-required.component';
 import { AuthComponent } from './auth/auth.component';
 import { PollComponent } from './poll/poll.component';
 import { SingleChoiceComponent } from './single-choice/single-choice.component';
+import { SingleChoiceButtonComponent } from './single-choice-button/single-choice-button.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { SingleChoiceComponent } from './single-choice/single-choice.component';
         AuthRequiredComponent,
         AuthComponent,
         PollComponent,
-        SingleChoiceComponent
+        SingleChoiceComponent,
+        SingleChoiceButtonComponent
     ],
     imports: [
         BrowserModule,

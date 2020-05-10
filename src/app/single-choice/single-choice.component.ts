@@ -9,6 +9,8 @@ export class SingleChoiceComponent implements OnInit {
 
     @Input() options: string[];
 
+    selected: string = null;
+
     constructor() { }
 
     ngOnInit(): void {
