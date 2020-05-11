@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class SingleChoiceButtonComponent implements OnInit {
 
     @Input() option: string;
-    @Output() click = new EventEmitter<string>();
+    @Output() selected = new EventEmitter<string>();
 
     constructor() { }
 
@@ -16,7 +16,7 @@ export class SingleChoiceButtonComponent implements OnInit {
     }
 
     handleClick() {
-        this.click.emit(this.option);
+        this.selected.emit(this.option);
     }
 
 }

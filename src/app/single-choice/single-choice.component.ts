@@ -16,4 +16,8 @@ export class SingleChoiceComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    handleSelect(option) {
+        this.selected=option
+    }
+
 }

@@ -1,4 +1,4 @@
 <span *ngFor="let option of options" >
-    <app-single-choice-button [option]="option"></app-single-choice-button>
+    <app-single-choice-button [option]="option" (selected)="handleSelect($event)"></app-single-choice-button>
     <br />
 </span>
