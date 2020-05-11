@@ -1,1 +1,2 @@
-<button (click)="handleClick()">{{option}}</button>
+<button *ngIf="selected" class="selected" (click)="handleClick()">{{option}}</button>
+<button *ngIf="!selected" (click)="handleClick()">{{option}}</button>
