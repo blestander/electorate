@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-single-choice-button',
@@ -8,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SingleChoiceButtonComponent implements OnInit {
 
     @Input() option: string;
+    @Output() click = new EventEmitter<string>();
 
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    handleClick() {
+        this.click.emit(this.option);
     }
 
 }
