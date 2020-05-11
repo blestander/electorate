@@ -14,7 +14,7 @@ button.vote {
     padding: 5px;
 }
 
-button.vote:hover {
+button.vote:hover:enabled {
     background-color: #7289DA;
 }
 
