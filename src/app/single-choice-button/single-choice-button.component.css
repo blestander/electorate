@@ -10,9 +10,10 @@ button {
     margin-right: auto;
     font-size: 12pt;
     font-family: Nunito, sans-serif;
+    transition-duration: 0.25s;
 }
 button:hover {
-    transform: translateX(.1em);
+    background-color: #7289DA;
 }
 
 button.selected {
