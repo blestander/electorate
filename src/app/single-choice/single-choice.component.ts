@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-single-choice',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SingleChoiceComponent implements OnInit {
 
     @Input() options: string[];
+    @Output() vote = new EventEmitter<string>();
 
     selected: string = null;
 
@@ -18,6 +19,10 @@ export class SingleChoiceComponent implements OnInit {
 
     handleSelect(option: string) {
         this.selected=option
+    }
+
+    castVote(): void {
+        this.vote.emit(this.selected);
     }
 
 }

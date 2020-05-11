@@ -30,4 +30,8 @@ export class PollComponent implements OnInit {
         })
     }
 
+    voteSingle(choice: string) {
+        console.log(choice);
+    }
+
 }

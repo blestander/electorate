@@ -16,7 +16,11 @@
         </ul>
 
         <!-- Option list for First Past the Post voters -->
-        <app-single-choice *ngIf="poll.can_vote && poll.method=='fptp'" [options]="poll.options"></app-single-choice>
+        <app-single-choice
+            *ngIf="poll.can_vote && poll.method=='fptp'"
+            [options]="poll.options"
+            (vote)="voteSingle($event)">
+        </app-single-choice>
     </span>
 
 </div>
