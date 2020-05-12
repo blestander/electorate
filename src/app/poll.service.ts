@@ -24,8 +24,8 @@ export class PollService {
         })
     }
 
-    castVote(id: string, choice: string | string[]): Observable<unknown> {
-        return this.http.post(
+    castVote(id: string, choice: string | string[]): Observable<Object> {
+        return this.http.post<Object>(
             CAST_VOTE_URL,
             {
                 token: this.auth.getToken(),
