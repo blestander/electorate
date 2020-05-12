@@ -31,7 +31,8 @@ export class PollComponent implements OnInit {
     }
 
     voteSingle(choice: string) {
-        console.log(choice);
+        this.pollService.castVote(this.id, choice)
+            .subscribe(o => console.log(o));
     }
 
 }
