@@ -14,3 +14,22 @@ body {
 p {
     color: #FFFFFF;
 }
+button.generic-button {
+    font-family: Nunito, sans-serif;
+    font-size: 12pt;
+    color: #FFFFFF;
+
+    background-color: #99AAB5;
+    transition-duration: 0.25s;
+    border: none;
+    border-radius: 5px;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-left: fill;
+    margin-right: fill;
+    padding: 5px;
+}
+
+button.generic-button:hover:enabled {
+    background-color: #7289DA;
+}
