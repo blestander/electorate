@@ -1,6 +1,6 @@
 <h3><a (click)="expand = !expand">Owner Options</a></h3>
 <span class="panel" [style.display]="displayCSS()">
-    <button class="generic-button">Conclude Poll</button>
+    <button class="generic-button" (click)="finish()">Conclude Poll</button>
     &nbsp;
-    <button class="generic-button">Delete Poll</button>
+    <button class="generic-button" (click)="kill()">Delete Poll</button>
 </span>
