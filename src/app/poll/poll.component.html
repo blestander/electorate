@@ -5,6 +5,9 @@
     <!-- While still waiting for server -->
     <h2 *ngIf="!poll && !error && loggedIn">Loading...</h2>
 
+    <!-- If an error has occured -->
+    <h2 *ngIf="error">An error has occured!</h2>
+
     <!-- Main content -->
     <span *ngIf="poll">
         <h2>{{poll.name}}</h2>
