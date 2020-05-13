@@ -21,6 +21,7 @@
             [options]="poll.options"
             (vote)="voteSingle($event)">
         </app-single-choice>
+        <app-owner-options *ngIf="poll.own"></app-owner-options>
     </span>
 
 </div>

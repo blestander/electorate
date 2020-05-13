@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerOptionsComponent implements OnInit {
 
+    expand: boolean = false;
+
     constructor() { }
 
     ngOnInit(): void {
     }
 
+    displayCSS(): string {
+        return this.expand ? "inline" : "none";
+    }
 }

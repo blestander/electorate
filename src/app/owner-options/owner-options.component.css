@@ -1,0 +1,10 @@
+h3 {
+    text-align: center;
+}
+a {
+    text-decoration: underline;
+}
+a:active {
+    color: #7289DA;
+    text-decoration-color: #7289DA;
+}
