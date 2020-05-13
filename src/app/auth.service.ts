@@ -40,8 +40,8 @@ export class AuthService {
         if (redirect)
             this.httpClient.post(TOKEN_OBTAIN_URL, {
                 code: code,
-            }, {}).subscribe((response: TokenResponse) => {
-                localStorage.setItem("token", response.token)
+            }, {}).subscribe((response: any) => {
+                //localStorage.setItem("token", response.token)
                 location.replace(redirect)
             });
         else // This page should never have been loaded

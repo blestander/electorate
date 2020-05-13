@@ -15,12 +15,13 @@ export class PollService {
         private http: HttpClient,
     ) { }
 
-    getPoll(id: string): Observable<unknown> {
+    getPoll(id: string): Observable<any> {
         return this.http.get(GET_POLL_URL, {
             params: {
                 token: this.auth.getToken(),
                 id: id
-            }
+            },
+            withCredentials: true
         })
     }
 
