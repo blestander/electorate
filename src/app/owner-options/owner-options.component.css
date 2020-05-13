@@ -1,6 +1,10 @@
 h3 {
     text-align: center;
 }
+.panel {
+    flex-direction: row;
+    justify-content: center;
+}
 a {
     text-decoration: underline;
 }

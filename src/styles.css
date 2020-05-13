@@ -14,8 +14,10 @@ body {
 p {
     color: #FFFFFF;
 }
-button.generic-button {
+button {
     font-family: Nunito, sans-serif;
+}
+button.generic-button {
     font-size: 12pt;
     color: #FFFFFF;
 

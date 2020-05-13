@@ -15,6 +15,6 @@ export class OwnerOptionsComponent implements OnInit {
     }
 
     displayCSS(): string {
-        return this.expand ? "inline" : "none";
+        return this.expand ? "flex" : "none";
     }
 }
