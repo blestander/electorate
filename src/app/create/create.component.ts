@@ -29,4 +29,8 @@ export class CreateComponent implements OnInit {
         this.options.push(new FormControl('', Validators.required))
     }
 
+    onSubmit() {
+        console.log(this.createForm.value);
+    }
+
 }

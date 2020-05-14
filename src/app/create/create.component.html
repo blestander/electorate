@@ -1,7 +1,7 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
-    <form [formGroup]="createForm">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <!-- Basic information section -->
         <section>
             <h3>Basic Information</h3>
@@ -19,7 +19,7 @@
                 <input type="text" [formControlName]="i" required />
                 <br />
             </label>
-            <button (click)="addOption()">Add Option</button>
+            <button class="generic-button" (click)="addOption()">Add Option</button>
         </section>
 
         <!-- Voting method section -->
