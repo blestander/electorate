@@ -15,10 +15,18 @@
 
         <!-- Option list for those unable to vote. -->
         <app-nonvoter
-            *ngIf="!poll.can_vote"
+            *ngIf="!poll.can_vote && !poll.finished"
             [options]="poll.options"
             [choice]="poll.choice">
         </app-nonvoter>
+
+        <!-- Option list for finished polls -->
+        <app-results
+            *ngIf="poll.finished"
+            [results]="poll.results"
+            [method]="poll.method"
+            [options]="poll.options">
+        </app-results>
 
         <!-- Option list for First Past the Post voters -->
         <app-single-choice
