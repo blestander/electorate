@@ -11,14 +11,6 @@ export class AuthService {
 
     constructor(private httpClient: HttpClient) { }
 
-    hasToken(): boolean {
-        return "token" in localStorage;
-    }
-
-    getToken(): string {
-        return localStorage.getItem("token")
-    }
-
     authorize(): void {
         // Store state and generate state key
         let state = window.btoa(window.crypto.getRandomValues(new Uint8Array(8)).toString())
