@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-owner-options',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerOptionsComponent implements OnInit {
 
+    @Output() conclude = new EventEmitter<void>();
     expand: boolean = false;
 
     constructor() { }
@@ -19,8 +20,8 @@ export class OwnerOptionsComponent implements OnInit {
     }
 
     finish(): void {
-        window.confirm("Are you sure you want to end this poll?");
-        // TODO
+        if (window.confirm("Are you sure you want to end this poll?"))
+            this.conclude.emit();
     }
 
     kill(): void {

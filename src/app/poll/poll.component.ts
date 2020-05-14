@@ -44,4 +44,8 @@ export class PollComponent implements OnInit {
             });
     }
 
+    finishPoll(): void {
+        console.log("Finishing poll!");
+    }
+
 }
