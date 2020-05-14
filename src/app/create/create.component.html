@@ -16,7 +16,7 @@
 
             <label *ngFor="let option of options.controls; let i=index">
                 Option:
-                <input type="text" [formControlName]="i" />
+                <input type="text" [formControlName]="i" required />
                 <br />
             </label>
             <button (click)="addOption()">Add Option</button>

@@ -12,7 +12,7 @@ export class CreateComponent implements OnInit {
         name: new FormControl('', Validators.required),
         description: new FormControl(''),
         options: new FormArray([
-            new FormControl('')
+            new FormControl('', Validators.required)
         ])
     })
 
@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
     }
 
     addOption() {
-        this.options.push(new FormControl(''))
+        this.options.push(new FormControl('', Validators.required))
     }
 
 }
