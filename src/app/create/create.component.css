@@ -14,3 +14,13 @@ h3 {
     text-align: center;
     margin-top: 0px;
 }
+section.voting-method-section {
+    display: grid;
+    grid-template-columns: 252px auto 252px;
+    justify-items: center;
+    align-items: center;
+}
+h3.voting-method-header {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+}
