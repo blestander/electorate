@@ -11,8 +11,15 @@
         </section>
 
         <!-- Options section -->
-        <section>
+        <section formArrayName="options">
             <h3>Options</h3>
+
+            <label *ngFor="let option of options.controls; let i=index">
+                Option:
+                <input type="text" [formControlName]="i" />
+                <br />
+            </label>
+            <button (click)="addOption()">Add Option</button>
         </section>
 
         <!-- Voting method section -->
