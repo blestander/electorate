@@ -1,2 +1,11 @@
-<p>{{results}}</p>
-<p>{{method}}</p>
+<!-- FPTP results -->
+<span *ngIf="method=='fptp'">
+    <ol>
+        <li *ngFor="let result of sortedFPTPResults()">
+            <span *ngIf="result.length == 1">{{result[0]}}</span>
+            <ul *ngIf="result.length > 1">
+                <li *ngFor="let option of result">{{option}}</li>
+            </ul>
+        </li>
+    </ol>
+</span>
