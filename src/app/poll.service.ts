@@ -18,7 +18,6 @@ export class PollService {
     getPoll(id: string): Observable<any> {
         return this.http.get(GET_POLL_URL, {
             params: {
-                token: this.auth.getToken(),
                 id: id
             },
             withCredentials: true
@@ -29,7 +28,6 @@ export class PollService {
         return this.http.post<Object>(
             CAST_VOTE_URL,
             {
-                token: this.auth.getToken(),
                 id: id,
                 choice: choice
             },
