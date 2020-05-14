@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL } from './constants';
-import { tokenName } from '@angular/compiler';
+import { environment } from './../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
         sessionStorage.setItem(state, location.href);
 
         // Generate redirect URI
-        let redirect_uri = `${location.origin}/auth`
+        let redirect_uri = environment.production ? `${location.origin}/electorate/auth` : `${location.origin}/auth`
         let auth_url = `${DISCORD_AUTH_URL}?response_type=code&scope=${DISCORD_SCOPE}&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect_uri}&state=${state}&prompt=none`
 
         location.href = auth_url;
