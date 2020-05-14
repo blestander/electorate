@@ -14,6 +14,7 @@ import { SingleChoiceComponent } from './single-choice/single-choice.component';
 import { SingleChoiceButtonComponent } from './single-choice-button/single-choice-button.component';
 import { OwnerOptionsComponent } from './owner-options/owner-options.component';
 import { NonvoterComponent } from './nonvoter/nonvoter.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { NonvoterComponent } from './nonvoter/nonvoter.component';
         SingleChoiceComponent,
         SingleChoiceButtonComponent,
         OwnerOptionsComponent,
-        NonvoterComponent
+        NonvoterComponent,
+        ResultsComponent
     ],
     imports: [
         BrowserModule,
