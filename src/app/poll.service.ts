@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { GET_POLL_URL, CAST_VOTE_URL } from './constants';
+import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL } from './constants';
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +31,14 @@ export class PollService {
                 id: id,
                 choice: choice
             },
+            {withCredentials: true}
+        );
+    }
+
+    finishPoll(id: string): Observable<Object> {
+        return this.http.post<Object>(
+            FINISH_POLL_URL,
+            {id: id},
             {withCredentials: true}
         );
     }

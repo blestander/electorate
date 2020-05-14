@@ -46,6 +46,12 @@ export class PollComponent implements OnInit {
 
     finishPoll(): void {
         console.log("Finishing poll!");
+        this.pollService.finishPoll(this.id)
+            .subscribe(o => {
+                let p = this.poll;
+                this.poll = {...p, ...o};
+                console.log("Poll finished!");
+            })
     }
 
 }
