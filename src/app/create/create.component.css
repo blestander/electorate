@@ -1,0 +1,16 @@
+div.create {
+    color: #FFFFFF;
+}
+section {
+    padding: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+h3 {
+    text-align: center;
+    margin-top: 0px;
+}
