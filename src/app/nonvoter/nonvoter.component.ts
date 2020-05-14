@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-nonvoter',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NonvoterComponent implements OnInit {
 
+    @Input() options: string[];
+    @Input() choice: string;
+    @Input() choices: string[];
+
     constructor() { }
 
     ngOnInit(): void {
     }
 
+    classesHTML(selected: true): string {
+        if (selected)
+            return "selected";
+        else
+            return "";
+    }
 }

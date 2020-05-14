@@ -14,9 +14,11 @@
         <p *ngIf="poll.description" class="desc">{{poll.description}}</p>
 
         <!-- Option list for those unable to vote. -->
-        <ul *ngIf="!poll.can_vote || poll.has_voted">
-            <li *ngFor="let option of poll.options">{{option}}</li>
-        </ul>
+        <app-nonvoter
+            *ngIf="!poll.can_vote"
+            [options]="poll.options"
+            [choice]="poll.choice">
+        </app-nonvoter>
 
         <!-- Option list for First Past the Post voters -->
         <app-single-choice

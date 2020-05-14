@@ -1,1 +1,5 @@
-<p>nonvoter works!</p>
+<ul>
+    <li *ngFor="let option of options" [class]="classesHTML(option)">
+        {{option}}
+    </li>
+</ul>
