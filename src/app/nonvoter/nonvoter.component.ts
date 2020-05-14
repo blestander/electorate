@@ -9,7 +9,6 @@ export class NonvoterComponent implements OnInit {
 
     @Input() options: string[];
     @Input() choice: string;
-    @Input() choices: string[];
 
     constructor() { }
 
