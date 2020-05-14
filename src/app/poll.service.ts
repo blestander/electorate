@@ -32,7 +32,8 @@ export class PollService {
                 token: this.auth.getToken(),
                 id: id,
                 choice: choice
-            }
+            },
+            {withCredentials: true}
         );
     }
 }
