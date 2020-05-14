@@ -1,21 +1,30 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
-    <!-- Basic information section -->
-    <section>
-        <h3>Basic Information</h3>
-        <label>Name: <input type="text" required /></label>
-        <br />
-        <label>Description:<br/><textarea></textarea></label>
-    </section>
+    <form [formGroup]="createForm">
+        <!-- Basic information section -->
+        <section>
+            <h3>Basic Information</h3>
+            <label>Name: <input type="text" formControlName="name" required /></label>
+            <br />
+            <label>Description:<br/><textarea formControlName="description"></textarea></label>
+        </section>
 
-    <!-- Options section -->
-    <section>
-        <h3>Options</h3>
-    </section>
+        <!-- Options section -->
+        <section>
+            <h3>Options</h3>
+        </section>
 
-    <!-- Voting method section -->
-    <section>
-        <h3>Voting Method</h3>
-    </section>
+        <!-- Voting method section -->
+        <section>
+            <h3>Voting Method</h3>
+        </section>
+
+        <button
+            class="generic-button"
+            type="submit"
+            [disabled]="!createForm.valid">
+            Create
+        </button>
+    </form>
 </div>
