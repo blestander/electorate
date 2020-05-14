@@ -26,15 +26,15 @@
         <section class="voting-method-section">
             <h3 class="voting-method-header">Voting Method</h3>
             <label>
-                <input type="radio" value="fptp" />
+                <input type="radio" value="fptp" formControlName="method" />
                 First Past the Post
             </label>
             <label>
-                <input type="radio" value="irv" disabled />
+                <input type="radio" value="irv" formControlName="method" disabled />
                 Instant Runoff Voting
             </label>
             <label>
-                <input type="radio" value="smithirv" disabled />
+                <input type="radio" value="smithirv" formControlName="method" disabled />
                 Smith/IRV
             </label>
         </section>

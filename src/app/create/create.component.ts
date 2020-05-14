@@ -13,7 +13,8 @@ export class CreateComponent implements OnInit {
         description: new FormControl(''),
         options: new FormArray([
             new FormControl('', Validators.required)
-        ])
+        ]),
+        method: new FormControl('', Validators.required),
     })
 
     constructor() { }
