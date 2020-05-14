@@ -11,6 +11,11 @@ body {
     border-radius: 15px;
     padding: 15px;
 }
+h2 {
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 0px;
+}
 p {
     color: #FFFFFF;
 }
