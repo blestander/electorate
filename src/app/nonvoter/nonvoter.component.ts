@@ -16,7 +16,7 @@ export class NonvoterComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    classesHTML(selected: true): string {
+    classesHTML(selected: boolean): string {
         if (selected)
             return "selected";
         else

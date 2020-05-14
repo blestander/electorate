@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let option of options" [class]="classesHTML(option)">
+    <li *ngFor="let option of options" [class]="classesHTML(option==choice)">
         {{option}}
     </li>
 </ul>
