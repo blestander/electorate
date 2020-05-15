@@ -17,6 +17,7 @@ import { OwnerOptionsComponent } from './owner-options/owner-options.component';
 import { NonvoterComponent } from './nonvoter/nonvoter.component';
 import { ResultsComponent } from './results/results.component';
 import { CreateComponent } from './create/create.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { CreateComponent } from './create/create.component';
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
+        RouterModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

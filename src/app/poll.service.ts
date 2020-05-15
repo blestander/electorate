@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL } from './constants';
@@ -13,6 +14,7 @@ export class PollService {
     constructor(
         private auth: AuthService,
         private http: HttpClient,
+        private router: Router,
     ) { }
 
     getPoll(id: string): Observable<any> {
@@ -44,12 +46,12 @@ export class PollService {
     }
 
     createPoll(poll: object) {
-        this.http.post(
+        this.http.post<any>(
             CREATE_POLL_URL,
             poll,
             {withCredentials: true}
         ).subscribe({
-            next: o => console.log(o),
+            next: o => this.router.navigateByUrl(`/poll/${o.id}`),
             error: err => console.error(`${err.status}: ${err.error}`)
         });
     }
