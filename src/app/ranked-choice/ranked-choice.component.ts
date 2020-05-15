@@ -33,4 +33,8 @@ export class RankedChoiceComponent implements OnInit {
     lowerOption(index) {
         this.raiseOption(index + 1);
     }
+
+    unrankOption(index) {
+        this.choice.splice(index, 1);
+    }
 }
