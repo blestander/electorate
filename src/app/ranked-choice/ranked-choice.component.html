@@ -7,7 +7,7 @@
         <h4>Omitted Options</h4>
         <p class="instructions">Click to rank options</p>
         <span class="option-list">
-            <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()">
+            <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()" (click)="appendOption(option)">
                 {{option}}
             </a>
         </span>
