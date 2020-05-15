@@ -46,10 +46,13 @@ span.ranked-option {
     background-color: #7289DA
 }
 a.rank-button {
-    color: #99AAB5;
+    color: #FFFFFF;
     float: left;
     transition-duration: 0.5s;
 }
 a.rank-button:hover {
     color: orangered;
+}
+a.unrank-button {
+    float: right;
 }
