@@ -3,9 +3,9 @@
         <h4>Ranked Options</h4>
         <p class="instructions">Click buttons to rerank or omit</p>
         <span class="option-list">
-            <span class="ranked-option option-pane" *ngFor="let option of choice">
-                <a class="rank-button">&#x25B2;</a>
-                <a class="rank-button">&#x25BC;</a>
+            <span class="ranked-option option-pane" *ngFor="let option of choice; let i=index">
+                <a class="rank-button" *ngIf="i>0">&#x25B2;</a>
+                <a class="rank-button" *ngIf="i<choice.length-1">&#x25BC;</a>
                 {{option}}
                 <a class="unrank-button rank-button">&#x2716;</a>
             </span>
