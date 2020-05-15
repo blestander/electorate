@@ -45,3 +45,11 @@ a.omitted-option:hover {
 span.ranked-option {
     background-color: #7289DA
 }
+a.rank-button {
+    color: #99AAB5;
+    float: left;
+    transition-duration: 0.5s;
+}
+a.rank-button:hover {
+    color: orangered;
+}
