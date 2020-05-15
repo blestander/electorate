@@ -1,5 +1,10 @@
+<ol *ngIf="arrayCheck()">
+    <li *ngFor="let option of choice" class="selected">
+        {{option}}
+    </li>
+</ol>
 <ul>
-    <li *ngFor="let option of options" [class]="classesHTML(option==choice)">
+    <li *ngFor="let option of optionList()" [class]="classesHTML(option==choice)">
         {{option}}
     </li>
 </ul>

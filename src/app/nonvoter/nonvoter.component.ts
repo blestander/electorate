@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NonvoterComponent implements OnInit {
 
     @Input() options: string[];
-    @Input() choice: string;
+    @Input() choice: string | string[];
 
     constructor() { }
 
@@ -20,5 +20,16 @@ export class NonvoterComponent implements OnInit {
             return "selected";
         else
             return "";
+    }
+
+    arrayCheck() {
+        return Array.isArray(this.choice);
+    }
+
+    optionList(): string[] {
+        if (this.arrayCheck())
+            return this.options.filter(x => !this.choice.includes(x));
+        else
+            return this.options;
     }
 }
