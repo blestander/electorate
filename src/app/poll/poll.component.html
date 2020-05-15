@@ -35,6 +35,12 @@
             (vote)="voteSingle($event)">
         </app-single-choice>
 
+        <!-- Option list for Instant Runoff voters -->
+        <app-ranked-choice
+            *ngIf="poll.can_vote && poll.method=='irv'"
+            [options]="poll.options">
+        </app-ranked-choice>
+
         <!-- Owner options -->
         <app-owner-options *ngIf="poll.own" (conclude)="finishPoll()" [finished]="poll.finished"></app-owner-options>
     </span>
