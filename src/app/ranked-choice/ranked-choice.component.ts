@@ -14,4 +14,7 @@ export class RankedChoiceComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    omittedOptions(): string[] {
+        return this.options;
+    }
 }

@@ -1,0 +1,23 @@
+div.ranked-choice {
+    display: flex;
+    flex-direction: row;
+}
+div.column {
+    flex-grow: 1;
+    width: 50%;
+
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    padding: 5px;
+}
+h4 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+p.instructions {
+    margin-top: 0px;
+    text-align: center;
+}
