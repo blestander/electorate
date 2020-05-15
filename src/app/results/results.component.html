@@ -12,13 +12,14 @@
 
 <!-- IRV results -->
 <span *ngIf="method=='irv'">
-<nav>
-    <span *ngFor="let stage of results; let i=index">
-        <a
-            [class]="classIRV(i)">
-            <u>{{stageNameIRV(i)}}</u>
-        </a>
-        {{i!=results.length-1 ? " | ": ""}}
-    </span>
-</nav>
+    <nav>
+        <span *ngFor="let stage of results; let i=index">
+            <a
+                [class]="classIRV(i)">
+                <u>{{stageNameIRV(i)}}</u>
+            </a>
+            {{i!=results.length-1 ? " | ": ""}}
+        </span>
+    </nav>
+
 </span>
