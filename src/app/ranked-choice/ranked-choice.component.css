@@ -42,3 +42,6 @@ span.option-list {
 a.omitted-option:hover {
     background-color: #7289DA;
 }
+span.ranked-option {
+    background-color: #7289DA
+}
