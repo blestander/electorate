@@ -23,4 +23,14 @@ export class RankedChoiceComponent implements OnInit {
     appendOption(option) {
         this.choice.push(option);
     }
+
+    raiseOption(index) {
+        let swap = this.choice[index];
+        this.choice[index] = this.choice[index - 1];
+        this.choice[index - 1] = swap;
+    }
+
+    lowerOption(index) {
+        this.raiseOption(index + 1);
+    }
 }
