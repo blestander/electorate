@@ -18,6 +18,7 @@ import { NonvoterComponent } from './nonvoter/nonvoter.component';
 import { ResultsComponent } from './results/results.component';
 import { CreateComponent } from './create/create.component';
 import { RouterModule } from '@angular/router';
+import { RankedChoiceComponent } from './ranked-choice/ranked-choice.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { RouterModule } from '@angular/router';
         OwnerOptionsComponent,
         NonvoterComponent,
         ResultsComponent,
-        CreateComponent
+        CreateComponent,
+        RankedChoiceComponent
     ],
     imports: [
         BrowserModule,
