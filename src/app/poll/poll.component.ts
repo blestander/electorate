@@ -12,7 +12,7 @@ export class PollComponent implements OnInit {
 
     id: string;
     poll = null;
-    error = false;
+    error: string = null;
     loggedIn: boolean = true;
 
     constructor(
@@ -30,7 +30,7 @@ export class PollComponent implements OnInit {
                     if (err.error == "not_logged_in")
                         this.loggedIn = false;
                     else
-                        this.error = true;
+                        this.error = `${err.status}`;
                 }
             });
         })
