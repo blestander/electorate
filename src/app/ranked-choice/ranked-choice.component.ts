@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-ranked-choice',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RankedChoiceComponent implements OnInit {
 
     @Input() options: string[];
+    @Output() vote = new EventEmitter<string[]>();
 
     choice: string[] = [];
 
@@ -36,5 +37,9 @@ export class RankedChoiceComponent implements OnInit {
 
     unrankOption(index) {
         this.choice.splice(index, 1);
+    }
+
+    onVote() {
+        this.vote.emit(this.choice);
     }
 }

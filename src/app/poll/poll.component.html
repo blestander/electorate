@@ -38,7 +38,8 @@
         <!-- Option list for Instant Runoff voters -->
         <app-ranked-choice
             *ngIf="poll.can_vote && poll.method=='irv'"
-            [options]="poll.options">
+            [options]="poll.options"
+            (vote)="vote($event)">
         </app-ranked-choice>
 
         <!-- Owner options -->
