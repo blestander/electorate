@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { PollService } from '../poll.service';
 
 @Component({
     selector: 'app-create',
@@ -17,7 +18,7 @@ export class CreateComponent implements OnInit {
         method: new FormControl('', Validators.required),
     })
 
-    constructor() { }
+    constructor(private pollService: PollService) { }
 
     ngOnInit(): void {
     }
@@ -31,7 +32,9 @@ export class CreateComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.createForm.value);
+        if (this.createForm.valid) {
+            this.pollService.createPoll(this.createForm.value);
+        }
     }
 
 }
