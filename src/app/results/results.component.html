@@ -2,9 +2,9 @@
 <span *ngIf="method=='fptp'">
     <ol>
         <li *ngFor="let result of sortedFPTPResults()">
-            <span *ngIf="result.length == 1">{{result[0]}}</span>
+            <span *ngIf="result.length == 1">{{result[0]}} - {{votes(result[0])}} votes</span>
             <ul *ngIf="result.length > 1">
-                <li *ngFor="let option of result">{{option}}</li>
+                <li *ngFor="let option of result">{{option}} - {{votes(option)}} votes</li>
             </ul>
         </li>
     </ol>
