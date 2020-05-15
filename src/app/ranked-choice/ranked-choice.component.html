@@ -2,6 +2,11 @@
     <div class="column">
         <h4>Ranked Options</h4>
         <p class="instructions">Click buttons to rerank or omit</p>
+        <span class="option-list">
+            <span class="option-pane" *ngFor="let option of choice">
+                {{option}}
+            </span>
+        </span>
     </div>
     <div class="column">
         <h4>Omitted Options</h4>
