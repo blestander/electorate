@@ -1,0 +1,9 @@
+a.irv-stage {
+    color: #FFFFFF;
+}
+a.irv-stage:hover {
+    color: #7289DA;
+}
+a.irv-stage-selected {
+    color: #7289DA;
+}

@@ -7,13 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-    @Input() results: Object;
+    @Input() results: any;
     @Input() method: string;
     @Input() options: string[];
+
+    stageIRV: number;
 
     constructor() { }
 
     ngOnInit(): void {
+        if (this.method == "irv") {
+            this.stageIRV = this.results.length - 1;
+        }
     }
 
     sortedFPTPResults() {
@@ -32,5 +37,20 @@ export class ResultsComponent implements OnInit {
             }
         });
         return groupedOptions;
+    }
+
+    stageNameIRV(index) {
+        if (this.results.length == 1 || index + 1 == this.results.length)
+            return "Final";
+        else if (index == 0)
+            return "Initial";
+        else
+            return `Stage ${index + 1}`;
+    }
+
+    classIRV(index) {
+        if (index == this.stageIRV)
+            return "irv-stage-selected irv-stage";
+        return "irv-stage";
     }
 }
