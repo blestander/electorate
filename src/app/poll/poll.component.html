@@ -32,7 +32,7 @@
         <app-single-choice
             *ngIf="poll.can_vote && poll.method=='fptp'"
             [options]="poll.options"
-            (vote)="voteSingle($event)">
+            (vote)="vote($event)">
         </app-single-choice>
 
         <!-- Option list for Instant Runoff voters -->

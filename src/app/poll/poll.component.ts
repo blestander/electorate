@@ -36,7 +36,7 @@ export class PollComponent implements OnInit {
         })
     }
 
-    voteSingle(choice: string) {
+    vote(choice: string | string[]) {
         this.pollService.castVote(this.id, choice)
             .subscribe(o => {
                 let p = this.poll;
