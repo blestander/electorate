@@ -21,6 +21,15 @@ export class ResultsComponent implements OnInit {
         }
     }
 
+    votes(option) {
+        switch (this.method) {
+            case "fptp":
+                return this.results[option];
+            case "irv":
+                return this.results[this.stageIRV][option];
+        }
+    }
+
     sortedFPTPResults() {
         let sortedOptions = this.options.slice().sort((a, b) => {
             return this.results[b] - this.results[a];
