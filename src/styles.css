@@ -41,6 +41,7 @@ button.generic-button:disabled {
 }
 button.generic-button:hover:enabled {
     background-color: orangered;
+    cursor: pointer;
 }
 button.red-button {
     font-size: 12pt;
@@ -55,4 +56,7 @@ button.red-button {
     margin-top: 2.5px;
     margin-bottom: 2.5px;
     padding: 5px;
+}
+button.red-button:hover {
+    cursor: pointer;
 }
