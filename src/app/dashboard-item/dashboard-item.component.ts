@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard-item',
@@ -9,9 +10,12 @@ export class DashboardItemComponent implements OnInit {
 
     @Input() poll: any;
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void {
     }
 
+    goto(id: string) {
+        this.router.navigateByUrl(`/poll/${id}`);
+    }
 }
