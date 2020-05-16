@@ -1,9 +1,5 @@
 <div class="dashboard-item">
-    <p>
-        {{poll.name}}
-        <br />
-        {{poll.description}}
-        <br />
-        {{poll.finished | yesno | titlecase}}
-    </p>
+    <h4>{{poll.name}}</h4>
+    <p>Description: {{poll.description ? poll.description : "None"}}</p>
+    <p>Finished: {{poll.finished | yesno | titlecase }}</p>
 </div>

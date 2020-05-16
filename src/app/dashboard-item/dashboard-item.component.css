@@ -5,7 +5,14 @@
     padding-right: 5px;
     border-radius: 5px;
     transition-duration: 0.25s;
+    margin-bottom: 5px;
 }
 div.dashboard-item:hover {
     background-color: orangered;
+}
+h4 {
+    margin: 0px;
+}
+p {
+    margin: 0px;
 }
