@@ -27,7 +27,7 @@ button.generic-button {
     font-weight: bold;
     color: #FFFFFF;
 
-    background-color: #99AAB5;
+    background-color: #7289DA;
     border: none;
     border-radius: 5px;
     margin-top: 2.5px;
@@ -36,8 +36,11 @@ button.generic-button {
 
     transition-duration: 0.25s;
 }
+button.generic-button:disabled {
+    background-color: #99AAB5;
+}
 button.generic-button:hover:enabled {
-    background-color: #7289DA;
+    background-color: orangered;
 }
 button.red-button {
     font-size: 12pt;

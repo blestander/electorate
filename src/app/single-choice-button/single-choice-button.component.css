@@ -12,7 +12,7 @@ button {
     transition-duration: 0.25s;
 }
 button:hover {
-    background-color: #7289DA;
+    background-color: orangered;
 }
 
 button.selected {

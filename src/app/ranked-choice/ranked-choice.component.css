@@ -40,7 +40,7 @@ span.option-list {
     transition-duration: 0.5s;
 }
 a.omitted-option:hover {
-    background-color: #7289DA;
+    background-color: orangered;
 }
 span.ranked-option {
     background-color: #7289DA
