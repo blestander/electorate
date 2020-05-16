@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL } from './constants';
+import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, LOGOUT_URL } from './constants';
 import { environment } from './../environments/environment';
 
 @Injectable({
@@ -38,6 +38,15 @@ export class AuthService {
             });
         else // This page should never have been loaded
             location.replace("/")
+    }
+
+    logout(): void {
+        this.httpClient.get(
+            LOGOUT_URL,
+            {withCredentials: true}
+        ).subscribe(
+            () => location.reload()
+        );
     }
 }
 
