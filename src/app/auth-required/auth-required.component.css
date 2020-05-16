@@ -13,3 +13,7 @@ div.auth-required {
 h3 {
     margin-top: 0px;
 }
+
+button {
+    background-color: #99AAB5;
+}
