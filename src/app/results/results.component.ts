@@ -24,6 +24,7 @@ export class ResultsComponent implements OnInit {
     votes(option) {
         switch (this.method) {
             case "fptp":
+            case "approval":
                 return this.results[option];
             case "irv":
                 return this.results[this.stageIRV][option];

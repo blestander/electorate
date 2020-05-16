@@ -1,5 +1,5 @@
-<!-- FPTP results -->
-<span *ngIf="method=='fptp'">
+<!-- FPTP and Approval results -->
+<span *ngIf="method=='fptp' || method=='approval'">
     <ol>
         <li *ngFor="let result of sortedFPTPResults()">
             <span *ngIf="result.length == 1">{{result[0]}} - {{votes(result[0])}} votes</span>
