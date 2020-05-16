@@ -17,7 +17,8 @@
         <app-nonvoter
             *ngIf="!poll.can_vote && !poll.finished"
             [options]="poll.options"
-            [choice]="poll.choice">
+            [choice]="poll.choice"
+            [method]="poll.method">
         </app-nonvoter>
 
         <!-- Option list for finished polls -->

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NonvoterComponent implements OnInit {
 
+    @Input() method: string;
     @Input() options: string[];
     @Input() choice: string | string[];
 
