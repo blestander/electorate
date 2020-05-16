@@ -42,6 +42,13 @@
             (vote)="vote($event)">
         </app-ranked-choice>
 
+        <!-- Option list for Approval voters -->
+        <app-binary-score-choice
+            *ngIf="poll.can_vote && poll.method=='approval'"
+            [options]="poll.options"
+            (vote)="vote($event)">
+        </app-binary-score-choice>
+
         <!-- Owner options -->
         <app-owner-options
             *ngIf="poll.own"
