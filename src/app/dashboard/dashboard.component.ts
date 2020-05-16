@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../auth.service';
+import { PollService } from '../poll.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,10 +10,20 @@ import { AuthService } from '../auth.service';
 export class DashboardComponent implements OnInit {
 
     loggedIn: boolean = true;
+    polls: any[] = [];
 
-    constructor(public authService: AuthService) { }
+    constructor(public pollService: PollService) { }
 
     ngOnInit(): void {
+        this.pollService.listPolls().subscribe({
+            next: polls => this.polls = polls,
+            error: err => {
+                if (err.error == "not_logged_in")
+                    this.loggedIn = false;
+                else
+                    console.log(err.error);
+            }
+        });
     }
 
 }
