@@ -1,10 +1,10 @@
-<ol *ngIf="arrayCheck()">
+<ol *ngIf="method == 'irv'">
     <li *ngFor="let option of choice" class="selected">
         {{option}}
     </li>
 </ol>
 <ul>
-    <li *ngFor="let option of optionList()" [class]="classesHTML(option==choice)">
+    <li *ngFor="let option of optionList()" [class]="classesHTML(isChoice(option))">
         {{option}}
     </li>
 </ul>

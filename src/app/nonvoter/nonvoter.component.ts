@@ -16,6 +16,13 @@ export class NonvoterComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    isChoice(option) {
+        if (this.arrayCheck())
+            return this.choice.includes(option);
+        else
+            return this.choice == option;
+    }
+
     classesHTML(selected: boolean): string {
         if (selected)
             return "selected";
@@ -28,7 +35,7 @@ export class NonvoterComponent implements OnInit {
     }
 
     optionList(): string[] {
-        if (this.arrayCheck())
+        if (this.method == 'irv')
             return this.options.filter(x => !this.choice.includes(x));
         else
             return this.options;
