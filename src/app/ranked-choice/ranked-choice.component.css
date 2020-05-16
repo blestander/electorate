@@ -41,6 +41,7 @@ span.option-list {
 }
 a.omitted-option:hover {
     background-color: orangered;
+    cursor: pointer;
 }
 span.ranked-option {
     background-color: #7289DA
@@ -52,6 +53,7 @@ a.rank-button {
 }
 a.rank-button:hover {
     color: orangered;
+    cursor: pointer;
 }
 a.unrank-button {
     float: right;
