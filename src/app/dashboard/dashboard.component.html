@@ -2,6 +2,6 @@
     <h2>Dashboard</h2>
     <app-auth-required *ngIf="!loggedIn; else elseBlock"></app-auth-required>
     <ng-template #elseBlock>
-        <p *ngFor="let poll of polls">{{poll}}</p>
+        <p *ngFor="let poll of polls">{{poll | json}}</p>
     </ng-template>
 </div>
