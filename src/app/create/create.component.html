@@ -1,11 +1,13 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
+    <p class="instructions">Fields with asterisks(*) are mandatory.</p>
+
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <!-- Basic information section -->
         <section>
             <h3>Basic Information</h3>
-            <label>Name: <input type="text" formControlName="name" required /></label>
+            <label>Name*: <input type="text" formControlName="name" required /></label>
             <br />
             <label>Description:<br/><textarea formControlName="description"></textarea></label>
         </section>
@@ -15,7 +17,7 @@
             <h3>Options</h3>
 
             <label *ngFor="let option of options.controls; let i=index">
-                Option:
+                Option*:
                 <input type="text" [formControlName]="i" required />
                 <br />
             </label>
@@ -24,7 +26,7 @@
 
         <!-- Voting method section -->
         <section class="voting-method-section">
-            <h3 class="voting-method-header">Voting Method</h3>
+            <h3 class="voting-method-header">Voting Method*</h3>
             <label>
                 <input type="radio" value="fptp" formControlName="method" />
                 First Past the Post
