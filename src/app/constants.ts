@@ -13,3 +13,4 @@ export const CAST_VOTE_URL = `${BACKEND_PREFIX}/castVote`;
 export const FINISH_POLL_URL = `${BACKEND_PREFIX}/finishPoll`;
 export const CREATE_POLL_URL = `${BACKEND_PREFIX}/createPoll`;
 export const LIST_POLLS_URL = `${BACKEND_PREFIX}/listPolls`;
+export const DELETE_POLL_URL = `${BACKEND_PREFIX}/deletePoll`;
