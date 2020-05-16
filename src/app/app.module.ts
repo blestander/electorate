@@ -20,6 +20,7 @@ import { CreateComponent } from './create/create.component';
 import { RouterModule } from '@angular/router';
 import { RankedChoiceComponent } from './ranked-choice/ranked-choice.component';
 import { YesNoPipe } from './yes-no.pipe';
+import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { YesNoPipe } from './yes-no.pipe';
         ResultsComponent,
         CreateComponent,
         RankedChoiceComponent,
-        YesNoPipe
+        YesNoPipe,
+        DashboardItemComponent
     ],
     imports: [
         BrowserModule,
