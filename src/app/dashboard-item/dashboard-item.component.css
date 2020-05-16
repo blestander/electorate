@@ -1,0 +1,11 @@
+.dashboard-item {
+    background-color: #99AAB5;
+    color: #FFFFFF;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    transition-duration: 0.25s;
+}
+div.dashboard-item:hover {
+    background-color: #7289DA;
+}
