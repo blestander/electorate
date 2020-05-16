@@ -1,2 +1,6 @@
-<p>binary-score-choice works!</p>
-<p>{{options}}</p>
+<p class="instructions">Instructions: Select all options that you approve of.</p>
+<label *ngFor="let option of options">
+    <input type="checkbox" (change)="toggleApproval(option)" />
+    {{option}}
+    <br />
+</label>
