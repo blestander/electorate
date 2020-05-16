@@ -9,6 +9,7 @@
 }
 div.dashboard-item:hover {
     background-color: orangered;
+    cursor: pointer;
 }
 h4 {
     margin: 0px;
