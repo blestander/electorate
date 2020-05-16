@@ -63,4 +63,8 @@ export class PollComponent implements OnInit {
             })
     }
 
+    deletePoll(): void {
+        console.log("Deleting poll!");
+    }
+
 }

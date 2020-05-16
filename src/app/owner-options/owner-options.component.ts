@@ -9,6 +9,7 @@ export class OwnerOptionsComponent implements OnInit {
 
     @Input() finished: boolean;
     @Output() conclude = new EventEmitter<void>();
+    @Output() delete = new EventEmitter<void>();
     expand: boolean = false;
 
     constructor() { }
@@ -26,7 +27,7 @@ export class OwnerOptionsComponent implements OnInit {
     }
 
     kill(): void {
-        window.confirm("Are you sure you want to delete this poll?\nTHIS ACTION IS NOT REVERSIBLE!")
-        // TODO
+        if (window.confirm("Are you sure you want to delete this poll?\nTHIS ACTION IS NOT REVERSIBLE!"))
+            this.delete.emit();
     }
 }

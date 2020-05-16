@@ -43,7 +43,12 @@
         </app-ranked-choice>
 
         <!-- Owner options -->
-        <app-owner-options *ngIf="poll.own" (conclude)="finishPoll()" [finished]="poll.finished"></app-owner-options>
+        <app-owner-options
+            *ngIf="poll.own"
+            (conclude)="finishPoll()"
+            (delete)="deletePoll()"
+            [finished]="poll.finished">
+        </app-owner-options>
     </span>
 
 </div>
