@@ -25,4 +25,9 @@ export class BinaryScoreChoiceComponent implements OnInit {
             this.selected.push(option); // Add to selected
     }
 
+    castVote() {
+        console.log(this.selected);
+        this.vote.emit(this.selected);
+    }
+
 }
