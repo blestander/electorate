@@ -1,1 +1,9 @@
-<p>dashboard-item works!</p>
+<div class="dashboard-item">
+    <p>
+        {{poll.name}}
+        <br />
+        {{poll.description}}
+        <br />
+        {{poll.finished | yesno | titlecase}}
+    </p>
+</div>
