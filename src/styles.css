@@ -63,5 +63,8 @@ button.red-button:hover {
 .instructions {
     text-align: center;
     font-weight: bold;
-
+}
+.button-centered {
+    display: flex;
+    justify-content: center;
 }

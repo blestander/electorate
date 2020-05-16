@@ -58,7 +58,3 @@ a.rank-button:hover {
 a.unrank-button {
     float: right;
 }
-span.button-centered {
-    display: flex;
-    justify-content: center;
-}
