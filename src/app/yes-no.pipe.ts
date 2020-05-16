@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'yesNo'
+    name: 'yesno'
 })
 export class YesNoPipe implements PipeTransform {
 
