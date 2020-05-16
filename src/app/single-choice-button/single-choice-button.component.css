@@ -13,6 +13,7 @@ button {
 }
 button:hover {
     background-color: orangered;
+    cursor: pointer;
 }
 
 button.selected {
