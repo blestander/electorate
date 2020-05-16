@@ -2,14 +2,22 @@ h1 {
     color: #FFFFFF;
     text-align: center;
 }
-
 header {
     background-color: #23272A;
     border-radius: 15px;
 }
-
 .prerelease {
     color: red;
     text-align: center;
     font-weight: bold;
+}
+nav {
+    color: #FFFFFF;
+    text-align: center;
+}
+a {
+    text-decoration: underline;
+}
+a:hover {
+    color: #7289DA;
 }
