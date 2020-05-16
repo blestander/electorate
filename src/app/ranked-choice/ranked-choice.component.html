@@ -1,7 +1,11 @@
+<p class="instructions">
+    Instructions: Rank as many of the options below as you'd like.
+    Omitted options will treated as equally last.
+</p>
 <div class="ranked-choice">
     <div class="column">
         <h4>Ranked Options</h4>
-        <p class="instructions">Click buttons to rerank or omit</p>
+        <p class="rc-instructions">Click buttons to rerank or omit</p>
         <span class="option-list">
             <span class="ranked-option option-pane" *ngFor="let option of choice; let i=index">
                 <a class="rank-button" *ngIf="i>0" (click)="raiseOption(i)">&#x25B2;</a>
@@ -13,7 +17,7 @@
     </div>
     <div class="column">
         <h4>Omitted Options</h4>
-        <p class="instructions">Click to rank options</p>
+        <p class="rc-instructions">Click to rank options</p>
         <span class="option-list">
             <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()" (click)="appendOption(option)">
                 {{option}}

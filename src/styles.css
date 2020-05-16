@@ -60,3 +60,8 @@ button.red-button {
 button.red-button:hover {
     cursor: pointer;
 }
+.instructions {
+    text-align: center;
+    font-weight: bold;
+
+}
