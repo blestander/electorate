@@ -22,6 +22,7 @@ import { RankedChoiceComponent } from './ranked-choice/ranked-choice.component';
 import { YesNoPipe } from './yes-no.pipe';
 import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
 import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-choice.component';
+import { SimpleResultsComponent } from './simple-results/simple-results.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-c
         RankedChoiceComponent,
         YesNoPipe,
         DashboardItemComponent,
-        BinaryScoreChoiceComponent
+        BinaryScoreChoiceComponent,
+        SimpleResultsComponent
     ],
     imports: [
         BrowserModule,
