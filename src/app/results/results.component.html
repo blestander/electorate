@@ -4,6 +4,13 @@
     *ngIf="method=='fptp' || method=='approval'">
 </app-simple-results>
 
+<!-- CAV results -->
+<app-simple-results
+    [results]="results"
+    *ngIf="method=='cav'"
+    [scores]="true">
+</app-simple-results>
+
 <!-- IRV results -->
 <app-irv-results [results]="results" *ngIf="method=='irv'"></app-irv-results>
 
