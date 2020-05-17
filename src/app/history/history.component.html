@@ -2,4 +2,6 @@
     <h2>Vote History</h2>
 
     <app-auth-required *ngIf="!loggedIn"></app-auth-required>
+
+    <app-dashboard-item *ngFor="let poll of polls" [poll]="poll"></app-dashboard-item>
 </div>
