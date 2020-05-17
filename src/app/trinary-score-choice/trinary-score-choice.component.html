@@ -1,1 +1,26 @@
-<p>trinary-score-choice works!</p>
+<p class="instructions">Instructions: Mark your opinion of each option below.</p>
+
+<table>
+    <tr>
+        <th>Option</th>
+        <th>Oppose</th>
+        <th>Neutral</th>
+        <th>Support</th>
+    </tr>
+    <tr *ngFor="let option of options">
+        <td>{{option}}</td>
+        <td>
+            <input type="radio" [name]="option" />
+        </td>
+        <td>
+            <input type="radio" [name]="option" checked />
+        <td>
+            <input type="radio" [name]="option" />
+        </td>
+    </tr>
+</table>
+<span class="button-centered">
+    <button class="generic-button">
+        Vote
+    </button>
+</span>
