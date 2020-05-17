@@ -8,6 +8,7 @@ table {
 }
 td, th {
     text-align: right;
+    padding: 3px;
 }
 th.col-header {
     text-align: center;
