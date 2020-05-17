@@ -9,7 +9,7 @@ export class NonvoterComponent implements OnInit {
 
     @Input() method: string;
     @Input() options: string[];
-    @Input() choice: string | string[];
+    @Input() choice;
 
     constructor() { }
 
@@ -17,15 +17,28 @@ export class NonvoterComponent implements OnInit {
     }
 
     isChoice(option) {
-        if (this.arrayCheck())
+        if (this.method == "cav")
+            return this.choice[option] == 1;
+        else if (this.arrayCheck())
             return this.choice.includes(option);
         else
             return this.choice == option;
     }
 
-    classesHTML(selected: boolean): string {
+    isOpposed(option) {
+        if (this.method == "cav")
+            return this.choice[option] == -1;
+        else
+            return false;
+    }
+
+    classesHTML(option): string {
+        let selected = this.isChoice(option);
+        let opposed = this.isOpposed(option);
         if (selected)
             return "selected";
+        else if (opposed)
+            return "opposed";
         else
             return "";
     }

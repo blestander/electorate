@@ -1,3 +1,6 @@
 .selected {
     color: #7289DA;
 }
+.opposed {
+    color: red;
+}
