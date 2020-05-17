@@ -27,4 +27,18 @@ export class ResultsComponent implements OnInit {
     setSmithState(state) {
         this.smithState = state;
     }
+
+    get smithWinner() {
+        let final = this.results.irv[this.results.irv.length - 1];
+        let highestTally = 0;
+        let highestOptions = [];
+        for (const option in final) {
+            if (final[option] > highestTally) {
+                highestTally = final[option];
+                highestOptions = [ option ];
+            } else if (final[option] == highestTally)
+                highestOptions.push(option);
+        }
+        return highestOptions;
+    }
 }

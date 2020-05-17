@@ -18,5 +18,9 @@
     </nav>
     <div class="smithirv-inner">
         <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'"></app-irv-results>
+        <div *ngIf="smithState=='final'">
+            <p>Smith set: {{results.smith.set.join(', ')}}</p>
+            <p>Winner{{smithWinner.length > 1 ? "s" : ""}}: {{ smithWinner.join(',') }}</p>
+        </div>
     </div>
 </div>
