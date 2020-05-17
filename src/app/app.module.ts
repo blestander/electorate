@@ -23,6 +23,7 @@ import { YesNoPipe } from './yes-no.pipe';
 import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
 import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-choice.component';
 import { SimpleResultsComponent } from './simple-results/simple-results.component';
+import { IRVResultsComponent } from './irv-results/irv-results.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { SimpleResultsComponent } from './simple-results/simple-results.componen
         YesNoPipe,
         DashboardItemComponent,
         BinaryScoreChoiceComponent,
-        SimpleResultsComponent
+        SimpleResultsComponent,
+        IRVResultsComponent
     ],
     imports: [
         BrowserModule,
