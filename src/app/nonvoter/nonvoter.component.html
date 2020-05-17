@@ -1,4 +1,4 @@
-<ol *ngIf="method == 'irv'">
+<ol *ngIf="method == 'irv' || method == 'smithirv'">
     <li *ngFor="let option of choice" class="selected">
         {{option}}
     </li>

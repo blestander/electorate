@@ -35,7 +35,7 @@ export class NonvoterComponent implements OnInit {
     }
 
     optionList(): string[] {
-        if (this.method == 'irv')
+        if (this.method == 'irv' || this.method == 'smithirv')
             return this.options.filter(x => !this.choice.includes(x));
         else
             return this.options;
