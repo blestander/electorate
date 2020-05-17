@@ -1,1 +1,8 @@
-<p>simple-results works!</p>
+<ol>
+    <li *ngFor="let result of sortedResults()">
+        <span *ngIf="result.length == 1">{{result[0]}} - {{votes(result[0])}} votes</span>
+        <ul *ngIf="result.length > 1">
+            <li *ngFor="let option of result">{{option}} - {{votes(option)}} votes</li>
+        </ul>
+    </li>
+</ol>
