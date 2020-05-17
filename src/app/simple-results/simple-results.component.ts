@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SimpleResultsComponent implements OnInit {
 
-    @Input() options;
     @Input() results;
 
     constructor() { }
@@ -16,7 +15,7 @@ export class SimpleResultsComponent implements OnInit {
     }
 
     sortedResults(): string[] {
-        let sortedOptions = this.options.slice().sort((a, b) => {
+        let sortedOptions = Object.keys(this.results).sort((a, b) => {
             return this.results[b] - this.results[a];
         });
 

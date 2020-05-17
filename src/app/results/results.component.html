@@ -1,6 +1,5 @@
 <!-- FPTP and Approval results -->
 <app-simple-results
-    [options]="options"
     [results]="results"
     *ngIf="method=='fptp' || method=='approval'">
 </app-simple-results>
@@ -17,12 +16,5 @@
             {{i!=results.length-1 ? " | ": ""}}
         </span>
     </nav>
-    <ol>
-        <li *ngFor="let result of sortedIRVResults()">
-            <span *ngIf="result.length == 1">{{result[0]}} - {{votes(result[0])}} votes</span>
-            <ul *ngIf="result.length > 1">
-                <li *ngFor="let option of result">{{option}} - {{votes(option)}} votes</li>
-            </ul>
-        </li>
-    </ol>
+    <app-simple-results [results]="results[stageIRV]"></app-simple-results>
 </span>
