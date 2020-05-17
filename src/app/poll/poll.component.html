@@ -50,6 +50,13 @@
             (vote)="vote($event)">
         </app-binary-score-choice>
 
+        <!-- Option list for CAV voters -->
+        <app-trinary-score-choice
+            *ngIf="poll.can_vote && poll.method=='cav'"
+            [options]="poll.options"
+            (vote)="vote($event)">
+        </app-trinary-score-choice>
+
         <!-- Owner options -->
         <app-owner-options
             *ngIf="poll.own"

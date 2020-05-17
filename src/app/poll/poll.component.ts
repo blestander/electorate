@@ -33,7 +33,7 @@ export class PollComponent implements OnInit {
                         this.error = `${err.status}`;
                 }
             });
-        })
+        });
     }
 
     vote(choice: string | string[]) {

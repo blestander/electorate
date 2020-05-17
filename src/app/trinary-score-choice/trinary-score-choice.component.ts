@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-trinary-score-choice',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./trinary-score-choice.component.css']
 })
 export class TrinaryScoreChoiceComponent implements OnInit {
+
+    @Input() options: string[];
 
     constructor() { }
 
