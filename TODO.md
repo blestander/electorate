@@ -2,8 +2,7 @@
 
 ## Voting methods
 
-* Combined approval method
-* Smith/IRV
+* Borda count
 * Schulze
 
 ## Features
@@ -12,7 +11,6 @@
 * Number of people who have voted
 * List of people who have voted
 * Ballot timestamps
-* Vote history
 
 ## Miscellaneous
 
