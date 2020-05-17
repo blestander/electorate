@@ -24,6 +24,7 @@ import { DashboardItemComponent } from './dashboard-item/dashboard-item.componen
 import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-choice.component';
 import { SimpleResultsComponent } from './simple-results/simple-results.component';
 import { IRVResultsComponent } from './irv-results/irv-results.component';
+import { SmithResultsComponent } from './smith-results/smith-results.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { IRVResultsComponent } from './irv-results/irv-results.component';
         DashboardItemComponent,
         BinaryScoreChoiceComponent,
         SimpleResultsComponent,
-        IRVResultsComponent
+        IRVResultsComponent,
+        SmithResultsComponent
     ],
     imports: [
         BrowserModule,
