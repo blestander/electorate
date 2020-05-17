@@ -18,7 +18,11 @@
     </nav>
     <div class="smithirv-inner">
         <!-- Smith results -->
-        <app-smith-results [smith]="results.smith" *ngIf="smithState=='smith'"></app-smith-results>
+        <app-smith-results
+            [smith]="results.smith"
+            [options]="options"
+            *ngIf="smithState=='smith'">
+        </app-smith-results>
         <!-- IRV results -->
         <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'"></app-irv-results>
         <!-- Final results -->

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SmithResultsComponent implements OnInit {
 
     @Input() smith;
+    @Input() options;
 
     constructor() { }
 

@@ -1,1 +1,15 @@
-<p>{{smith | json}}</p>
+<table>
+    <!-- Header row-->
+    <tr>
+        <td></td>
+        <th *ngFor="let option of options" scope="col">
+            {{option}}
+        </th>
+    </tr>
+    <tr *ngFor="let option of options">
+        <th scope="row">{{option}}</th>
+        <td *ngFor="let secondOption of options">
+            {{smith.table[option][secondOption] | percent}}
+        </td>
+    </tr>
+</table>
