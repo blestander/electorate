@@ -6,3 +6,9 @@ table, td, th {
 table {
     border-collapse: collapse;
 }
+td, th {
+    text-align: right;
+}
+th.col-header {
+    text-align: center;
+}
