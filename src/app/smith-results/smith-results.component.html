@@ -8,7 +8,7 @@
     </tr>
     <tr *ngFor="let option of options">
         <th scope="row">{{option}}</th>
-        <td *ngFor="let secondOption of options">
+        <td *ngFor="let secondOption of options" [class]="resultClass(option, secondOption)">
             {{smith.table[option][secondOption] | percent}}
         </td>
     </tr>

@@ -15,4 +15,15 @@ export class SmithResultsComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    resultClass(option, secondOption): string {
+        if (option == secondOption)
+            return "same";
+        else if (this.smith.table[option][secondOption] > 0.5)
+            return "win";
+        else if (this.smith.table[option][secondOption] == 0.5)
+            return "tie";
+        else
+            return "loss";
+    }
+
 }

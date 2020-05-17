@@ -13,3 +13,18 @@ td, th {
 th.col-header {
     text-align: center;
 }
+.win {
+    color: #006100;
+    background-color: #C6EFCE;
+}
+.tie {
+    color: #9C5700;
+    background-color: #FFEB9C;
+}
+.loss {
+    color: #9C0006;
+    background-color: #FFC7CE;
+}
+.same {
+    background-color: #99AAB5;
+}
