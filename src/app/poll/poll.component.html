@@ -36,9 +36,9 @@
             (vote)="vote($event)">
         </app-single-choice>
 
-        <!-- Option list for Instant Runoff voters -->
+        <!-- Option list for Instant Runoff voters and Smith/IRV voters -->
         <app-ranked-choice
-            *ngIf="poll.can_vote && poll.method=='irv'"
+            *ngIf="poll.can_vote && (poll.method=='irv' || poll.method=='smithirv')"
             [options]="poll.options"
             (vote)="vote($event)">
         </app-ranked-choice>
