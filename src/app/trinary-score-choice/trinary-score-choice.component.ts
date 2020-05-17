@@ -9,9 +9,20 @@ export class TrinaryScoreChoiceComponent implements OnInit {
 
     @Input() options: string[];
 
+    choice = {};
+
     constructor() { }
 
     ngOnInit(): void {
+        this.options.forEach(option => this.choice[option] = 0);
+    }
+
+    setChoice(option, value) {
+        this.choice[option] = value;
+    }
+
+    castVote() {
+        console.log(this.choice);
     }
 
 }

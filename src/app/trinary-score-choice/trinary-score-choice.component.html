@@ -10,17 +10,17 @@
     <tr *ngFor="let option of options">
         <td>{{option}}</td>
         <td>
-            <input type="radio" [name]="option" />
+            <input type="radio" [name]="option" (input)="setChoice(option, -1)" />
         </td>
         <td>
-            <input type="radio" [name]="option" checked />
+            <input type="radio" [name]="option" (input)="setChoice(option, 0)" checked />
         <td>
-            <input type="radio" [name]="option" />
+            <input type="radio" [name]="option" (input)="setChoice(option, 1)" />
         </td>
     </tr>
 </table>
 <span class="button-centered">
-    <button class="generic-button">
+    <button class="generic-button" (click)="castVote()">
         Vote
     </button>
 </span>
