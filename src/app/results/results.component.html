@@ -5,16 +5,4 @@
 </app-simple-results>
 
 <!-- IRV results -->
-<span *ngIf="method=='irv'">
-    <nav>
-        <span *ngFor="let stage of results; let i=index">
-            <a
-                [class]="classIRV(i)"
-                (click)="stageIRV=i">
-                <u>{{stageNameIRV(i)}}</u>
-            </a>
-            {{i!=results.length-1 ? " | ": ""}}
-        </span>
-    </nav>
-    <app-simple-results [results]="results[stageIRV]"></app-simple-results>
-</span>
+<app-irv-results [results]="results" *ngIf="method=='irv'"></app-irv-results>

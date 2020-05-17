@@ -1,0 +1,14 @@
+a.irv-stage {
+    color: #FFFFFF;
+}
+a.irv-stage:hover {
+    color: orangered;
+    cursor: pointer;
+}
+a.irv-stage-selected {
+    color: #7289DA;
+}
+a.irv-stage-selected:hover {
+    color: #7289DA;
+    cursor: default;
+}

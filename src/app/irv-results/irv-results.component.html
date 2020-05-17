@@ -1,1 +1,11 @@
-<p>irv-results works!</p>
+<nav>
+    <span *ngFor="let stage of results; let i=index">
+        <a
+            [class]="stageClass(i)"
+            (click)="setStage(i)">
+            <u>{{stageName(i)}}</u>
+        </a>
+        {{i!=results.length-1 ? " | ": ""}}
+    </span>
+</nav>
+<app-simple-results [results]="results[stage]"></app-simple-results>
