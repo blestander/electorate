@@ -11,7 +11,20 @@ export class ResultsComponent implements OnInit {
     @Input() method: string;
     @Input() options: string[];
 
+    smithState: string = "final";
+
     constructor() { }
 
     ngOnInit(): void { }
+
+    classSmithIRV(state) {
+        if (state == this.smithState)
+            return "smith-link-selected";
+        else
+            return "smith-link";
+    }
+
+    setSmithState(state) {
+        this.smithState = state;
+    }
 }

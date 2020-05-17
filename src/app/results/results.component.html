@@ -6,3 +6,14 @@
 
 <!-- IRV results -->
 <app-irv-results [results]="results" *ngIf="method=='irv'"></app-irv-results>
+
+<!-- Smith/IRV results -->
+<div *ngIf="method=='smithirv'">
+    <nav>
+        <a [class]="classSmithIRV('smith')" (click)="setSmithState('smith')">Smith</a>
+        |
+        <a [class]="classSmithIRV('irv')" (click)="setSmithState('irv')">IRV</a>
+        |
+        <a [class]="classSmithIRV('final')" (click)="setSmithState('final')">Final</a>
+    </nav>
+</div>

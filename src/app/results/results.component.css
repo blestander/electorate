@@ -1,0 +1,11 @@
+a.smith-link {
+    text-decoration: underline;
+}
+a.smith-link:hover {
+    color: darkorange;
+    cursor: pointer;
+}
+a.smith-link-selected {
+    text-decoration: underline;
+    color: #7289DA;
+}
