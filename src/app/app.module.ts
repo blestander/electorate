@@ -25,6 +25,7 @@ import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-c
 import { SimpleResultsComponent } from './simple-results/simple-results.component';
 import { IRVResultsComponent } from './irv-results/irv-results.component';
 import { SmithResultsComponent } from './smith-results/smith-results.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { SmithResultsComponent } from './smith-results/smith-results.component';
         BinaryScoreChoiceComponent,
         SimpleResultsComponent,
         IRVResultsComponent,
-        SmithResultsComponent
+        SmithResultsComponent,
+        HistoryComponent
     ],
     imports: [
         BrowserModule,
