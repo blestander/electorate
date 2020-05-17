@@ -1,17 +1,41 @@
-table, td, th {
+td, th {
     border-style: solid;
     border-width: 1px;
     border-color: #99AAB5;
 }
 table {
     border-collapse: collapse;
+    border: none;
 }
 td, th {
     text-align: right;
     padding: 3px;
 }
-th.col-header {
-    text-align: center;
+td {
+    width: 45px;
+}
+th.row-header {
+    width: auto;
+    white-space: nowrap;
+    border-left: none;
+}
+tr.first-row {
+    border: none;
+}
+.col-header {
+    height: 140px;
+    white-space: nowrap;
+    border: none;
+}
+th.col-header div {
+    transform:
+        translate(30px, 46px)
+        rotate(-45deg);
+    width: 45px;
+}
+th.col-header div span {
+    border-bottom: 1px solid #99AAB5;
+    padding: 5px 10px;
 }
 .win {
     color: #006100;
