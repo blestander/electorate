@@ -1,3 +1,10 @@
+div.smithirv-inner {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #99AAB5;
+    border-radius: 5px;
+    padding: 5px;
+}
 a.smith-link {
     text-decoration: underline;
 }

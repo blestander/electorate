@@ -16,4 +16,7 @@
         |
         <a [class]="classSmithIRV('final')" (click)="setSmithState('final')">Final</a>
     </nav>
+    <div class="smithirv-inner">
+        <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'"></app-irv-results>
+    </div>
 </div>
