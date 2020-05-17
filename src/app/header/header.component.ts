@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit {
         this.router.navigateByUrl('/create');
     }
 
+    navigateToHistory(): void {
+        this.router.navigateByUrl('/history');
+    }
+
     logout(): void {
         this.auth.logout();
     }

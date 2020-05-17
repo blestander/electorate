@@ -5,12 +5,14 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PollComponent } from './poll/poll.component';
 import { CreateComponent } from './create/create.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
     {path: '', component: DashboardComponent},
     {path: 'auth', component: AuthComponent},
     {path: 'create', component: CreateComponent},
-    {path: 'poll/:id', component: PollComponent}
+    {path: 'poll/:id', component: PollComponent},
+    {path: 'history', component: HistoryComponent}
 ];
 
 @NgModule({

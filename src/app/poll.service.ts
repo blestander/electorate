@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, DELETE_POLL_URL } from './constants';
+import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL } from './constants';
+import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
 
 @Injectable({
     providedIn: 'root'
@@ -72,5 +73,12 @@ export class PollService {
             next: () => this.router.navigateByUrl('/'),
             error: err => console.error(`${err.status}: ${err.error}`)
         })
+    }
+
+    getHistory() {
+        return this.http.get(
+            GET_HISTORY_URL,
+            { withCredentials: true }
+        );
     }
 }

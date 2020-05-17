@@ -15,3 +15,4 @@ export const CREATE_POLL_URL = `${BACKEND_PREFIX}/createPoll`;
 export const LIST_POLLS_URL = `${BACKEND_PREFIX}/listPolls`;
 export const DELETE_POLL_URL = `${BACKEND_PREFIX}/deletePoll`;
 export const LOGOUT_URL = `${BACKEND_PREFIX}/logout`;
+export const GET_HISTORY_URL = `${BACKEND_PREFIX}/history`;
