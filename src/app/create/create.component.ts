@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { PollService } from '../poll.service';
+
+const webhookRegex = /https:\/\/discordapp\.com\/api\/webhooks\/([0-9]*)\/([A-Za-z0-9\-_]*)/g;
 
 @Component({
     selector: 'app-create',
@@ -20,6 +22,7 @@ export class CreateComponent implements OnInit {
     })
 
     webhookEnabled: boolean = false;
+    webhookValid: boolean = true;
 
     constructor(private pollService: PollService) { }
 
@@ -44,6 +47,14 @@ export class CreateComponent implements OnInit {
         this.webhookEnabled = !this.webhookEnabled;
         if (!this.webhookEnabled) // Webhook now disabled
             this.createForm.get('webhook').setValue('');
+        this.webhookValid = this.validateWebhook();
+    }
+
+    validateWebhook() {
+        if (this.webhookEnabled) {
+            return webhookRegex.test(this.createForm.get('webhook').value);
+        } else
+            return true;
     }
 
 }

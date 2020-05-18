@@ -58,15 +58,15 @@
             </label>
             <br />
             <label [style.display]="webhookEnabled ? 'inline' : 'none'">
-                Webhook URL:
-                <input type="url" formControlName="webhook" />
+                Webhook URL*:
+                <input type="url" formControlName="webhook" (input)="webhookValid = validateWebhook()" />
             </label>
         </section>
 
         <button
             class="generic-button"
             type="submit"
-            [disabled]="!createForm.valid">
+            [disabled]="!createForm.valid || !webhookValid">
             Create
         </button>
     </form>
