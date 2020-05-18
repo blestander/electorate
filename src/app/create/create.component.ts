@@ -19,6 +19,8 @@ export class CreateComponent implements OnInit {
         webhook: new FormControl('')
     })
 
+    webhookEnabled: boolean = false;
+
     constructor(private pollService: PollService) { }
 
     ngOnInit(): void {
@@ -36,6 +38,12 @@ export class CreateComponent implements OnInit {
         if (this.createForm.valid) {
             this.pollService.createPoll(this.createForm.value);
         }
+    }
+
+    toggleWebhook() {
+        this.webhookEnabled = !this.webhookEnabled;
+        if (!this.webhookEnabled) // Webhook now disabled
+            this.createForm.get('webhook').setValue('');
     }
 
 }

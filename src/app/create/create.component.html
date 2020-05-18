@@ -53,11 +53,11 @@
         <section>
             <h3>Webhook</h3>
             <label>
-                <input type="checkbox" />
+                <input type="checkbox" (change)="toggleWebhook()" />
                 Report conclusion of poll via Discord webhook
             </label>
             <br />
-            <label>
+            <label [style.display]="webhookEnabled ? 'inline' : 'none'">
                 Webhook URL:
                 <input type="url" formControlName="webhook" />
             </label>
