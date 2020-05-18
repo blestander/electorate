@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
             new FormControl('', Validators.required)
         ]),
         method: new FormControl('', Validators.required),
+        webhook: new FormControl('')
     })
 
     constructor(private pollService: PollService) { }
