@@ -26,9 +26,8 @@ export class PollService {
 
     castVote(id: string, choice): Observable<Object> {
         return this.http.post<Object>(
-            CAST_VOTE_URL,
+            CAST_VOTE_URL.replace("{id}", id),
             {
-                id: id,
                 choice: choice
             },
             {withCredentials: true}
