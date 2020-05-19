@@ -13,6 +13,6 @@ export const CAST_VOTE_URL = `${BACKEND_PREFIX}/poll/{id}/vote`;
 export const FINISH_POLL_URL = `${BACKEND_PREFIX}/poll/{id}/finish`;
 export const CREATE_POLL_URL = `${BACKEND_PREFIX}/createPoll`;
 export const LIST_POLLS_URL = `${BACKEND_PREFIX}/polls`;
-export const DELETE_POLL_URL = `${BACKEND_PREFIX}/deletePoll`;
+export const DELETE_POLL_URL = `${BACKEND_PREFIX}/poll`;
 export const LOGOUT_URL = `${BACKEND_PREFIX}/logout`;
 export const GET_HISTORY_URL = `${BACKEND_PREFIX}/history`;

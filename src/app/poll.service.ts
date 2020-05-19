@@ -61,9 +61,8 @@ export class PollService {
     }
 
     deletePoll(id: string) {
-        this.http.post<void>(
-            DELETE_POLL_URL,
-            {id: id},
+        this.http.delete<void>(
+            `${DELETE_POLL_URL}/${id}`,
             {withCredentials: true}
         ).subscribe({
             next: () => this.router.navigateByUrl('/'),
