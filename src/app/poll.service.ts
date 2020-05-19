@@ -19,12 +19,9 @@ export class PollService {
     ) { }
 
     getPoll(id: string): Observable<any> {
-        return this.http.get(GET_POLL_URL, {
-            params: {
-                id: id
-            },
-            withCredentials: true
-        })
+        return this.http.get(
+            `${GET_POLL_URL}/${id}`,
+            {withCredentials: true})
     }
 
     castVote(id: string, choice): Observable<Object> {
