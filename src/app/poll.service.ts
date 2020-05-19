@@ -46,9 +46,12 @@ export class PollService {
         this.http.post<any>(
             CREATE_POLL_URL,
             poll,
-            {withCredentials: true}
+            {
+                withCredentials: true,
+                observe: 'response'
+            }
         ).subscribe({
-            next: o => this.router.navigateByUrl(`/poll/${o.id}`),
+            next: res => this.router.navigateByUrl(res.headers.get('Location')),
             error: err => console.error(`${err.status}: ${err.error}`)
         });
     }
