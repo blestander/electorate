@@ -36,8 +36,8 @@ export class PollService {
 
     finishPoll(id: string): Observable<Object> {
         return this.http.post<Object>(
-            FINISH_POLL_URL,
-            {id: id},
+            FINISH_POLL_URL.replace("{id}", id),
+            {},
             {withCredentials: true}
         );
     }
