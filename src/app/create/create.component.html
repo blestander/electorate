@@ -1,6 +1,8 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
+    <app-auth-required *ngIf="!loggedIn"></app-auth-required>
+
     <div *ngIf="loggedIn">
         <p class="instructions">Fields with asterisks(*) are mandatory.</p>
 
