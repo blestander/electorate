@@ -1,73 +1,75 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
-    <p class="instructions">Fields with asterisks(*) are mandatory.</p>
+    <div *ngIf="loggedIn">
+        <p class="instructions">Fields with asterisks(*) are mandatory.</p>
 
-    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-        <!-- Basic information section -->
-        <section>
-            <h3>Basic Information</h3>
-            <label>Name*: <input type="text" formControlName="name" required /></label>
-            <br />
-            <label>Description:<br/><textarea formControlName="description"></textarea></label>
-        </section>
-
-        <!-- Options section -->
-        <section formArrayName="options">
-            <h3>Options</h3>
-
-            <label *ngFor="let option of options.controls; let i=index">
-                Option*:
-                <input type="text" [formControlName]="i" required />
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+            <!-- Basic information section -->
+            <section>
+                <h3>Basic Information</h3>
+                <label>Name*: <input type="text" formControlName="name" required /></label>
                 <br />
-            </label>
-            <button class="generic-button" (click)="addOption()">Add Option</button>
-        </section>
+                <label>Description:<br/><textarea formControlName="description"></textarea></label>
+            </section>
 
-        <!-- Voting method section -->
-        <section class="voting-method-section">
-            <h3 class="voting-method-header">Voting Method*</h3>
-            <label>
-                <input type="radio" value="fptp" formControlName="method" />
-                First Past the Post
-            </label>
-            <label>
-                <input type="radio" value="irv" formControlName="method" />
-                Instant Runoff Voting
-            </label>
-            <label>
-                <input type="radio" value="smithirv" formControlName="method" />
-                Smith/IRV
-            </label>
-            <label>
-                <input type="radio" value="approval" formControlName="method" />
-                Approval Voting
-            </label>
-            <label>
-                <input type="radio" value="cav" formControlName="method" />
-                Combined Approval Voting
-            </label>
-        </section>
+            <!-- Options section -->
+            <section formArrayName="options">
+                <h3>Options</h3>
 
-        <!-- Webhook section -->
-        <section>
-            <h3>Webhook</h3>
-            <label>
-                <input type="checkbox" (change)="toggleWebhook()" />
-                Report conclusion of poll via Discord webhook
-            </label>
-            <br />
-            <label [style.display]="webhookEnabled ? 'inline' : 'none'">
-                Webhook URL*:
-                <input type="url" formControlName="webhook" (input)="webhookValid = validateWebhook()" />
-            </label>
-        </section>
+                <label *ngFor="let option of options.controls; let i=index">
+                    Option*:
+                    <input type="text" [formControlName]="i" required />
+                    <br />
+                </label>
+                <button class="generic-button" (click)="addOption()">Add Option</button>
+            </section>
 
-        <button
-            class="generic-button"
-            type="submit"
-            [disabled]="!createForm.valid || !webhookValid">
-            Create
-        </button>
-    </form>
+            <!-- Voting method section -->
+            <section class="voting-method-section">
+                <h3 class="voting-method-header">Voting Method*</h3>
+                <label>
+                    <input type="radio" value="fptp" formControlName="method" />
+                    First Past the Post
+                </label>
+                <label>
+                    <input type="radio" value="irv" formControlName="method" />
+                    Instant Runoff Voting
+                </label>
+                <label>
+                    <input type="radio" value="smithirv" formControlName="method" />
+                    Smith/IRV
+                </label>
+                <label>
+                    <input type="radio" value="approval" formControlName="method" />
+                    Approval Voting
+                </label>
+                <label>
+                    <input type="radio" value="cav" formControlName="method" />
+                    Combined Approval Voting
+                </label>
+            </section>
+
+            <!-- Webhook section -->
+            <section>
+                <h3>Webhook</h3>
+                <label>
+                    <input type="checkbox" (change)="toggleWebhook()" />
+                    Report conclusion of poll via Discord webhook
+                </label>
+                <br />
+                <label [style.display]="webhookEnabled ? 'inline' : 'none'">
+                    Webhook URL*:
+                    <input type="url" formControlName="webhook" (input)="webhookValid = validateWebhook()" />
+                </label>
+            </section>
+
+            <button
+                class="generic-button"
+                type="submit"
+                [disabled]="!createForm.valid || !webhookValid">
+                Create
+            </button>
+        </form>
+    </div>
 </div>

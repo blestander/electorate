@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, LOGOUT_URL } from './constants';
+import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, LOGOUT_URL, CHECK_LOGIN_URL } from './constants';
 import { environment } from './../environments/environment';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -47,6 +49,20 @@ export class AuthService {
         ).subscribe(
             () => location.reload()
         );
+    }
+
+    checkLogin(): Observable<boolean> {
+        return this.httpClient.get(
+            CHECK_LOGIN_URL,
+            {withCredentials: true}
+        ).pipe(map(
+            o => true
+        )).pipe(catchError(
+            err => {
+                if (err.error == "not_logged_in")
+                    return of(false);
+            }
+        ));
     }
 }
 
