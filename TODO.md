@@ -2,7 +2,6 @@
 
 ## Voting methods
 
-* Borda count
 * Schulze
 
 ## Features
