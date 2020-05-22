@@ -14,4 +14,3 @@
 ## Miscellaneous
 
 * Fortify API
-* Rework API to be more REST-like
