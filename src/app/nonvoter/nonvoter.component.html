@@ -1,4 +1,4 @@
-<ol *ngIf="method == 'irv' || method == 'smithirv'">
+<ol *ngIf="['irv', 'smithirv', 'mbc'].includes(method)">
     <li *ngFor="let option of choice" class="selected">
         {{option}}
     </li>
