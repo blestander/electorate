@@ -47,8 +47,12 @@ export class NonvoterComponent implements OnInit {
         return Array.isArray(this.choice);
     }
 
+    isRankedChoice() {
+        return ['irv', 'smithirv', 'mbc', 'schulze'].includes(this.method);
+    }
+
     optionList(): string[] {
-        if (['irv', 'smithirv', 'mbc'].includes(this.method))
+        if (this.isRankedChoice())
             return this.options.filter(x => !this.choice.includes(x));
         else
             return this.options;

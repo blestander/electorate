@@ -1,4 +1,4 @@
-<ol *ngIf="['irv', 'smithirv', 'mbc'].includes(method)">
+<ol *ngIf="isRankedChoice()">
     <li *ngFor="let option of choice" class="selected">
         {{option}}
     </li>
