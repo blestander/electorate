@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SchulzeResultsComponent implements OnInit {
 
+    @Input() options;
     @Input() results;
 
     state: number = 2;
@@ -25,5 +26,22 @@ export class SchulzeResultsComponent implements OnInit {
             return "selected";
         else
             return "";
+    }
+
+    cellContent(option, option2) {
+        switch (this.state) {
+            case 0:
+                return this.results.raw[option][option2];
+        }
+    }
+
+    cellClass(option, option2) {
+        let difference = this.results.raw[option][option2] - this.results.raw[option2][option];
+        if (difference > 0)
+            return "win";
+        else if (difference < 0)
+            return "loss";
+        else
+            return "tie";
     }
 }

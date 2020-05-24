@@ -8,7 +8,20 @@
 
 <!-- Pairwise Results-->
 <div *ngIf="state==0">
-    Pairwise
+    <table>
+        <tr>
+            <td></td>
+            <th *ngFor="let option of options" class="col-header">
+                {{option}}
+            </th>
+        </tr>
+        <tr *ngFor="let option of options">
+            <th class="row-header">{{option}}</th>
+            <td *ngFor="let option2 of options" [class]="cellClass(option, option2)">
+                {{cellContent(option, option2)}}
+            </td>
+        </tr>
+    </table>
 </div>
 
 <!-- Strongest Paths -->
