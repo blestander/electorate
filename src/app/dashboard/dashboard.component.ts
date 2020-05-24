@@ -9,20 +9,15 @@ import { PollService } from '../poll.service';
 })
 export class DashboardComponent implements OnInit {
 
-    loggedIn: boolean = true;
-    polls: any[] = [];
+    error: number = null;
+    polls: any[];
 
     constructor(public pollService: PollService) { }
 
     ngOnInit(): void {
         this.pollService.listPolls().subscribe({
             next: polls => this.polls = polls,
-            error: err => {
-                if (err.error == "not_logged_in")
-                    this.loggedIn = false;
-                else
-                    console.log(err.error);
-            }
+            error: err => this.error = err.status
         });
     }
 
