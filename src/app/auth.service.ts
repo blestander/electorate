@@ -59,7 +59,7 @@ export class AuthService {
             o => true
         )).pipe(catchError(
             err => {
-                if (err.error == "not_logged_in")
+                if (err.status == 401)
                     return of(false);
             }
         ));
