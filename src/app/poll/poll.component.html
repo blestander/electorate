@@ -5,8 +5,15 @@
     <!-- While still waiting for server -->
     <h2 *ngIf="!poll && error == null">Loading...</h2>
 
-    <!-- If an error has occured -->
-    <h2 *ngIf="error != null && error != 401">Error: {{error}}</h2>
+    <!-- Error handling -->
+    <h2 *ngIf="error == 0">Unable to Reach Server</h2>
+    <span *ngIf="error == 403">
+        <h2>Forbidden</h2>
+        <p>You are not permitted to access this poll.</p>
+    </span>
+    <h2 *ngIf="error == 404">Poll Not Found</h2>
+    <h2 *ngIf="error == 500">Server Error</h2>
+    <h2 *ngIf="![null, 0, 401, 403, 404, 500].includes(error)">Unknown Error: {{error}}</h2>
 
     <!-- Main content -->
     <span *ngIf="poll">
