@@ -12,8 +12,7 @@ export class PollComponent implements OnInit {
 
     id: string;
     poll = null;
-    error: string = null;
-    loggedIn: boolean = true;
+    error: number = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -26,12 +25,7 @@ export class PollComponent implements OnInit {
             let id = this.id = params.get("id")
             this.pollService.getPoll(id).subscribe({
                 next: poll => this.poll = poll,
-                error: err => {
-                    if (err.error == "not_logged_in")
-                        this.loggedIn = false;
-                    else
-                        this.error = `${err.status}`;
-                }
+                error: err => this.error = err.status
             });
         });
     }
