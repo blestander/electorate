@@ -9,6 +9,7 @@ export class SimpleResultsComponent implements OnInit {
 
     @Input() results;
     @Input() scores: boolean = false;
+    @Input() showValues: boolean = true;
 
     constructor() { }
 

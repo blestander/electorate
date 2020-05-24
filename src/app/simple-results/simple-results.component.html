@@ -1,8 +1,14 @@
 <ol>
     <li *ngFor="let result of sortedResults()">
-        <span *ngIf="result.length == 1">{{result[0]}} - {{votes(result[0])}}{{scores ? "" : " votes"}}</span>
+        <span *ngIf="result.length == 1">
+            {{result[0]}}
+            <span *ngIf="showValues"> - {{votes(result[0])}}{{scores ? "" : " votes"}}</span>
+        </span>
         <ul *ngIf="result.length > 1">
-            <li *ngFor="let option of result">{{option}} - {{votes(option)}}{{scores ? "" : " votes"}}</li>
+            <li *ngFor="let option of result">
+                {{option}}
+                <span *ngIf="showValues"> - {{votes(option)}}{{scores ? "" : " votes"}}</span>
+            </li>
         </ul>
     </li>
 </ol>
