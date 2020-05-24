@@ -36,12 +36,16 @@ export class SchulzeResultsComponent implements OnInit {
     }
 
     cellClass(option, option2) {
-        let difference = this.results.raw[option][option2] - this.results.raw[option2][option];
-        if (difference > 0)
-            return "win";
-        else if (difference < 0)
-            return "loss";
-        else
-            return "tie";
+        if (option == option2)
+            return "same"
+        else {
+            let difference = this.results.raw[option][option2] - this.results.raw[option2][option];
+            if (difference > 0)
+                return "win";
+            else if (difference < 0)
+                return "loss";
+            else
+                return "tie";
+        }
     }
 }

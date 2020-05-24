@@ -5,6 +5,7 @@ div {
     border-radius: 5px;
     padding: 5px;
 }
+
 a {
     text-decoration: underline;
 }
@@ -18,4 +19,40 @@ a.selected {
 a.selected:hover {
     color: #7289DA;
     cursor: default;
+}
+
+table, tr, th, td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #99AAB5;
+}
+table {
+    border-collapse: collapse;
+}
+th.row-header {
+    min-width: 50px;
+}
+th.col-header {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+td {
+    min-width: 30px;
+    text-align: center;
+}
+td.win {
+    color: #006100;
+    background-color: #C6EFCE;
+}
+td.loss {
+    color: #9C0006;
+    background-color: #FFC7CE;
+}
+td.tie {
+    color: #9C5700;
+    background-color: #FFEB9C;
+}
+td.same {
+    background-color: #99AAB5;
 }
