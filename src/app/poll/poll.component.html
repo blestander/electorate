@@ -36,9 +36,9 @@
             (vote)="vote($event)">
         </app-single-choice>
 
-        <!-- Option list for IRV, Smith/IRV and MBC voters -->
+        <!-- Option list for IRV, Smith/IRV, MBC, and Schulze voters -->
         <app-ranked-choice
-            *ngIf="poll.can_vote && ['irv', 'smithirv', 'mbc'].includes(poll.method)"
+            *ngIf="poll.can_vote && ['irv', 'smithirv', 'mbc', 'schulze'].includes(poll.method)"
             [options]="poll.options"
             (vote)="vote($event)">
         </app-ranked-choice>
