@@ -32,6 +32,8 @@ export class SchulzeResultsComponent implements OnInit {
         switch (this.state) {
             case 0:
                 return this.results.raw[option][option2];
+            case 1:
+                return this.results.paths[option][option2];
         }
     }
 
@@ -39,7 +41,12 @@ export class SchulzeResultsComponent implements OnInit {
         if (option == option2)
             return "same"
         else {
-            let difference = this.results.raw[option][option2] - this.results.raw[option2][option];
+            let difference;
+            if (this.state == 0)
+                difference = this.results.raw[option][option2] - this.results.raw[option2][option];
+            else if (this.state == 1)
+                difference = this.results.paths[option][option2] - this.results.paths[option2][option];
+
             if (difference > 0)
                 return "win";
             else if (difference < 0)

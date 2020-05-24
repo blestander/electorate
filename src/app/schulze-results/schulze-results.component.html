@@ -6,8 +6,8 @@
     <a (click)="setState(2)" [class]="linkClass(2)">Final Ranking</a>
 </nav>
 
-<!-- Pairwise Results-->
-<div *ngIf="state==0">
+<!-- Pairwise Results/Strongest Paths-->
+<div *ngIf="state==0 || state==1">
     <table>
         <tr>
             <td></td>
@@ -22,11 +22,6 @@
             </td>
         </tr>
     </table>
-</div>
-
-<!-- Strongest Paths -->
-<div *ngIf="state==1">
-    Paths
 </div>
 
 <!-- Final ranking -->
