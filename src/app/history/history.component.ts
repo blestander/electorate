@@ -8,7 +8,7 @@ import { PollService } from '../poll.service';
 })
 export class HistoryComponent implements OnInit {
 
-    loggedIn: boolean = true;
+    error: number = null;
     polls = [];
 
     constructor(private pollService: PollService) { }
@@ -16,11 +16,8 @@ export class HistoryComponent implements OnInit {
     ngOnInit(): void {
         this.pollService.getHistory().subscribe({
             next: result => this.setPolls(result),
-            error: err => {
-                if (err.error == "not_logged_in")
-                    this.loggedIn = false;
-            }
-        })
+            error: err => this.error = err.status
+        });
     }
 
     setPolls(polls) {
