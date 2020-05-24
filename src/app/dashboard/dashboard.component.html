@@ -4,4 +4,8 @@
     <span *ngIf="polls">
         <app-dashboard-item *ngFor="let poll of polls" [poll]="poll"></app-dashboard-item>
     </span>
+
+    <!-- Error handling -->
+    <p *ngIf="error == 0">Unable to reach server</p>
+    <p *ngIf="error == 500">Server error</p>
 </div>
