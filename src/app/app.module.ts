@@ -27,6 +27,7 @@ import { IRVResultsComponent } from './irv-results/irv-results.component';
 import { SmithResultsComponent } from './smith-results/smith-results.component';
 import { HistoryComponent } from './history/history.component';
 import { TrinaryScoreChoiceComponent } from './trinary-score-choice/trinary-score-choice.component';
+import { SchulzeResultsComponent } from './schulze-results/schulze-results.component';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import { TrinaryScoreChoiceComponent } from './trinary-score-choice/trinary-scor
         IRVResultsComponent,
         SmithResultsComponent,
         HistoryComponent,
-        TrinaryScoreChoiceComponent
+        TrinaryScoreChoiceComponent,
+        SchulzeResultsComponent
     ],
     imports: [
         BrowserModule,
