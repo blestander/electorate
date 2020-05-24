@@ -1,0 +1,21 @@
+div {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #99AAB5;
+    border-radius: 5px;
+    padding: 5px;
+}
+a {
+    text-decoration: underline;
+}
+a:hover {
+    color: orangered;
+    cursor: pointer;
+}
+a.selected {
+    color: #7289DA;
+}
+a.selected:hover {
+    color: #7289DA;
+    cursor: default;
+}

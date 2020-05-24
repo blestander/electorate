@@ -9,9 +9,21 @@ export class SchulzeResultsComponent implements OnInit {
 
     @Input() results;
 
+    state: number = 2;
+
     constructor() { }
 
     ngOnInit(): void {
     }
 
+    setState(x: number) {
+        this.state = x;
+    }
+
+    linkClass(x: number) {
+        if (x == this.state)
+            return "selected";
+        else
+            return "";
+    }
 }

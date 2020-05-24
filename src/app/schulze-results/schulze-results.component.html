@@ -1,1 +1,22 @@
-<p>schulze-results works!</p>
+<nav>
+    <a (click)="setState(0)" [class]="linkClass(0)">Pairwise Results</a>
+    |
+    <a (click)="setState(1)" [class]="linkClass(1)">Strongest Paths</a>
+    |
+    <a (click)="setState(2)" [class]="linkClass(2)">Final Ranking</a>
+</nav>
+
+<!-- Pairwise Results-->
+<div *ngIf="state==0">
+    Pairwise
+</div>
+
+<!-- Strongest Paths -->
+<div *ngIf="state==1">
+    Paths
+</div>
+
+<!-- Final ranking -->
+<div *ngIf="state==2">
+    Ranking
+</div>
