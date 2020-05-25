@@ -77,7 +77,9 @@
                     Guild*:
                     <select formControlName="guild" (change)="guildValid = validateGuild()">
                         <option value=""></option>
-                        <option value="hey">This is an option</option>
+                        <option *ngFor="let guild of guilds" [value]="guild.id">
+                            {{guild.name}}
+                        </option>
                     </select>
                 </label>
             </section>
