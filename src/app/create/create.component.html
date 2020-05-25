@@ -1,7 +1,12 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
+    <p class="error" *ngIf="error == 0">Unable to reach server</p>
     <app-auth-required *ngIf="error == 401"></app-auth-required>
+    <p class="error" *ngIf="error == 500">Server error</p>
+    <p class="error" *ngIf="![null, 0, 401, 500].includes(error)">
+        Unknown error: {{error}}
+    </p>
 
     <div *ngIf="error == null">
         <p class="instructions">Fields with asterisks(*) are mandatory.</p>
