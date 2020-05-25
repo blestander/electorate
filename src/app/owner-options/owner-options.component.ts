@@ -11,6 +11,7 @@ export class OwnerOptionsComponent implements OnInit {
     @Output() conclude = new EventEmitter<void>();
     @Output() delete = new EventEmitter<void>();
     expand: boolean = false;
+    showVoters: boolean = false;
 
     constructor() { }
 
