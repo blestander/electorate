@@ -64,6 +64,13 @@
             (vote)="vote($event)">
         </app-trinary-score-choice>
 
+        <!-- Option list for Score voters -->
+        <app-senary-score-choice
+            *ngIf="poll.can_vote && poll.method=='score5'"
+            [options]="poll.options"
+            (vote)="vote($event)">
+        </app-senary-score-choice>
+
         <!-- Owner options -->
         <app-owner-options
             *ngIf="poll.own"
