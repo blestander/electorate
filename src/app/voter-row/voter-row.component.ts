@@ -15,4 +15,11 @@ export class VoterRowComponent implements OnInit {
         console.log(this.voter);
     }
 
+    initialImageSrc() {
+        if (this.voter.custom_image)
+            return this.voter.custom_image;
+        else
+            return this.voter.default_image;
+    }
+
 }
