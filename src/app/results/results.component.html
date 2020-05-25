@@ -4,10 +4,10 @@
     *ngIf="method=='fptp' || method=='approval'">
 </app-simple-results>
 
-<!-- CAV and MBC results -->
+<!-- CAV, MBC, and Score results -->
 <app-simple-results
     [results]="results"
-    *ngIf="method=='cav' || method=='mbc'"
+    *ngIf="method=='cav' || method=='mbc' || method.startsWith('score')"
     [scores]="true">
 </app-simple-results>
 
