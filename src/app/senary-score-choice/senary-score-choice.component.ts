@@ -29,7 +29,14 @@ export class SenaryScoreChoiceComponent implements OnChanges {
     }
 
     onVote(): void {
-        console.log(this.results.get('resultsArray').value);
+        let raw_results = this.results.get('resultsArray').value;
+
+        let results = {};
+
+        for (let i = 0; i < this.options.length; i++)
+            results[this.options[i]] = raw_results[i];
+
+        this.vote.emit(results);
     }
 
 }
