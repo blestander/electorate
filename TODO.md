@@ -1,14 +1,8 @@
 # TODO
 
-## Voting methods
-
-* Schulze
-
 ## Features
 
 * Summaries on voting methods
-* Number of people who have voted
-* List of people who have voted
 * Ballot timestamps
 
 ## Miscellaneous
