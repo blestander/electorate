@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <img [src]="initialImageSrc()">
+        <img [src]="initialImageSrc()" (error)="onImageFailure()">
     </td>
     <td>{{voter.name}}</td>
 </tr>

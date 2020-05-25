@@ -11,15 +11,22 @@ export class VoterRowComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit(): void {
-        console.log(this.voter);
-    }
+    ngOnInit(): void {}
 
     initialImageSrc() {
         if (this.voter.custom_image)
             return this.voter.custom_image;
-        else
+        else if (this.voter.default_image)
             return this.voter.default_image;
+        else
+            return "https://cdn.discordapp.com/embed/avatars/1.png";
+    }
+
+    onImageFailure() {
+        if (this.voter.default_image)
+            return this.voter.default_image;
+        else
+            return "https://cdn.discordapp.com/embed/avatars/1.png";
     }
 
 }
