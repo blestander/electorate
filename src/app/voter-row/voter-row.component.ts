@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-voter-row',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoterRowComponent implements OnInit {
 
+    @Input() voter;
+
     constructor() { }
 
     ngOnInit(): void {
+        console.log(this.voter);
     }
 
 }

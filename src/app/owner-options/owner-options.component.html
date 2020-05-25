@@ -8,7 +8,8 @@
 <h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
 <span class="voters" *ngIf="showVoters">
     <table *ngIf="(voters | async) as voters; else loading">
-        <th>Done</th>
+        <tr><th colspan="2">Voters</th></tr>
+        <app-voter-row *ngFor="let voter of voters" [voter]="voter"></app-voter-row>
     </table>
     <ng-template #loading><p>Loading...</p></ng-template>
 </span>
