@@ -9,7 +9,9 @@
 <span class="voters" *ngIf="showVoters">
     <table *ngIf="(voters | async) as voters; else loading">
         <tr><th colspan="2">Voters</th></tr>
-        <app-voter-row *ngFor="let voter of voters" [voter]="voter"></app-voter-row>
+        <tr *ngFor="let voter of voters">
+            <app-voter-row [voter]="voter"></app-voter-row>
+        </tr>
     </table>
     <ng-template #loading><p>Loading...</p></ng-template>
 </span>
