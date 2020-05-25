@@ -19,12 +19,15 @@ export class CreateComponent implements OnInit {
             new FormControl('', Validators.required)
         ]),
         method: new FormControl('', Validators.required),
+        guild: new FormControl(''),
         webhook: new FormControl('')
     })
 
     loggedIn: boolean = true;
     webhookEnabled: boolean = false;
     webhookValid: boolean = true;
+    guildEnabled: boolean = false;
+    guildValid: boolean = true;
 
     constructor(
         private auth: AuthService,
@@ -64,6 +67,17 @@ export class CreateComponent implements OnInit {
             return webhookRegex.test(this.createForm.get('webhook').value);
         } else
             return true;
+    }
+
+    toggleGuild() {
+        this.guildEnabled = !this.guildEnabled;
+        if (!this.guildEnabled) // Guild is now disabled
+            this.createForm.get('guild').setValue('');
+        this.guildValid = this.validateGuild();
+    }
+
+    validateGuild() {
+        return !this.guildEnabled || this.createForm.get('guild').value != "";
     }
 
 }

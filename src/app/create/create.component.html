@@ -60,6 +60,23 @@
                 </label>
             </section>
 
+            <!-- Permissions section -->
+            <section>
+                <h3>Permissions</h3>
+                <label>
+                    <input type="checkbox" (change)="toggleGuild()" />
+                    Lock poll to single server
+                </label>
+                <br />
+                <label [style.display]="guildEnabled ? 'inline' : 'none'">
+                    Guild*:
+                    <select formControlName="guild" (change)="guildValid = validateGuild()">
+                        <option value=""></option>
+                        <option value="hey">This is an option</option>
+                    </select>
+                </label>
+            </section>
+
             <!-- Webhook section -->
             <section>
                 <h3>Webhook</h3>
@@ -77,7 +94,7 @@
             <button
                 class="generic-button"
                 type="submit"
-                [disabled]="!createForm.valid || !webhookValid">
+                [disabled]="!(createForm.valid && webhookValid && guildValid)">
                 Create
             </button>
         </form>
