@@ -28,4 +28,8 @@ export class SenaryScoreChoiceComponent implements OnChanges {
         return [0, 1, 2, 3, 4, 5];
     }
 
+    onVote(): void {
+        console.log(this.results.get('resultsArray').value);
+    }
+
 }

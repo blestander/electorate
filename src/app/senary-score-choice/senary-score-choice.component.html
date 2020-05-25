@@ -11,4 +11,7 @@
             </td>
         </tr>
     </table>
+    <span class="button-centered">
+        <button class="generic-button" (click)="onVote()" [disabled]="!results.valid">Vote</button>
+    </span>
 </div>
