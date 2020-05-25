@@ -1,9 +1,9 @@
 <div class="create main-box">
     <h2>Create Poll</h2>
 
-    <app-auth-required *ngIf="!loggedIn"></app-auth-required>
+    <app-auth-required *ngIf="error == 401"></app-auth-required>
 
-    <div *ngIf="loggedIn">
+    <div *ngIf="error == null">
         <p class="instructions">Fields with asterisks(*) are mandatory.</p>
 
         <form [formGroup]="createForm" (ngSubmit)="onSubmit()">

@@ -18,3 +18,4 @@ export const LOGOUT_URL = `${BACKEND_PREFIX}/logout`;
 export const GET_HISTORY_URL = `${BACKEND_PREFIX}/history`;
 export const CHECK_LOGIN_URL = `${BACKEND_PREFIX}/check`;
 export const GET_VOTERS_URL = `${BACKEND_PREFIX}/poll/{id}/voters`;
+export const GET_GUILDS_URL = `${BACKEND_PREFIX}/guilds`;

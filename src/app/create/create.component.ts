@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { PollService } from '../poll.service';
 import { AuthService } from '../auth.service';
+import { GuildService } from '../guild.service';
 
 const webhookRegex = /https:\/\/discordapp\.com\/api\/webhooks\/([0-9]*)\/([A-Za-z0-9\-_]*)/g;
 
@@ -23,22 +24,23 @@ export class CreateComponent implements OnInit {
         webhook: new FormControl('')
     })
 
-    loggedIn: boolean = true;
+    guilds: any[] = [];
+    error: number = null;
     webhookEnabled: boolean = false;
     webhookValid: boolean = true;
     guildEnabled: boolean = false;
     guildValid: boolean = true;
 
     constructor(
-        private auth: AuthService,
+        private guildService: GuildService,
         private pollService: PollService
     ) { }
 
     ngOnInit(): void {
-        this.auth.checkLogin().subscribe({
-            next: b => this.loggedIn = b,
-            error: err => console.error(err)
-        });
+        this.guildService.getGuilds().subscribe({
+            next: g => this.guilds = g,
+            error: err => this.error = err.status
+        })
     }
 
     get options() {
