@@ -2,5 +2,6 @@
     <td>
         <img [src]="initialImageSrc()" (error)="onImageFailure()">
     </td>
-    <td>{{voter.name}}</td>
+    <td *ngIf="voter.name; else unknown">{{voter.name}}</td>
+    <ng-template #unknown><td>Unknown</td></ng-template>
 </tr>
