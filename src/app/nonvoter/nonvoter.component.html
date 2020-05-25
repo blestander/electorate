@@ -6,5 +6,8 @@
 <ul>
     <li *ngFor="let option of optionList()" [class]="classesHTML(option)">
         {{option}}
+        <span *ngIf="isScoreVoting()">
+            - {{choice[option]}}
+        </span>
     </li>
 </ul>

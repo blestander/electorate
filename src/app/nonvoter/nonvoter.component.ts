@@ -19,6 +19,8 @@ export class NonvoterComponent implements OnInit {
     isChoice(option) {
         if (this.method == "cav")
             return this.choice[option] == 1;
+        else if (this.isScoreVoting())
+            return this.choice;
         else if (this.arrayCheck())
             return this.choice.includes(option);
         else
@@ -49,6 +51,10 @@ export class NonvoterComponent implements OnInit {
 
     isRankedChoice() {
         return ['irv', 'smithirv', 'mbc', 'schulze'].includes(this.method);
+    }
+
+    isScoreVoting() {
+        return this.method.startsWith('score');
     }
 
     optionList(): string[] {
