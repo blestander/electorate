@@ -17,10 +17,6 @@ export class OwnerOptionsComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    displayCSS(): string {
-        return this.expand ? "flex" : "none";
-    }
-
     finish(): void {
         if (window.confirm("Are you sure you want to end this poll?"))
             this.conclude.emit();
