@@ -1,1 +1,14 @@
-<p>senary-score-choice works!</p>
+<div [formGroup]="results">
+    <table formArrayName="resultsArray">
+        <tr>
+            <th>Option</th>
+            <th *ngFor="let score of scores">{{score}}</th>
+        </tr>
+        <tr *ngFor="let option of options; let i=index">
+            <td>{{option}}</td>
+            <td *ngFor="let score of scores">
+                <input type="radio" [formControlName]="i" [value]="score" />
+            </td>
+        </tr>
+    </table>
+</div>
