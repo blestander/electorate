@@ -65,7 +65,7 @@ export class PollComponent implements OnInit {
     }
 
     requestVoters(): void {
-        console.log("NEED VOTERS")
+        this.voters = this.pollService.getVoters(this.id);
     }
 
 }

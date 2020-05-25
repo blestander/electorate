@@ -17,3 +17,4 @@ export const DELETE_POLL_URL = `${BACKEND_PREFIX}/poll`;
 export const LOGOUT_URL = `${BACKEND_PREFIX}/logout`;
 export const GET_HISTORY_URL = `${BACKEND_PREFIX}/history`;
 export const CHECK_LOGIN_URL = `${BACKEND_PREFIX}/check`;
+export const GET_VOTERS_URL = `${BACKEND_PREFIX}/poll/{id}/voters`;
