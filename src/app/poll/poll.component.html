@@ -69,7 +69,9 @@
             *ngIf="poll.own"
             (conclude)="finishPoll()"
             (delete)="deletePoll()"
-            [finished]="poll.finished">
+            (needVoters)="requestVoters()"
+            [finished]="poll.finished"
+            [voters]="voters">
         </app-owner-options>
     </span>
 

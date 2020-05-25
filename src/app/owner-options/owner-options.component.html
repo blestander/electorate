@@ -5,7 +5,7 @@
     <button class="red-button" (click)="kill()">Delete Poll</button>
 </span>
 
-<h4 *ngIf="expand"><a (click)="showVoters = !showVoters">Voters</a></h4>
+<h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
 <span class="voters" *ngIf="showVoters">
     Hey, there, Delilah!
 </span>

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PollService } from '../poll.service';
 import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-poll',
@@ -13,6 +14,7 @@ export class PollComponent implements OnInit {
     id: string;
     poll = null;
     error: number = null;
+    voters: Observable<any[]> = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -60,6 +62,10 @@ export class PollComponent implements OnInit {
     deletePoll(): void {
         console.log("Deleting poll!");
         this.pollService.deletePoll(this.id);
+    }
+
+    requestVoters(): void {
+        console.log("NEED VOTERS")
     }
 
 }
