@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PollService } from '../poll.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
     error: number = null;
     polls: any[];
+    sortControl: FormControl = new FormControl('start-desc');
 
     constructor(public pollService: PollService) { }
 
@@ -19,6 +21,10 @@ export class DashboardComponent implements OnInit {
             next: polls => this.polls = polls,
             error: err => this.error = err.status
         });
+    }
+
+    onSortChange(event) {
+        console.log(this.sortControl.value);
     }
 
 }

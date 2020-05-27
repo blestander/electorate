@@ -3,7 +3,7 @@
     <app-auth-required *ngIf="error == 401"></app-auth-required>
     <label>
         Sort by:
-        <select>
+        <select [formControl]="sortControl" (change)="onSortChange($event)">
             <option value="start-asc">Creation date - Ascending</option>
             <option value="start-desc" selected>Creation date - Descending</option>
             <option value="name">Name</option>
