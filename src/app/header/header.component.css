@@ -7,7 +7,7 @@ header {
     border-radius: 15px;
 }
 .prerelease {
-    color: red;
+    color: darkorange;
     text-align: center;
     font-weight: bold;
 }
