@@ -20,9 +20,14 @@ export class DashboardItemComponent implements OnInit {
     }
 
     get timeString(): string {
-        if (this.poll.start_time)
-            return `Created ${new Date(this.poll.start_time).toLocaleString()}`;
-        else
-            return 'Creation time unknown'
+        if (this.poll.start_time) {
+            let start = new Date(this.poll.start_time).toLocaleString();
+            if (this.poll.finish_time) {
+                let finish = new Date(this.poll.finish_time).toLocaleString();
+                return `Ran ${start} to ${finish}`;
+            } else
+                return `Created ${start}`;
+        } else
+            return 'Time data missing'
     }
 }
