@@ -13,10 +13,13 @@ export class AuthService {
 
     constructor(private httpClient: HttpClient) { }
 
-    authorize(): void {
+    authorize(remember: boolean): void {
         // Store state and generate state key
         let state = window.btoa(window.crypto.getRandomValues(new Uint8Array(8)).toString())
-        sessionStorage.setItem(state, location.href);
+        sessionStorage.setItem(state, JSON.stringify({
+            redirect: location.href,
+            remember: remember
+        }));
 
         // Generate redirect URI
         let redirect_uri = environment.production ? `${location.origin}/auth` : `${location.origin}/auth`
@@ -27,13 +30,14 @@ export class AuthService {
 
     retrieveToken(code: string, state: string): void {
         // Get eventual redirect
-        let redirect = sessionStorage.getItem(state);
+        let { redirect, remember } = JSON.parse(sessionStorage.getItem(state));
         sessionStorage.removeItem(state);
 
         // If we did originate this code, get the token and redirect
         if (redirect)
             this.httpClient.post(TOKEN_OBTAIN_URL, {
                 code: code,
+                remember: remember
             }, {withCredentials: true}).subscribe((response: any) => {
                 //localStorage.setItem("token", response.token)
                 location.replace(redirect)

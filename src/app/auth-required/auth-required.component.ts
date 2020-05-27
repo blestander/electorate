@@ -18,7 +18,7 @@ export class AuthRequiredComponent implements OnInit {
     }
 
     authorize() {
-        this.authService.authorize();
+        this.authService.authorize(this.rememberControl.value);
     }
 
 }
