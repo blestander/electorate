@@ -36,6 +36,9 @@ export class DashboardComponent implements OnInit {
                 });
                 break;
             case "name":
+                this.polls.sort((a, b) => {
+                    return a.name.localeCompare(b.name);
+                });
                 break;
         }
     }
