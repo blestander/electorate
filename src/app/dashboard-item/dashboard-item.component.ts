@@ -18,4 +18,11 @@ export class DashboardItemComponent implements OnInit {
     goto(id: string) {
         this.router.navigateByUrl(`/poll/${id}`);
     }
+
+    get timeString(): string {
+        if (this.poll.start_time)
+            return `Created ${new Date(this.poll.start_time).toLocaleString()}`;
+        else
+            return 'Creation time unknown'
+    }
 }
