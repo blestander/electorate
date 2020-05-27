@@ -23,8 +23,18 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    onSortChange(event) {
-        console.log(this.sortControl.value);
+    onSortChange() {
+        switch (this.sortControl.value) {
+            case "start-asc":
+                this.polls.sort((a, b) => {
+                    return new Date(a.start_time).getTime() - new Date(b.start_time).getTime();
+                });
+                break;
+            case "start-desc":
+                break;
+            case "name":
+                break;
+        }
     }
 
 }
