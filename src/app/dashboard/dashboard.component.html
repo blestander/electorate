@@ -13,7 +13,7 @@
         </label>
         <label>
             Filter by State:
-            <select>
+            <select [formControl]="filterStateControl">
                 <option value="all" selected>All</option>
                 <option value="not-finished">Running</option>
                 <option value="finished">Finished</option>
@@ -21,7 +21,7 @@
         </label>
     </div>
     <span *ngIf="polls">
-        <app-dashboard-item *ngFor="let poll of polls" [poll]="poll"></app-dashboard-item>
+        <app-dashboard-item *ngFor="let poll of filteredPolls" [poll]="poll"></app-dashboard-item>
     </span>
 
     <!-- Error handling -->

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
     error: number = null;
     polls: any[];
     sortControl: FormControl = new FormControl('start-desc');
+    filterStateControl: FormControl = new FormControl('all');
 
     constructor(public pollService: PollService) { }
 
@@ -43,4 +44,14 @@ export class DashboardComponent implements OnInit {
         }
     }
 
+    get filteredPolls(): any[] {
+        switch (this.filterStateControl.value) {
+            case 'all':
+                return this.polls;
+            case 'not-finished':
+                return this.polls.filter(x => !x.finished);
+            case 'finished':
+                return this.polls.filter(x => x.finished);
+        }
+    }
 }
