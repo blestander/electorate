@@ -11,6 +11,14 @@
                 <option value="name">Name</option>
             </select>
         </label>
+        <label>
+            Filter by State:
+            <select>
+                <option value="all" selected>All</option>
+                <option value="not-finished">Running</option>
+                <option value="finished">Finished</option>
+            </select>
+        </label>
     </div>
     <span *ngIf="polls">
         <app-dashboard-item *ngFor="let poll of polls" [poll]="poll"></app-dashboard-item>
