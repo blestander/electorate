@@ -3,6 +3,7 @@ div.control-bar {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 label {
     color: #FFFFFF;
@@ -16,8 +17,6 @@ select {
     background-color: #7289DA;
     border: none;
     border-radius: 5px;
-    margin-top: 2.5px;
-    margin-bottom: 2.5px;
     padding: 5px;
     appearance: none;
 }
