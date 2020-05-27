@@ -31,6 +31,9 @@ export class DashboardComponent implements OnInit {
                 });
                 break;
             case "start-desc":
+                this.polls.sort((a, b) => {
+                    return new Date(b.start_time).getTime() - new Date(a.start_time).getTime();
+                });
                 break;
             case "name":
                 break;
