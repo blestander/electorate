@@ -27,6 +27,9 @@ export class DashboardItemComponent implements OnInit {
                 return `Ran ${start} to ${finish}`;
             } else
                 return `Created ${start}`;
+        } else if (this.poll.vote_time) {
+            let voted = new Date(this.poll.vote_time).toLocaleString();
+            return `Voted ${voted}`;
         } else
             return 'Time data missing'
     }
