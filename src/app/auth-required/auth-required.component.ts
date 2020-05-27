@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-auth-required',
@@ -9,9 +10,15 @@ import { AuthService } from '../auth.service';
 })
 export class AuthRequiredComponent implements OnInit {
 
-    constructor(public authService: AuthService) { }
+    rememberControl: FormControl = new FormControl(false);
+
+    constructor(private authService: AuthService) { }
 
     ngOnInit(): void {
+    }
+
+    authorize() {
+        this.authService.authorize();
     }
 
 }
