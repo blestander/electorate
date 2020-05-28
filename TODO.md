@@ -13,10 +13,6 @@
 * Improve handling of tables with long option lists
 * Make tables viable on mobile
 
-## Security
-
-* Verify choices on vote casting
-
 ## Miscellaneous
 
 * Implement proper testing
