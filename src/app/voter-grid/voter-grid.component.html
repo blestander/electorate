@@ -9,7 +9,7 @@
     <tr *ngFor="let option of options">
         <th class="row-header">{{option}}</th>
         <td *ngFor="let option2 of options" [class]="cellClass(option, option2)">
-            {{cellContent(option, option2)}}
+            {{percentages ? cellContent(option, option2) : (cellContent(option, option2) | percent)}}
         </td>
     </tr>
 </table>

@@ -25,11 +25,12 @@
     </nav>
     <div class="smithirv-inner">
         <!-- Smith results -->
-        <app-smith-results
-            [smith]="results.smith"
+        <app-voter-grid
+            *ngIf="smithState=='smith'"
             [options]="options"
-            *ngIf="smithState=='smith'">
-        </app-smith-results>
+            [data]="results.smith.table"
+            [percentages]="true">
+        </app-voter-grid>
         <!-- IRV results -->
         <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'"></app-irv-results>
         <!-- Final results -->

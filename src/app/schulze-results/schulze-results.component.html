@@ -10,7 +10,8 @@
 <div *ngIf="state==0">
     <app-voter-grid
         [options]="options"
-        [data]="results.raw">
+        [data]="results.raw"
+        [percentages]="false">
     </app-voter-grid>
 </div>
 
@@ -18,7 +19,8 @@
 <div *ngIf="state==1">
     <app-voter-grid
         [options]="options"
-        [data]="results.paths">
+        [data]="results.paths"
+        [percentages]="false">
     </app-voter-grid>
 </div>
 

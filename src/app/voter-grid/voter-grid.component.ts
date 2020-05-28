@@ -9,6 +9,7 @@ export class VoterGridComponent implements OnInit {
 
     @Input() options: string[];
     @Input() data: any;
+    @Input() percentages: boolean;
 
     constructor() { }
 
