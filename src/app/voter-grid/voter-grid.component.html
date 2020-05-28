@@ -2,6 +2,12 @@
     <!-- Column headers -->
     <tr>
         <td></td>
-        <th class="cols-header" *ngFor="let option of options">{{option}}</th>
+        <th class="col-header" *ngFor="let option of options">{{option}}</th>
+    </tr>
+
+    <!-- Rows -->
+    <tr *ngFor="let option of options">
+        <th class="row-header">{{option}}</th>
+        <td *ngFor="let option2 of options"></td>
     </tr>
 </table>
