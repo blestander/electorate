@@ -24,7 +24,6 @@ import { DashboardItemComponent } from './dashboard-item/dashboard-item.componen
 import { BinaryScoreChoiceComponent } from './binary-score-choice/binary-score-choice.component';
 import { SimpleResultsComponent } from './simple-results/simple-results.component';
 import { IRVResultsComponent } from './irv-results/irv-results.component';
-import { SmithResultsComponent } from './smith-results/smith-results.component';
 import { HistoryComponent } from './history/history.component';
 import { TrinaryScoreChoiceComponent } from './trinary-score-choice/trinary-score-choice.component';
 import { SchulzeResultsComponent } from './schulze-results/schulze-results.component';
@@ -53,7 +52,6 @@ import { VoterGridComponent } from './voter-grid/voter-grid.component';
         BinaryScoreChoiceComponent,
         SimpleResultsComponent,
         IRVResultsComponent,
-        SmithResultsComponent,
         HistoryComponent,
         TrinaryScoreChoiceComponent,
         SchulzeResultsComponent,
