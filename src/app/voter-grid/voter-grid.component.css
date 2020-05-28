@@ -15,6 +15,7 @@ th.row-header {
 th.col-header {
     padding-left: 2.5px;
     padding-right: 2.5px;
+    min-width: 40px;
 }
 td {
     text-align: center;
