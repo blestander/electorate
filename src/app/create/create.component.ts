@@ -53,8 +53,21 @@ export class CreateComponent implements OnInit {
 
     onSubmit() {
         if (this.createForm.valid) {
-            this.pollService.createPoll(this.createForm.value);
+            this.pollService.createPoll({
+                ...this.createForm.value,
+                guild_proof: this.getGuildProof()
+            });
         }
+    }
+
+    private getGuildProof() {
+        let guild_id = this.createForm.get('guild').value;
+        if (guild_id) {
+            for (let i = 0; i < this.guilds.length; i++)
+                if (guild_id == this.guilds[i].id)
+                    return this.guilds[i].proof;
+        } else
+            return undefined;
     }
 
     toggleWebhook() {
