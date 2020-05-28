@@ -16,7 +16,7 @@ export class VoterGridComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    cellContent(option, option2) {
+    cellContent(option, option2): number {
         return this.data[option][option2];
     }
 
