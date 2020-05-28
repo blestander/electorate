@@ -19,4 +19,15 @@ export class VoterGridComponent implements OnInit {
         return this.data[option][option2];
     }
 
+    cellClass(option, option2): string {
+        if (option == option2)
+            return "same";
+        else if (this.cellContent(option, option2) > this.cellContent(option2, option))
+            return "win";
+        else if (this.cellContent(option, option2) < this.cellContent(option2, option))
+            return "loss";
+        else
+            return "tie";
+    }
+
 }
