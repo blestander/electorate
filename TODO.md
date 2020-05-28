@@ -15,8 +15,7 @@
 
 ## Security
 
-* Fortify casting of votes(check guilds, check options)
-* Verify membership in guild for poll creation
+* Verify choices on vote casting
 
 ## Miscellaneous
 
