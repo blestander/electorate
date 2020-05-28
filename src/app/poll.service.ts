@@ -24,11 +24,12 @@ export class PollService {
             {withCredentials: true})
     }
 
-    castVote(id: string, choice): Observable<Object> {
+    castVote(id: string, choice, guild_proof: string): Observable<Object> {
         return this.http.post<Object>(
             CAST_VOTE_URL.replace("{id}", id),
             {
-                choice: choice
+                choice: choice,
+                guild_proof: guild_proof
             },
             {withCredentials: true}
         );

@@ -33,7 +33,7 @@ export class PollComponent implements OnInit {
     }
 
     vote(choice) {
-        this.pollService.castVote(this.id, choice)
+        this.pollService.castVote(this.id, choice, this.poll.guild_proof)
             .subscribe(o => {
                 let p = this.poll;
                 this.poll = {...p, ...o};
