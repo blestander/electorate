@@ -4,7 +4,15 @@ table, td, th {
     border-color: #99AAB5;
     border-collapse: collapse;
 }
-
 th.row-header {
     text-align: right;
+    padding-right: 2.5px;
+    padding-left: 2.5px;
+}
+th.col-header {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+}
+td {
+    text-align: center;
 }

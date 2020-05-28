@@ -8,6 +8,6 @@
     <!-- Rows -->
     <tr *ngFor="let option of options">
         <th class="row-header">{{option}}</th>
-        <td *ngFor="let option2 of options"></td>
+        <td *ngFor="let option2 of options">{{cellContent(option, option2)}}</td>
     </tr>
 </table>

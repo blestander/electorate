@@ -9,7 +9,8 @@
 <!-- Pairwise Results -->
 <div *ngIf="state==0">
     <app-voter-grid
-        [options]="options">
+        [options]="options"
+        [data]="results.raw">
     </app-voter-grid>
 </div>
 
