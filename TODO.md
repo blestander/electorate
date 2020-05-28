@@ -13,8 +13,12 @@
 * Improve handling of tables with long option lists
 * Make tables viable on mobile
 
+## Security
+
+* Fortify casting of votes(check guilds, check options)
+* Verify membership in guild for poll creation
+
 ## Miscellaneous
 
-* Fortify API
 * Implement proper testing
 * Refactor CSS classes upward
