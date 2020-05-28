@@ -7,7 +7,11 @@
 </nav>
 
 <!-- Pairwise Results -->
-<app-voter-grid></app-voter-grid>
+<div *ngIf="state==0">
+    <app-voter-grid
+        [options]="options">
+    </app-voter-grid>
+</div>
 
 <!-- Strongest Paths-->
 <div *ngIf="state==1">

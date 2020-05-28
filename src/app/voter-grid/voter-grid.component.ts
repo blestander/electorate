@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-voter-grid',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./voter-grid.component.css']
 })
 export class VoterGridComponent implements OnInit {
+
+    @Input() options: string[];
 
     constructor() { }
 
