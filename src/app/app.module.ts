@@ -30,6 +30,7 @@ import { TrinaryScoreChoiceComponent } from './trinary-score-choice/trinary-scor
 import { SchulzeResultsComponent } from './schulze-results/schulze-results.component';
 import { VoterRowComponent } from './voter-row/voter-row.component';
 import { SenaryScoreChoiceComponent } from './senary-score-choice/senary-score-choice.component';
+import { VoterGridComponent } from './voter-grid/voter-grid.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { SenaryScoreChoiceComponent } from './senary-score-choice/senary-score-c
         TrinaryScoreChoiceComponent,
         SchulzeResultsComponent,
         VoterRowComponent,
-        SenaryScoreChoiceComponent
+        SenaryScoreChoiceComponent,
+        VoterGridComponent
     ],
     imports: [
         BrowserModule,
