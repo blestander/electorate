@@ -2,12 +2,15 @@ table, td, th {
     border-style: solid;
     border-width: 1px;
     border-color: #99AAB5;
+}
+table {
     border-collapse: collapse;
 }
 th.row-header {
     text-align: right;
     padding-right: 2.5px;
     padding-left: 2.5px;
+    white-space: nowrap;
 }
 th.col-header {
     padding-left: 2.5px;
