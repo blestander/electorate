@@ -6,7 +6,7 @@
             <th *ngFor="let score of scores">{{score}}</th>
         </tr>
         <tr *ngFor="let option of options; let i=index">
-            <td>{{option}}</td>
+            <td class="option">{{option}}</td>
             <td *ngFor="let score of scores">
                 <input type="radio" [formControlName]="i" [value]="score" />
             </td>

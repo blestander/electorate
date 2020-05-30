@@ -1,7 +1,12 @@
 table {
     margin-left: auto;
     margin-right: auto;
+    border-style: hidden;
+    border-collapse: collapse;
 }
 td, th {
     text-align: center;
+}
+td.option {
+    border-bottom: 1px #99AAB5 solid;
 }
