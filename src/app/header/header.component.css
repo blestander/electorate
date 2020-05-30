@@ -2,6 +2,13 @@
     nav {
         text-align: center;
     }
+    a {
+        text-decoration: underline;
+    }
+    a:hover {
+        color: orangered;
+        cursor: pointer;
+    }
 }
 @media screen and (max-width: 485px) {
     .desktop-divider {
@@ -11,7 +18,16 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
+    }
+    a {
+        background-color: #7289DA;
+
+        padding: 2.5px;
+
+        border-style: solid;
+        border-color: #23272A;
+        border-width: 1px;
     }
 }
 
@@ -22,6 +38,8 @@ h1 {
 header {
     background-color: #23272A;
     border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .prerelease {
     color: darkorange;
@@ -31,11 +49,4 @@ header {
 nav {
     color: #FFFFFF;
     text-align: center;
-}
-a {
-    text-decoration: underline;
-}
-a:hover {
-    color: orangered;
-    cursor: pointer;
 }
