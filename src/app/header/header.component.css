@@ -1,9 +1,17 @@
 @media screen and (min-width: 485px) {
-
+    nav {
+        text-align: center;
+    }
 }
 @media screen and (max-width: 485px) {
     .desktop-divider {
         display: none;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
     }
 }
 
