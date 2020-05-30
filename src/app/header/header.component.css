@@ -9,6 +9,9 @@
         color: orangered;
         cursor: pointer;
     }
+    a.menu-toggle {
+        display: none;
+    }
 }
 @media screen and (max-width: 485px) {
     .desktop-divider {

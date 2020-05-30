@@ -9,6 +9,8 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+    menuExpanded: boolean = false;
+
     constructor(
         private router: Router,
         private auth: AuthService
@@ -31,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
     logout(): void {
         this.auth.logout();
+    }
+
+    toggleMenu() {
+        this.menuExpanded = !this.menuExpanded;
     }
 }
