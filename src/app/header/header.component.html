@@ -1,7 +1,7 @@
 <header>
     <h1>Electorate</h1>
     <nav>
-        <a class="menu-toggle" (click)="toggleMenu()">Menu</a>
+        <a [class]="navToggleClass()" (click)="toggleMenu()">Menu</a>
         <a [class]="navClass()" (click)="navigateToDashboard()">Dashboard</a>
         <span class="desktop-divider"> | </span>
         <a [class]="navClass()" (click)="navigateToCreator()">Create Poll</a>

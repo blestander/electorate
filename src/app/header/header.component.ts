@@ -39,7 +39,14 @@ export class HeaderComponent implements OnInit {
         this.menuExpanded = !this.menuExpanded;
     }
 
-    navClass() {
+    navToggleClass(): string {
+        if (this.menuExpanded)
+            return "toggle-expanded";
+        else
+            return "toggle-collapsed";
+    }
+
+    navClass(): string {
         if (!this.menuExpanded)
             return "collapsed";
         else
