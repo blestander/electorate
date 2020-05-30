@@ -20,18 +20,22 @@ export class HeaderComponent implements OnInit {
     }
 
     navigateToDashboard(): void {
+        this.menuExpanded = false;
         this.router.navigateByUrl('/');
     }
 
     navigateToCreator(): void {
+        this.menuExpanded = false;
         this.router.navigateByUrl('/create');
     }
 
     navigateToHistory(): void {
+        this.menuExpanded = false;
         this.router.navigateByUrl('/history');
     }
 
     logout(): void {
+        this.menuExpanded = false;
         this.auth.logout();
     }
 
