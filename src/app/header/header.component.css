@@ -5,6 +5,14 @@
     a.toggle-expanded, a.toggle-collapsed {
         display: none;
     }
+    a.first {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    a.last {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
 }
 @media screen and (max-width: 485px) {
     nav {

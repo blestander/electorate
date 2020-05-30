@@ -56,11 +56,18 @@ export class HeaderComponent implements OnInit {
             return "toggle-collapsed";
     }
 
+    navFirstClass(): string {
+        if (this.menuExpanded)
+            return "first";
+        else
+            return "first collapsed";
+    }
+
     navLastClass(): string {
         if (this.menuExpanded)
             return "last";
         else
-            return "collapsed";
+            return "last collapsed";
     }
 
 }
