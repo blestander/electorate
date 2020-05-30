@@ -32,6 +32,10 @@
         border-color: #23272A;
         border-width: 1px;
     }
+    a.last {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
     a.collapsed {
         display: none;
     }
