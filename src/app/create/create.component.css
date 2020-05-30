@@ -1,3 +1,28 @@
+@media screen and (min-width: 635px) {
+    section.voting-method-section {
+        grid-template-columns: auto auto auto;
+    }
+    h3.voting-method-header {
+        grid-column-end: span 3;
+    }
+}
+@media screen and (min-width: 460px) and (max-width: 635px) {
+    section.voting-method-section {
+        grid-template-columns: auto auto;
+    }
+    h3.voting-method-header {
+        grid-column-end: span 2;
+    }
+}
+@media screen and (max-width: 460px) {
+    section.voting-method-section {
+        grid-template-columns: auto;
+    }
+    h3.voting-method-header {
+        grid-column-end: span 1;
+    }
+}
+
 div.create {
     color: #FFFFFF;
 }
@@ -19,11 +44,13 @@ p.error {
 }
 section.voting-method-section {
     display: grid;
-    grid-template-columns: 252px auto 252px;
     justify-items: center;
     align-items: center;
 }
 h3.voting-method-header {
     grid-column-start: 1;
-    grid-column-end: span 3;
+}
+select {
+    width: auto;
+    max-width: 100%;
 }
