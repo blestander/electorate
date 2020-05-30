@@ -2,10 +2,6 @@
     nav {
         text-align: center;
     }
-    a:hover {
-        color: orangered;
-        cursor: pointer;
-    }
     a.toggle-expanded, a.toggle-collapsed {
         display: none;
     }
@@ -64,4 +60,8 @@ a {
     border-style: solid;
     border-color: #23272A;
     border-width: 1px;
+}
+a:hover {
+    background-color: orangered;
+    cursor: pointer;
 }
