@@ -1,4 +1,12 @@
-div.body {
-    width: 800px;
-    margin: auto;
+@media screen and (min-width: 810px) {
+    div.body {
+        width: 800px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 810px) {
+    div.body {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
