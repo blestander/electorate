@@ -32,6 +32,9 @@
         border-color: #23272A;
         border-width: 1px;
     }
+    a.collapsed {
+        display: none;
+    }
 }
 
 h1 {
