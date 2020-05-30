@@ -2,9 +2,6 @@
     nav {
         text-align: center;
     }
-    a {
-        text-decoration: underline;
-    }
     a:hover {
         color: orangered;
         cursor: pointer;
@@ -14,23 +11,11 @@
     }
 }
 @media screen and (max-width: 485px) {
-    .desktop-divider {
-        display: none;
-    }
     nav {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-    }
-    a {
-        background-color: #7289DA;
-
-        padding: 2.5px;
-
-        border-style: solid;
-        border-color: #23272A;
-        border-width: 1px;
     }
     a.last {
         border-bottom-left-radius: 5px;
@@ -67,4 +52,16 @@ header {
 nav {
     color: #FFFFFF;
     text-align: center;
+}
+a {
+    background-color: #7289DA;
+
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    border-style: solid;
+    border-color: #23272A;
+    border-width: 1px;
 }

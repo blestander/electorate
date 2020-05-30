@@ -3,13 +3,9 @@
     <nav>
         <a [class]="navToggleClass()" (click)="toggleMenu()">Menu</a>
         <a [class]="navClass()" (click)="navigateToDashboard()">Dashboard</a>
-        <span class="desktop-divider"> | </span>
         <a [class]="navClass()" (click)="navigateToCreator()">Create Poll</a>
-        <span class="desktop-divider"> | </span>
         <a [class]="navClass()">Information</a>
-        <span class="desktop-divider"> | </span>
         <a [class]="navClass()" (click)="navigateToHistory()">Vote History</a>
-        <span class="desktop-divider"> | </span>
         <a [class]="navLastClass()" (click)="logout()">Logout</a>
     </nav>
     <p class="prerelease">BETA v0.9.0</p>
