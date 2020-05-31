@@ -30,6 +30,7 @@ import { SchulzeResultsComponent } from './schulze-results/schulze-results.compo
 import { VoterRowComponent } from './voter-row/voter-row.component';
 import { SenaryScoreChoiceComponent } from './senary-score-choice/senary-score-choice.component';
 import { VoterGridComponent } from './voter-grid/voter-grid.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { VoterGridComponent } from './voter-grid/voter-grid.component';
         HttpClientModule,
         ReactiveFormsModule,
         RouterModule,
+        DragDropModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
