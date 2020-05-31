@@ -47,7 +47,12 @@ export class RankedChoiceComponent implements OnInit {
     onRankedDrop(event: CdkDragDrop<string[]>) {
         if (event.previousContainer == event.container) { // Reordering items
             let swap = this.choice[event.previousIndex];
-            this.choice[event.previousIndex] = this.choice[event.currentIndex];
+            if (event.previousIndex > event.currentIndex) // Slide up
+                for (let i = event.previousIndex - 1; i >= event.currentIndex; i--)
+                    this.choice[i + 1] = this.choice[i];
+            else // Slide down
+                for (let i = event.previousIndex + 1; i <= event.currentIndex; i++)
+                    this.choice[i - 1] = this.choice[i];
             this.choice[event.currentIndex] = swap;
         } else { // Newly ranked item
             this.choice.splice(event.currentIndex, 0, this.omittedOptions[event.previousIndex]);
