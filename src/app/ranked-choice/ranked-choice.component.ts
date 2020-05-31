@@ -18,7 +18,7 @@ export class RankedChoiceComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    omittedOptions(): string[] {
+    get omittedOptions(): string[] {
         return this.options.filter(x => !this.choice.includes(x));
     }
 
@@ -50,7 +50,7 @@ export class RankedChoiceComponent implements OnInit {
             this.choice[event.previousIndex] = this.choice[event.currentIndex];
             this.choice[event.currentIndex] = swap;
         } else { // Newly ranked item
-            this.choice.splice(event.currentIndex, 0, this.omittedOptions()[event.previousIndex]);
+            this.choice.splice(event.currentIndex, 0, this.omittedOptions[event.previousIndex]);
         }
     }
 
