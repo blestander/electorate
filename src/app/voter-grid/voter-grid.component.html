@@ -1,18 +1,20 @@
-<table>
-    <!-- Column headers -->
-    <tr>
-        <td class="row-header"></td>
-        <th class="col-header" *ngFor="let option of options">{{option}}</th>
-    </tr>
+<div>
+    <table>
+        <!-- Column headers -->
+        <tr>
+            <td class="row-header"></td>
+            <th class="col-header" *ngFor="let option of options">{{option}}</th>
+        </tr>
 
-    <!-- Rows -->
-    <tr *ngFor="let option of options">
-        <th class="row-header">{{option}}</th>
-        <td *ngFor="let option2 of options" [class]="cellClass(option, option2)">
-            <span *ngIf="percentages else nopercent">
-                {{ cellContent(option, option2) | percent}}
-            </span>
-            <ng-template #nopercent>{{cellContent(option, option2)}}</ng-template>
-        </td>
-    </tr>
-</table>
+        <!-- Rows -->
+        <tr *ngFor="let option of options">
+            <th class="row-header">{{option}}</th>
+            <td *ngFor="let option2 of options" [class]="cellClass(option, option2)">
+                <span *ngIf="percentages else nopercent">
+                    {{ cellContent(option, option2) | percent}}
+                </span>
+                <ng-template #nopercent>{{cellContent(option, option2)}}</ng-template>
+            </td>
+        </tr>
+    </table>
+</div>
