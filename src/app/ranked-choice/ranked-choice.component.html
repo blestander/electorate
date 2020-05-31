@@ -19,15 +19,15 @@
             </span>
         </span>
     </div>
-    <div class="column">
+    <div class="column"
+        cdkDropList
+        #omittedList="cdkDropList"
+        [cdkDropListConnectedTo]="rankedList"
+        cdkDropListSortingDisabled
+        (cdkDropListDropped)="onOmittedDrop($event)">
         <h4>Omitted Options</h4>
         <p class="rc-instructions">Click to rank options</p>
-        <span class="option-list"
-            cdkDropList
-            #omittedList="cdkDropList"
-            [cdkDropListConnectedTo]="rankedList"
-            cdkDropListSortingDisabled
-            (cdkDropListDropped)="onOmittedDrop($event)">
+        <span class="option-list">
             <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()" (click)="appendOption(option)" cdkDrag>
                 {{option}}
             </a>
