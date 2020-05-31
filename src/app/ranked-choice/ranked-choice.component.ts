@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'app-ranked-choice',
@@ -41,5 +42,11 @@ export class RankedChoiceComponent implements OnInit {
 
     onVote() {
         this.vote.emit(this.choice);
+    }
+
+    onRankedDrop(event: CdkDragDrop<string[]>) {
+        let swap = this.choice[event.previousIndex];
+        this.choice[event.previousIndex] = this.choice[event.currentIndex];
+        this.choice[event.currentIndex] = swap;
     }
 }
