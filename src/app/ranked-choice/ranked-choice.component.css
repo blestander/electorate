@@ -1,11 +1,23 @@
-div.ranked-choice {
-    display: flex;
-    flex-direction: row;
+@media screen and (min-width: 610px) {
+    div.ranked-choice {
+        display: flex;
+        flex-direction: row;
+    }
+    div.column {
+        flex-grow: 1;
+        width: 50%;
+    }
 }
-div.column {
-    flex-grow: 1;
-    width: 50%;
+@media screen and (max-width: 610px) {
+    div.ranked-choice {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+}
 
+div.column {
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
