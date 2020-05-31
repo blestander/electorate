@@ -13,8 +13,8 @@
                 *ngFor="let option of choice; let i=index"
                 cdkDrag
                 cdkDragBoundary=".ranked-choice">
-                <!-- <a class="rank-button" *ngIf="i>0" (click)="raiseOption(i)">&#x25B2;</a>
-                <a class="rank-button" *ngIf="i<choice.length-1" (click)="lowerOption(i)">&#x25BC;</a> -->
+                <a class="rank-button" *ngIf="i>0" (click)="raiseOption(i)">&#x25B2;</a>
+                <a class="rank-button" *ngIf="i<choice.length-1" (click)="lowerOption(i)">&#x25BC;</a>
                 {{option}}
                 <a class="unrank-button rank-button" (click)="unrankOption(i)">&#x2716;</a>
             </span>
