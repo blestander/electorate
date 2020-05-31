@@ -37,7 +37,6 @@ span.option-list {
     width: 100%;
     vertical-align: middle;
     background-color: #99AAB5;
-    transition-duration: 0.5s;
     cursor: all-scroll;
 }
 a.omitted-option:hover {
@@ -56,7 +55,7 @@ a.rank-button {
     transition-duration: 0.5s;
 }
 a.rank-button:hover {
-    color: orangered;
+    color: #7289DA;
     cursor: pointer;
 }
 a.unrank-button {
