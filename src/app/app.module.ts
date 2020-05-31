@@ -31,6 +31,7 @@ import { VoterRowComponent } from './voter-row/voter-row.component';
 import { SenaryScoreChoiceComponent } from './senary-score-choice/senary-score-choice.component';
 import { VoterGridComponent } from './voter-grid/voter-grid.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -67,6 +68,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         ReactiveFormsModule,
         RouterModule,
         DragDropModule,
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
