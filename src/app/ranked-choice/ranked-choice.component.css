@@ -44,8 +44,11 @@ a.omitted-option:hover {
     background-color: orangered;
     cursor: pointer;
 }
-span.ranked-option {
+.ranked-option {
     background-color: #7289DA
+}
+.ranked-option:hover {
+    background-color: orangered;
 }
 a.rank-button {
     color: #FFFFFF;
