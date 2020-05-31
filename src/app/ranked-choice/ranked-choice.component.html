@@ -2,11 +2,9 @@
     Instructions: Rank as many of the options below as you'd like.
     Omitted options will treated as equally last.
 </p>
-<div class="ranked-choice">
+<div class="ranked-choice" cdkDropListGroup>
     <div class="column"
         cdkDropList
-        #rankedList="cdkDropList"
-        [cdkDropListConnectedTo]="omittedList"
         (cdkDropListDropped)="onRankedDrop($event)">
         <h4>Ranked Options</h4>
         <p class="rc-instructions">Click buttons to rerank or omit</p>
@@ -25,8 +23,6 @@
     <div class="column"
         cdkDropList
         #omittedList="cdkDropList"
-        [cdkDropListConnectedTo]="rankedList"
-        cdkDropListSortingDisabled
         (cdkDropListDropped)="onOmittedDrop($event)">
         <h4>Omitted Options</h4>
         <p class="rc-instructions">Click to rank options</p>
