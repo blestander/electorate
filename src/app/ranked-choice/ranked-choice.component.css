@@ -59,3 +59,7 @@ a.rank-button:hover {
 a.unrank-button {
     float: right;
 }
+.cdk-drag-preview {
+    cursor: all-scroll;
+    background-color: orangered;
+}
