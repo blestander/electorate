@@ -3,13 +3,14 @@
     Omitted options will treated as equally last.
 </p>
 <div class="ranked-choice">
-    <div class="column">
+    <div class="column"
+        cdkDropList
+        #rankedList="cdkDropList"
+        [cdkDropListConnectedTo]="omittedList"
+        (cdkDropListDropped)="onRankedDrop($event)">
         <h4>Ranked Options</h4>
         <p class="rc-instructions">Click buttons to rerank or omit</p>
-        <span class="option-list"
-            cdkDropList
-            #rankedList="cdkDropList"
-            (cdkDropListDropped)="onRankedDrop($event)">
+        <span class="option-list">
             <span class="ranked-option option-pane" *ngFor="let option of choice; let i=index" cdkDrag>
                 <!-- <a class="rank-button" *ngIf="i>0" (click)="raiseOption(i)">&#x25B2;</a>
                 <a class="rank-button" *ngIf="i<choice.length-1" (click)="lowerOption(i)">&#x25BC;</a> -->
@@ -21,8 +22,13 @@
     <div class="column">
         <h4>Omitted Options</h4>
         <p class="rc-instructions">Click to rank options</p>
-        <span class="option-list">
-            <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()" (click)="appendOption(option)">
+        <span class="option-list"
+            cdkDropList
+            #omittedList="cdkDropList"
+            [cdkDropListConnectedTo]="rankedList"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="onOmittedDrop($event)">
+            <a class="option-pane omitted-option" *ngFor="let option of omittedOptions()" (click)="appendOption(option)" cdkDrag>
                 {{option}}
             </a>
         </span>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'app-ranked-choice',
@@ -45,8 +45,18 @@ export class RankedChoiceComponent implements OnInit {
     }
 
     onRankedDrop(event: CdkDragDrop<string[]>) {
-        let swap = this.choice[event.previousIndex];
-        this.choice[event.previousIndex] = this.choice[event.currentIndex];
-        this.choice[event.currentIndex] = swap;
+        if (event.previousContainer == event.container) { // Reordering items
+            let swap = this.choice[event.previousIndex];
+            this.choice[event.previousIndex] = this.choice[event.currentIndex];
+            this.choice[event.currentIndex] = swap;
+        } else { // Newly ranked item
+            this.choice.splice(event.currentIndex, 0, this.omittedOptions()[event.previousIndex]);
+        }
+    }
+
+    onOmittedDrop(event: CdkDragDrop<string[]>) {
+        if (event.previousContainer != event.container) { // Deranked item
+        } // Couldn't care less otherwise
+
     }
 }
