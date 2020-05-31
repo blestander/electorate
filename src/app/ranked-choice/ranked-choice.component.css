@@ -38,6 +38,7 @@ span.option-list {
     vertical-align: middle;
     background-color: #99AAB5;
     transition-duration: 0.5s;
+    cursor: all-scroll;
 }
 a.omitted-option:hover {
     background-color: orangered;
