@@ -7,11 +7,8 @@
 
 ## User Experience
 
-* Drag and drop for ranked sorting
-* Mobile layout
 * Show choices where possible in results
-* Improve handling of tables with long option lists
-* Make tables viable on mobile
+* (Optional) Make logout disappear/grey out when not logged in.
 
 ## Miscellaneous
 
