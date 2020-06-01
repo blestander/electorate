@@ -34,9 +34,25 @@ export class PollComponent implements OnInit {
 
     vote(choice) {
         this.pollService.castVote(this.id, choice, this.poll.guild_proof)
-            .subscribe(o => {
-                let p = this.poll;
-                this.poll = {...p, ...o};
+            .subscribe({
+                next: o => {
+                    let p = this.poll;
+                    this.poll = {...p, ...o};
+                },
+                error: err => {
+                    if (err.status == 0)
+                        window.alert('Unable to reach server to submit vote');
+                    else if (err.status == 400)
+                        window.alert('Server has rejected vote');
+                    else if (err.status == 401)
+                        window.alert('Authentication error');
+                    else if (err.status == 403)
+                        window.alert('Authorization error');
+                    else if (err.status == 500)
+                        window.alert('Server error. Please try again later');
+                    else
+                        window.alert(`Unknown error: Code ${err.status}`);
+                }
             });
     }
 
