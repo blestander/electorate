@@ -10,6 +10,8 @@ export class VotingMethodSummaryComponent implements OnInit {
 
     @Input() method: VotingMethod;
 
+    showImplNotes: boolean = false;
+
     constructor() { }
 
     ngOnInit(): void {
@@ -40,6 +42,14 @@ export class VotingMethodSummaryComponent implements OnInit {
 
     get weaknesses(): VotingMethodAttribute[] {
         return this.method.weaknesses;
+    }
+
+    get implNotes(): string[] {
+        return this.method.implNotes;
+    }
+
+    toggleImplNotes(): void {
+        this.showImplNotes = !this.showImplNotes;
     }
 
 }

@@ -85,6 +85,10 @@ export class VotingMethodsComponent implements OnInit {
             weaknesses: [
                 this.failsCondorcetCriterion,
                 this.failsParticipation,
+            ],
+            implNotes: [
+                "Some implementations may mandate that all voters rank all candidates for their ballots to be considered " +
+                    "valid. Electorate does not offer this even as an option."
             ]
         };
     }

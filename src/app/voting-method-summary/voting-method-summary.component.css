@@ -1,5 +1,7 @@
 div {
-    padding: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     border-style: solid;
     border-width: 1px;
@@ -13,6 +15,13 @@ h3 {
 }
 h4, li {
     color: #FFFFFF;
+}
+a {
+    text-decoration: underline;
+}
+a:hover {
+    color: orangered;
+    cursor: pointer;
 }
 .alternate {
     text-align: center;

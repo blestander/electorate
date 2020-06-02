@@ -5,6 +5,7 @@ export interface VotingMethod {
     resolveSummary: string,
     strengths: VotingMethodAttribute[],
     weaknesses: VotingMethodAttribute[],
+    implNotes?: string[]
 }
 
 export interface VotingMethodAttribute {

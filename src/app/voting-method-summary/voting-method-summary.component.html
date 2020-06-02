@@ -28,4 +28,13 @@
             {{weakness.description}}
         </li>
     </ul>
+
+    <span *ngIf="implNotes">
+        <h4><a (click)="toggleImplNotes()">Implementation Notes</a></h4>
+        <ul *ngIf="showImplNotes">
+            <li *ngFor="let note of implNotes">
+                {{note}}
+            </li>
+        </ul>
+    </span>
 </div>
