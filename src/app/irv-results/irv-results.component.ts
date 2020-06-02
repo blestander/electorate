@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class IRVResultsComponent implements OnInit {
 
     @Input() results;
+    @Input() choice: string[];
 
     stage: number;
 
@@ -34,5 +35,14 @@ export class IRVResultsComponent implements OnInit {
 
     setStage(index) {
         this.stage = index;
+    }
+
+    get stageChoice(): string {
+        let stageResults = this.results[this.stage];
+        let stageChoice = this.choice.filter(x => Object.keys(stageResults).includes(x));
+        if (stageChoice.length > 0)
+            return stageChoice[0];
+        else
+            return "";
     }
 }

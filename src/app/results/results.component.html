@@ -13,7 +13,7 @@
 </app-simple-results>
 
 <!-- IRV results -->
-<app-irv-results [results]="results" *ngIf="method=='irv'"></app-irv-results>
+<app-irv-results [results]="results" *ngIf="method=='irv'" [choice]="choice"></app-irv-results>
 
 <!-- Smith/IRV results -->
 <div *ngIf="method=='smithirv'">
@@ -33,7 +33,7 @@
             [percentages]="true">
         </app-voter-grid>
         <!-- IRV results -->
-        <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'"></app-irv-results>
+        <app-irv-results [results]="results.irv" *ngIf="smithState=='irv'" [choice]="choice"></app-irv-results>
         <!-- Final results -->
         <div *ngIf="smithState=='final'">
             <p>Smith set: {{results.smith.set.join(', ')}}</p>
