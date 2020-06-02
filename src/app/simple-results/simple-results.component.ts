@@ -9,8 +9,9 @@ export class SimpleResultsComponent implements OnInit {
 
     @Input() results;
     @Input() scores: boolean = false;
+    @Input() cav: boolean = false;
     @Input() showValues: boolean = true;
-    @Input() choice: string | string[];
+    @Input() choice: any;
 
     constructor() { }
 
@@ -40,16 +41,24 @@ export class SimpleResultsComponent implements OnInit {
     }
 
     liClass(option) {
-        if (Array.isArray(this.choice))
-            if (this.choice.includes(option))
+        if (this.cav) {
+            if (this.choice[option] == 1)
                 return "choice";
+            else if (this.choice[option] == -1)
+                return "antichoice";
             else
                 return "";
-        else
-            if (this.choice == option)
-                return "choice";
+        } else
+            if (Array.isArray(this.choice))
+                if (this.choice.includes(option))
+                    return "choice";
+                else
+                    return "";
             else
-                return "";
+                if (this.choice == option)
+                    return "choice";
+                else
+                    return "";
     }
 
 }

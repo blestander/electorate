@@ -1,3 +1,6 @@
 .choice {
     color: #7289DA;
 }
+.antichoice {
+    color: red;
+}

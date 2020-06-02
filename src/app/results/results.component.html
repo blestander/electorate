@@ -9,7 +9,9 @@
 <app-simple-results
     [results]="results"
     *ngIf="method=='cav' || method=='mbc' || method.startsWith('score')"
-    [scores]="true">
+    [scores]="true"
+    [cav]="method=='cav'"
+    [choice]="choice">
 </app-simple-results>
 
 <!-- IRV results -->
