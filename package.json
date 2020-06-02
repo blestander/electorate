@@ -1,6 +1,6 @@
 {
     "name": "electorate-frontend",
-    "version": "0.10.1",
+    "version": "0.11.0",
     "license": "apache-2.0",
     "scripts": {
         "ng": "ng",
