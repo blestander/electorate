@@ -5,8 +5,13 @@
         <a [class]="navFirstClass()" (click)="navigateToDashboard()">Dashboard</a>
         <a [class]="navClass()" (click)="navigateToCreator()">Create Poll</a>
         <a [class]="navClass()" (click)="navigateToVotingMethods()">Voting Methods</a>
-        <a [class]="navClass()" (click)="navigateToHistory()">Vote History</a>
-        <a [class]="navLastClass()" (click)="logout()">Logout</a>
+        <ng-container *ngIf="loggedIn else loggedOut">
+            <a [class]="navClass()" (click)="navigateToHistory()">Vote History</a>
+            <a [class]="navLastClass()" (click)="logout()">Logout</a>
+        </ng-container>
+        <ng-template #loggedOut>
+            <a [class]="navLastClass()" (click)="navigateToHistory()">Vote History</a>
+        </ng-template>
     </nav>
     <p class="prerelease">BETA v0.11.0</p>
 </header>

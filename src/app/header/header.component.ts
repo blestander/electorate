@@ -10,12 +10,13 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent implements OnInit {
 
     menuExpanded: boolean = false;
+    loggedIn: boolean = true;
 
     constructor(
         private router: Router,
         private auth: AuthService
     ) {
-        auth.loginStatus.subscribe(status => console.log(`Logged in: ${status}`));
+        auth.loginStatus.subscribe(status => this.loggedIn = status);
     }
 
     ngOnInit(): void {
