@@ -1,11 +1,11 @@
 <ol>
     <li *ngFor="let result of sortedResults()">
-        <span *ngIf="result.length == 1">
+        <span *ngIf="result.length == 1" [class]="liClass(result[0])">
             {{result[0]}}
             <span *ngIf="showValues"> - {{votes(result[0])}}{{scores ? "" : " votes"}}</span>
         </span>
         <ul *ngIf="result.length > 1">
-            <li *ngFor="let option of result">
+            <li *ngFor="let option of result" [class]="liClass(option)">
                 {{option}}
                 <span *ngIf="showValues"> - {{votes(option)}}{{scores ? "" : " votes"}}</span>
             </li>

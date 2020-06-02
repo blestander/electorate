@@ -10,6 +10,7 @@ export class SimpleResultsComponent implements OnInit {
     @Input() results;
     @Input() scores: boolean = false;
     @Input() showValues: boolean = true;
+    @Input() choice: string | string[];
 
     constructor() { }
 
@@ -36,6 +37,19 @@ export class SimpleResultsComponent implements OnInit {
 
     votes(option) {
         return this.results[option];
+    }
+
+    liClass(option) {
+        if (Array.isArray(this.choice))
+            if (this.choice.includes(option))
+                return "choice";
+            else
+                return "";
+        else
+            if (this.choice == option)
+                return "choice";
+            else
+                return "";
     }
 
 }
