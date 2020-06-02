@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VotingMethod } from '../types';
+import { VotingMethod, VotingMethodAttribute } from '../types';
 
 @Component({
     selector: 'app-voting-methods',
@@ -31,10 +31,8 @@ export class VotingMethodsComponent implements OnInit {
                     name: "Simplicity",
                     description: "The simplest method for voters to understand"
                 },
-                {
-                    name: "Majority Criterion",
-                    description: "If a majority of voters strictly prefer one candidate, that candidate will win."
-                }
+                this.passesMajorityCriterion,
+                this.passesParticipation,
             ],
             weaknesses: [
                 {
@@ -43,20 +41,14 @@ export class VotingMethodsComponent implements OnInit {
                         "otherwise win can cause that otherwise winning candidate to lose to someone " +
                         "that the majority greatly dislikes."
                 },
+                this.cloneNegative,
+                this.failsMutualMajorityCriterion,
+                this.failsCondorcetCriterion,
+                this.failsCondorcetLoserCriterion,
                 {
-                    name: "Clone Negative",
-                    description: "The addition of a candidate that is exceedingly similar to an existing candidate will " +
-                        "reduce that chances that that existing candidate will win."
-                },
-                {
-                    name: "Fails Condorcet Criterion",
-                    description: "If there is a candidate that could defeat every other candidate in a head-to-head " +
-                        "election, that candidate (the Condorcet winner) is not guaranteed to win."
-                },
-                {
-                    name: "Fails Condorcet Loser Criterion",
-                    description: "If there is a candidate that would lose to every other candidate in a head-to-head " +
-                        "election, that candidate (the Condorcet loser) is not guaranteed to lose."
+                    name: "Allows Wins With Low Support",
+                    description: "If there are a large number of candidates, Plurality Voting may often elect a candidate " +
+                        "who may only have 20% or 30% of the vote, if they manage to have higher support than everyone else."
                 },
                 {
                     name: "Favors Two Parties",
@@ -64,6 +56,156 @@ export class VotingMethodsComponent implements OnInit {
                         "that can possibly win to two."
                 }
             ]
+        }
+    }
+
+    get irv(): VotingMethod {
+        return {
+            name: "Instant Runoff Voting",
+            alternateNames: [
+                "(Single) Alternative Voting",
+                "Preferential Voting",
+                "Ranked Choice Voting",
+            ],
+            voterSummary: "Voters rank all (or some) of the candidates from most to least liked, with no ties. " +
+                "Omitted options are treated as equally disliked.",
+            resolveSummary: "Votes are initially considered to have gone to the voter's first preference. " +
+                "If one candidate has a majority of  votes, they win. " +
+                "If no candidates have a majority, the candidate(s) with the least number of votes is eliminated, " +
+                "and their votes go to their next choice, or will be discarded if they have not ranked any more " +
+                "candidates. " +
+                "This process is repeated until one candidate has a majority of votes.",
+            strengths: [
+                this.passesCondorcetLoserCriterion,
+                this.passesIndependenceOfClones,
+                this.passesMajorityCriterion,
+                this.passesMutualMajorityCriterion,
+                this.passesLaterNoHarm,
+            ],
+            weaknesses: [
+                this.failsCondorcetCriterion,
+                this.failsParticipation,
+            ]
+        };
+    }
+
+    // Criteria
+
+    get passesMajorityCriterion(): VotingMethodAttribute {
+        return {
+            name: "Satisfies Majority Criterion",
+            description: "If a majority of voters strictly prefer one candidate, that candidate will win."
+        }
+    }
+
+    get failsMajorityCriterion(): VotingMethodAttribute {
+        return {
+            name: "Fails Majority Criterion",
+            description: "If a majority of voters strictly prefer one candidate, that candidate is not guaranteed to win."
+        }
+    }
+
+    get passesMutualMajorityCriterion(): VotingMethodAttribute {
+        return {
+            name: "Satisfies Mutual Majority Criterion",
+            description: "If a majority of voters prefer every member of a group of candidates to every candidate " +
+                "outside that group, then a member of the prefered group must win."
+        }
+    }
+
+    get failsMutualMajorityCriterion(): VotingMethodAttribute {
+        return {
+            name: "Fails Mutual Majority Criterion",
+            description: "Even if a majority of voters prefer every member of a group of candidates to every candidate " +
+                "outside that group, it is not guaranteed that a member of the prefered group will win."
+        }
+    }
+
+    get passesCondorcetCriterion(): VotingMethodAttribute {
+        return {
+            name: "Satisfies Condorcet Criterion",
+            description: "If there is a candidate that could defeat every other candidate in a head-to-head " +
+                "election, that candidate (the Condorcet winner) is guaranteed to win."
+        }
+    }
+
+    get failsCondorcetCriterion(): VotingMethodAttribute {
+        return {
+            name: "Fails Condorcet Criterion",
+            description: "If there is a candidate that could defeat every other candidate in a head-to-head " +
+                "election, that candidate (the Condorcet winner) is not guaranteed to win."
+        }
+    }
+
+    get passesCondorcetLoserCriterion(): VotingMethodAttribute {
+        return {
+            name: "Satisfies Condorcet Loser Criterion",
+            description: "If there is a candidate that would lose to every other candidate in a head-to-head " +
+                "election, that candidate (the Condorcet loser) is guaranteed to lose."
+        }
+    }
+
+    get failsCondorcetLoserCriterion(): VotingMethodAttribute {
+        return {
+            name: "Fails Condorcet Loser Criterion",
+            description: "If there is a candidate that would lose to every other candidate in a head-to-head " +
+                "election, that candidate (the Condorcet loser) is not guaranteed to lose."
+        }
+    }
+
+    get passesIndependenceOfClones(): VotingMethodAttribute {
+        return {
+            name: "Independence of Clones",
+            description: "The addition of a losing candidate that is exceedingly similar to an existing candidate " +
+                "will have no effect on that existing candidate's chances of winning."
+        }
+    }
+
+    get cloneNegative(): VotingMethodAttribute {
+        return {
+            name: "Clone Negative",
+            description: "The addition of a losing candidate that is exceedingly similar to an existing candidate " +
+                "will reduce that chances that that existing candidate will win."
+        }
+    }
+
+    get clonePositive(): VotingMethodAttribute {
+        return {
+            name: "Clone Positive",
+            description: "The addition of a losing candidate that is exceedingly similar to an existing candidate " +
+            "will increase that chances that that existing candidate will win."
+        }
+    }
+
+    get passesLaterNoHarm(): VotingMethodAttribute {
+        return {
+            name: "Passes Later-No-Harm Criterion",
+            description: "If a voter alters the order of candidates lower in his/her preference, or ranks a less " +
+                "prefered candidate on their ballot, then this does not affect the chances of the most prefered " +
+                "candidate being elected."
+        }
+    }
+
+    get failsLaterNoHarm(): VotingMethodAttribute {
+        return {
+            name: "Fails Later-No-Harm Criterion",
+            description: "If a voter alters the order of candidates lower in his/her preference, or ranks a less " +
+                "prefered candidate on their ballot, then this may affect the chances of the most prefered " +
+                "candidate being elected."
+        }
+    }
+
+    get passesParticipation(): VotingMethodAttribute {
+        return {
+            name: "Passes Participation Criterion",
+            description: "A voter cannot improve the chances of their preferred candidate by not voting."
+        }
+    }
+
+    get failsParticipation(): VotingMethodAttribute {
+        return {
+            name: "Fails Participation Criterion",
+            description: "A voter can, in some cases, improve the chances of their preferred by not voting."
         }
     }
 
