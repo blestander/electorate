@@ -1,2 +1,25 @@
-<h3></h3>
-<p></p>
+<div>
+    <h3>{{name}}</h3>
+    <p *ngIf="alternateNames" class="alternate">
+        <span class="front">Also Known As: </span>
+        {{alternateNames}}
+    </p>
+    <p>
+        <span class="front">How It Works For Voters: </span>
+        {{voterSummary}}
+    </p>
+    <p>
+        <span class="front">How A Winner Is Reached: </span>
+        {{resolveSummary}}
+    </p>
+
+    <h4>Strengths</h4>
+    <ul>
+        <li *ngFor="let strength of strengths">{{strength}}</li>
+    </ul>
+
+    <h4>Weaknesses</h4>
+    <ul>
+        <li *ngFor="let weakness of weaknesses">{{weakness}}</li>
+    </ul>
+</div>

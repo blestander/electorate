@@ -15,4 +15,31 @@ export class VotingMethodSummaryComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    get name(): string {
+        return this.method.name;
+    }
+
+    get alternateNames(): string {
+        if (this.method.alternateNames)
+            return this.method.alternateNames.join(", ");
+        else
+            return undefined;
+    }
+
+    get voterSummary(): string {
+        return this.method.voterSummary;
+    }
+
+    get resolveSummary(): string {
+        return this.method.resolveSummary;
+    }
+
+    get strengths(): string[] {
+        return this.method.strengths;
+    }
+
+    get weaknesses(): string[] {
+        return this.method.weaknesses;
+    }
+
 }

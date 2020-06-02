@@ -1,0 +1,22 @@
+div {
+    padding: 5px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #99AAB5;
+    border-radius: 5px;
+}
+h3 {
+    margin-top: 0px;
+    color: #FFFFFF;
+    text-align: center;
+}
+h4, li {
+    color: #FFFFFF;
+}
+.alternate {
+    text-align: center;
+}
+.front {
+    font-weight: bold;
+}
