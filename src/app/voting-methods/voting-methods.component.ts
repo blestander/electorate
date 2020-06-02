@@ -145,7 +145,16 @@ export class VotingMethodsComponent implements OnInit {
                 this.failsCondorcetLoserCriterion,
                 this.failsLaterNoHarm,
             ],
-            wikipedia: "https://en.wikipedia.org/wiki/Score_voting"
+            wikipedia: "https://en.wikipedia.org/wiki/Score_voting",
+            implNotes: [
+                "Score voting can theoretically handle any number of ranges, with any number of continuous or discrete " +
+                    "choices in those ranges. However, most implementations will not allow for every concievable " +
+                    "configuration, and Electorate is no different. " +
+                    "Electorate provides two options: selecting Score Voting as your voting method will allow voters " +
+                    "to give an integer score from 0 to 5, and selecting Combined Approval Voting will allow voters " +
+                    "to designated that they support, oppose, or are neutral towards a candidate, translating to scores " +
+                    "of 1, -1, and 0, respectively."
+            ]
         }
     }
 
@@ -172,6 +181,35 @@ export class VotingMethodsComponent implements OnInit {
                     "Electorate does not."
             ],
             wikipedia: "https://en.wikipedia.org/wiki/Schulze_method"
+        }
+    }
+
+    get approval(): VotingMethod {
+        return {
+            name: "Approval Voting",
+            voterSummary: "Voters designate whether or not they approve of/find acceptable each candidate.",
+            resolveSummary: "Each candidate receives a score equal to the number of voters that approved of them. " +
+                "The candidate with the most votes in support wins.",
+            strengths: [
+                this.passesMajorityCriterion,
+                this.passesMutualMajorityCriterion,
+                this.passesCondorcetCriterion,
+                this.passesCondorcetLoserCriterion,
+                this.passesMonotonicity,
+                this.passesParticipation,
+                this.passesIndependenceOfClones,
+            ],
+            weaknesses: [
+                {
+                    name: "Requires Dichotomous Preferences",
+                    description: "The above strengths will not hold if voters do not have dichotomous preferences."
+                }
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/Approval_voting",
+            warning: "The strengths and weaknesses listed below assume that voters will have dichotomous preferences " +
+                "(they either like a candidate or not). If voters may prefer some candidates over others and may want " +
+                "to express that in their vote, the strengths and weaknesses listed below may not hold, and this method " +
+                "likely will not produce the results you were hoping for."
         }
     }
 
