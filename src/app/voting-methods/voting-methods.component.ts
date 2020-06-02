@@ -128,9 +128,8 @@ export class VotingMethodsComponent implements OnInit {
 
     get score(): VotingMethod {
         return {
-            name: "Score Voting",
+            name: "Score Voting / Combined Approval Voting",
             alternateNames: [
-                "Combined Approval Voting",
                 "Range Voting",
                 "Evaluative Voting",
                 "Utility Voting"

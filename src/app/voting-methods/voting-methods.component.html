@@ -11,7 +11,8 @@
         <a (click)="currentMethod = mbc">{{mbc.name}}</a>
         <a (click)="currentMethod = schulze">{{schulze.name}}</a>
         <a (click)="currentMethod = approval">{{approval.name}}</a>
-        <a (click)="currentMethod = score">{{score.name}}</a>
+        <a (click)="currentMethod = score">Score Voting</a>
+        <a (click)="currentMethod = score">Combined Approval Voting</a>
     </nav>
 
     <app-voting-method-summary *ngIf="currentMethod" [method]="currentMethod"></app-voting-method-summary>
