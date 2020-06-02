@@ -81,6 +81,7 @@ export class VotingMethodsComponent implements OnInit {
                 this.passesMajorityCriterion,
                 this.passesMutualMajorityCriterion,
                 this.passesLaterNoHarm,
+                this.passesMonotonicity,
             ],
             weaknesses: [
                 this.failsCondorcetCriterion,
@@ -108,12 +109,37 @@ export class VotingMethodsComponent implements OnInit {
                         "who is prefered by a slim majority."
                 },
                 this.passesParticipation,
-                this.passesCondorcetLoserCriterion
+                this.passesCondorcetLoserCriterion,
+                this.passesMonotonicity,
             ],
             weaknesses: [
                 this.failsMajorityCriterion,
                 this.failsCondorcetCriterion,
                 this.clonePositive,
+                this.failsLaterNoHarm,
+            ]
+        }
+    }
+
+    get score(): VotingMethod {
+        return {
+            name: "Score Voting / Combined Approval Voting",
+            alternateNames: [
+                "Range Voting",
+                "Evaluative Voting",
+                "Utility Voting"
+            ],
+            voterSummary: "Voters must give each candidate a score, based on how much they like them.",
+            resolveSummary: "The candidate with the highest average score wins.",
+            strengths: [
+                this.passesParticipation,
+                this.passesIndependenceOfClones,
+                this.passesMonotonicity,
+            ],
+            weaknesses: [
+                this.failsMajorityCriterion,
+                this.failsCondorcetCriterion,
+                this.failsCondorcetLoserCriterion,
                 this.failsLaterNoHarm,
             ]
         }
@@ -236,6 +262,22 @@ export class VotingMethodsComponent implements OnInit {
         return {
             name: "Fails Participation Criterion",
             description: "A voter can, in some cases, improve the chances of their preferred by not voting."
+        }
+    }
+
+    get passesMonotonicity(): VotingMethodAttribute {
+        return {
+            name: "Monotone",
+            description: "It is impossible to help a candidate by ranking them lower, " +
+                "and it is impossible to harm a candidate by ranking them higher."
+        }
+    }
+
+    get failsMonotonicity(): VotingMethodAttribute {
+        return {
+            name: "Not Monotone",
+            description: "It may be possible to harm a candidate by ranking them higher " +
+                "or help a candidate by ranking them lower."
         }
     }
 
