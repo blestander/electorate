@@ -352,4 +352,11 @@ export class VotingMethodsComponent implements OnInit {
         }
     }
 
+    linkClass(method): string {
+        if (this.currentMethod && method.name == this.currentMethod.name)
+            return "selected";
+        else
+            return "";
+    }
+
 }
