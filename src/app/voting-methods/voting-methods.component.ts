@@ -93,6 +93,32 @@ export class VotingMethodsComponent implements OnInit {
         };
     }
 
+    get mbc(): VotingMethod {
+        return {
+            name: "Modified Borda Count",
+            voterSummary: "Voters rank some or all of the candidates from most to least liked, with no ties.",
+            resolveSummary: "For each ballot, the top ranked candidate received N points, where N is the number of " +
+                "candidates ranked on this ballot, the second ranked candidate receives N-1, and so on. Unranked " +
+                "candidates all receive 0 points. The points received from each ballot are then summed up, and " +
+                "the candidate with the most points wins.",
+            strengths: [
+                {
+                    name: "Favors consensus",
+                    description: "This method may select a candidate who is liked by a large majority over a candidate " +
+                        "who is prefered by a slim majority."
+                },
+                this.passesParticipation,
+                this.passesCondorcetLoserCriterion
+            ],
+            weaknesses: [
+                this.failsMajorityCriterion,
+                this.failsCondorcetCriterion,
+                this.clonePositive,
+                this.failsLaterNoHarm,
+            ]
+        }
+    }
+
     // Criteria
 
     get passesMajorityCriterion(): VotingMethodAttribute {
