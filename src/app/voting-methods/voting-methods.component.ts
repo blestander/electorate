@@ -145,6 +145,31 @@ export class VotingMethodsComponent implements OnInit {
         }
     }
 
+    get schulze(): VotingMethod {
+        return {
+            name: "Schulze Method",
+            voterSummary: "Voters rank some or all candidates from most to least liked.",
+            resolveSummary: "Please check the Wikipedia link below. The Schulze Method is not a simple method to " +
+                "explain or follow.",
+            strengths: [
+                this.passesMajorityCriterion,
+                this.passesMutualMajorityCriterion,
+                this.passesCondorcetCriterion,
+                this.passesCondorcetLoserCriterion,
+                this.passesIndependenceOfClones,
+                this.passesMonotonicity,
+            ],
+            weaknesses: [
+                this.failsLaterNoHarm,
+                this.failsParticipation,
+            ],
+            implNotes: [
+                "The Schulze Method allows for ranking multiple candidates as equal. However, at present, " +
+                    "Electorate does not."
+            ],
+        }
+    }
+
     // Criteria
 
     get passesMajorityCriterion(): VotingMethodAttribute {
