@@ -1,0 +1,18 @@
+nav {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+a {
+    color: #FFFFFF;
+    text-decoration: underline;
+
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+a:hover {
+    color: orangered;
+    cursor: pointer;
+}

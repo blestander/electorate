@@ -5,6 +5,15 @@
         Below is a description of each voting system supported by Electorate, as well as some of their strengths and weaknesses.
     </p>
 
+    <nav>
+        <a>{{fptp.name}}</a>
+        <a>{{irv.name}}</a>
+        <a>{{mbc.name}}</a>
+        <a>{{schulze.name}}</a>
+        <a>{{approval.name}}</a>
+        <a>{{score.name}}</a>
+    </nav>
+
     <app-voting-method-summary [method]="fptp"></app-voting-method-summary>
     <app-voting-method-summary [method]="irv"></app-voting-method-summary>
     <app-voting-method-summary [method]="mbc"></app-voting-method-summary>
