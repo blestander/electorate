@@ -29,6 +29,11 @@ export class HeaderComponent implements OnInit {
         this.router.navigateByUrl('/create');
     }
 
+    navigateToVotingMethods(): void {
+        this.menuExpanded = false;
+        this.router.navigateByUrl('/methods');
+    }
+
     navigateToHistory(): void {
         this.menuExpanded = false;
         this.router.navigateByUrl('/history');

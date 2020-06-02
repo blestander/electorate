@@ -4,7 +4,7 @@
         <a [class]="navToggleClass()" (click)="toggleMenu()">Menu</a>
         <a [class]="navFirstClass()" (click)="navigateToDashboard()">Dashboard</a>
         <a [class]="navClass()" (click)="navigateToCreator()">Create Poll</a>
-        <a [class]="navClass()">Information</a>
+        <a [class]="navClass()" (click)="navigateToVotingMethods()">Voting Methods</a>
         <a [class]="navClass()" (click)="navigateToHistory()">Vote History</a>
         <a [class]="navLastClass()" (click)="logout()">Logout</a>
     </nav>
