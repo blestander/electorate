@@ -216,6 +216,29 @@ export class VotingMethodsComponent implements OnInit {
         }
     }
 
+    get smithirv(): VotingMethod {
+        return {
+            name: "Smith/Instant Runoff Voting",
+            voterSummary: "Voters rank all (or some) of the candidates from most to least liked, with no ties. " +
+                "Omitted options are treated as equally disliked.",
+            resolveSummary: "The smallest set of candidates that could defeat all candidates outside the set in a " +
+                "head-to-head election is found. The procedure for instant runoff voting is then followed on that set.",
+            strengths: [
+                this.passesMajorityCriterion,
+                this.passesMutualMajorityCriterion,
+                this.passesCondorcetCriterion,
+                this.passesCondorcetLoserCriterion,
+                this.passesIndependenceOfClones,
+                this.passesMonotonicity,
+            ],
+            weaknesses: [
+                this.failsLaterNoHarm,
+                this.failsParticipation,
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/Condorcet_method#Two-method_systems"
+        }
+    }
+
     // Criteria
 
     get passesMajorityCriterion(): VotingMethodAttribute {

@@ -6,7 +6,7 @@ export interface VotingMethod {
     strengths: VotingMethodAttribute[],
     weaknesses: VotingMethodAttribute[],
     implNotes?: string[],
-    wikipedia: string,
+    wikipedia?: string,
     warning?: string,
 }
 
