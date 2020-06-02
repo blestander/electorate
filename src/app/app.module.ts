@@ -32,6 +32,7 @@ import { SenaryScoreChoiceComponent } from './senary-score-choice/senary-score-c
 import { VoterGridComponent } from './voter-grid/voter-grid.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VotingMethodsComponent } from './voting-methods/voting-methods.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         SchulzeResultsComponent,
         VoterRowComponent,
         SenaryScoreChoiceComponent,
-        VoterGridComponent
+        VoterGridComponent,
+        VotingMethodsComponent
     ],
     imports: [
         BrowserModule,
