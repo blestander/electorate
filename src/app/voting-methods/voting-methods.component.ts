@@ -161,6 +161,7 @@ export class VotingMethodsComponent implements OnInit {
     get schulze(): VotingMethod {
         return {
             name: "Schulze Method",
+            alternateNames: ["Beatpath Method", "Path Voting"],
             voterSummary: "Voters rank some or all candidates from most to least liked.",
             resolveSummary: "Please check the Wikipedia link below. The Schulze Method is not a simple method to " +
                 "explain or follow.",
