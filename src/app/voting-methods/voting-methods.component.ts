@@ -55,7 +55,8 @@ export class VotingMethodsComponent implements OnInit {
                     description: "Over many elections, plurality voting trends towards reducing the number of parties " +
                         "that can possibly win to two."
                 }
-            ]
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/First-past-the-post_voting"
         }
     }
 
@@ -90,7 +91,8 @@ export class VotingMethodsComponent implements OnInit {
             implNotes: [
                 "Some implementations may mandate that all voters rank all candidates for their ballots to be considered " +
                     "valid. Electorate does not offer this even as an option."
-            ]
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/Instant-runoff_voting"
         };
     }
 
@@ -117,7 +119,8 @@ export class VotingMethodsComponent implements OnInit {
                 this.failsCondorcetCriterion,
                 this.clonePositive,
                 this.failsLaterNoHarm,
-            ]
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/Borda_count#Modified_Borda_count"
         }
     }
 
@@ -141,7 +144,8 @@ export class VotingMethodsComponent implements OnInit {
                 this.failsCondorcetCriterion,
                 this.failsCondorcetLoserCriterion,
                 this.failsLaterNoHarm,
-            ]
+            ],
+            wikipedia: "https://en.wikipedia.org/wiki/Score_voting"
         }
     }
 
@@ -167,6 +171,7 @@ export class VotingMethodsComponent implements OnInit {
                 "The Schulze Method allows for ranking multiple candidates as equal. However, at present, " +
                     "Electorate does not."
             ],
+            wikipedia: "https://en.wikipedia.org/wiki/Schulze_method"
         }
     }
 

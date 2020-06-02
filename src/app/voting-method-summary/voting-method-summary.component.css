@@ -16,8 +16,14 @@ h3 {
 h4, li {
     color: #FFFFFF;
 }
+p.link {
+    text-align: center;
+}
 a {
     text-decoration: underline;
+}
+a:visited {
+    color: #7289DA;
 }
 a:hover {
     color: orangered;

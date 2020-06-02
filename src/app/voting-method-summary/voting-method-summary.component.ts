@@ -48,6 +48,10 @@ export class VotingMethodSummaryComponent implements OnInit {
         return this.method.implNotes;
     }
 
+    get wikipediaLink(): string {
+        return this.method.wikipedia;
+    }
+
     toggleImplNotes(): void {
         this.showImplNotes = !this.showImplNotes;
     }
