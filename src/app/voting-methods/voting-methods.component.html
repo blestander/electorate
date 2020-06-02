@@ -8,12 +8,12 @@
     <nav>
         <a (click)="currentMethod = fptp" [class]="linkClass(fptp)">{{fptp.name}}</a>
         <a (click)="currentMethod = irv" [class]="linkClass(irv)">{{irv.name}}</a>
-        <a (click)="currentMethod = mbc" [class]="linkClass(mbc)">{{mbc.name}}</a>
+        <a (click)="currentMethod = smithirv" [class]="linkClass(smithirv)">{{smithirv.name}}</a>
         <a (click)="currentMethod = schulze" [class]="linkClass(schulze)">{{schulze.name}}</a>
         <a (click)="currentMethod = approval" [class]="linkClass(approval)">{{approval.name}}</a>
-        <a (click)="currentMethod = score" [class]="linkClass(score)">Score Voting</a>
         <a (click)="currentMethod = score" [class]="linkClass(score)">Combined Approval Voting</a>
-        <a (click)="currentMethod = smithirv" [class]="linkClass(smithirv)">{{smithirv.name}}</a>
+        <a (click)="currentMethod = mbc" [class]="linkClass(mbc)">{{mbc.name}}</a>
+        <a (click)="currentMethod = score" [class]="linkClass(score)">Score Voting</a>
     </nav>
 
     <app-voting-method-summary *ngIf="currentMethod else noMethod" [method]="currentMethod"></app-voting-method-summary>
