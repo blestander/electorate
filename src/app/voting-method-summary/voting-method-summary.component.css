@@ -32,6 +32,10 @@ a:hover {
 .alternate {
     text-align: center;
 }
-.front, .warning {
+.front {
     font-weight: bold;
+}
+.warning {
+    font-weight: bold;
+    color: red;
 }
