@@ -52,6 +52,10 @@ export class VotingMethodSummaryComponent implements OnInit {
         return this.method.wikipedia;
     }
 
+    get warning(): string {
+        return this.method.warning;
+    }
+
     toggleImplNotes(): void {
         this.showImplNotes = !this.showImplNotes;
     }

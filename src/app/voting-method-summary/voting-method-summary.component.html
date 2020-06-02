@@ -4,6 +4,9 @@
         <span class="front">Also Known As: </span>
         {{alternateNames}}
     </p>
+    <p *ngIf="warning" class="warning">
+        Warning: {{warning}}
+    </p>
     <p>
         <span class="front">How It Works For Voters: </span>
         {{voterSummary}}
