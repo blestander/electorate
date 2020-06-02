@@ -33,6 +33,7 @@ import { VoterGridComponent } from './voter-grid/voter-grid.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VotingMethodsComponent } from './voting-methods/voting-methods.component';
+import { VotingMethodSummaryComponent } from './voting-method-summary/voting-method-summary.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { VotingMethodsComponent } from './voting-methods/voting-methods.componen
         VoterRowComponent,
         SenaryScoreChoiceComponent,
         VoterGridComponent,
-        VotingMethodsComponent
+        VotingMethodsComponent,
+        VotingMethodSummaryComponent
     ],
     imports: [
         BrowserModule,
