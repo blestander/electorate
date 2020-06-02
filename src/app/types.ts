@@ -1,7 +1,8 @@
 export interface VotingMethod {
     name: string,
     alternateNames?: string[]
-    summary: string,
+    voterSummary: string,
+    resolveSummary: string,
     strengths: string[],
     weaknesses: string[],
 }
