@@ -7,7 +7,8 @@
 
 ## User Experience
 
-* Show choices where possible in results
+* ~~Show choices where possible in results~~
+* (Optional) Shows choices for Score and MBC voting
 * ~~(Optional) Make logout disappear/grey out when not logged in.~~
 
 ## Miscellaneous
