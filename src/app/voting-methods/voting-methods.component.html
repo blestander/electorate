@@ -15,4 +15,7 @@
         <a (click)="currentMethod = score">Combined Approval Voting</a>
     </nav>
 
-    <app-voting-method-summary *ngIf="currentMethod" [method]="currentMethod"></app-voting-method-summary>
+    <app-voting-method-summary *ngIf="currentMethod else noMethod" [method]="currentMethod"></app-voting-method-summary>
+    <ng-template #noMethod>
+        <p>Please select a voting method.</p>
+    </ng-template>
