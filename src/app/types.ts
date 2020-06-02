@@ -3,6 +3,11 @@ export interface VotingMethod {
     alternateNames?: string[]
     voterSummary: string,
     resolveSummary: string,
-    strengths: string[],
-    weaknesses: string[],
+    strengths: VotingMethodAttribute[],
+    weaknesses: VotingMethodAttribute[],
+}
+
+export interface VotingMethodAttribute {
+    name: string,
+    description: string
 }

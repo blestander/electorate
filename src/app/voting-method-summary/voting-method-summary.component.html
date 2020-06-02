@@ -15,11 +15,17 @@
 
     <h4>Strengths</h4>
     <ul>
-        <li *ngFor="let strength of strengths">{{strength}}</li>
+        <li *ngFor="let strength of strengths">
+            <span class="front">{{strength.name}}: </span>
+            {{strength.description}}
+        </li>
     </ul>
 
     <h4>Weaknesses</h4>
     <ul>
-        <li *ngFor="let weakness of weaknesses">{{weakness}}</li>
+        <li *ngFor="let weakness of weaknesses">
+            <span class="front">{{weakness.name}}: </span>
+            {{weakness.description}}
+        </li>
     </ul>
 </div>

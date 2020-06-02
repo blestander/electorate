@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VotingMethod } from '../types';
+import { VotingMethod, VotingMethodAttribute } from '../types';
 
 @Component({
     selector: 'app-voting-method-summary',
@@ -34,11 +34,11 @@ export class VotingMethodSummaryComponent implements OnInit {
         return this.method.resolveSummary;
     }
 
-    get strengths(): string[] {
+    get strengths(): VotingMethodAttribute[] {
         return this.method.strengths;
     }
 
-    get weaknesses(): string[] {
+    get weaknesses(): VotingMethodAttribute[] {
         return this.method.weaknesses;
     }
 
