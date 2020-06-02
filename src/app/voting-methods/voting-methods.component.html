@@ -6,18 +6,12 @@
     </p>
 
     <nav>
-        <a>{{fptp.name}}</a>
-        <a>{{irv.name}}</a>
-        <a>{{mbc.name}}</a>
-        <a>{{schulze.name}}</a>
-        <a>{{approval.name}}</a>
-        <a>{{score.name}}</a>
+        <a (click)="currentMethod = fptp">{{fptp.name}}</a>
+        <a (click)="currentMethod = irv">{{irv.name}}</a>
+        <a (click)="currentMethod = mbc">{{mbc.name}}</a>
+        <a (click)="currentMethod = schulze">{{schulze.name}}</a>
+        <a (click)="currentMethod = approval">{{approval.name}}</a>
+        <a (click)="currentMethod = score">{{score.name}}</a>
     </nav>
 
-    <app-voting-method-summary [method]="fptp"></app-voting-method-summary>
-    <app-voting-method-summary [method]="irv"></app-voting-method-summary>
-    <app-voting-method-summary [method]="mbc"></app-voting-method-summary>
-    <app-voting-method-summary [method]="score"></app-voting-method-summary>
-    <app-voting-method-summary [method]="schulze"></app-voting-method-summary>
-    <app-voting-method-summary [method]="approval"></app-voting-method-summary>
-</div>
+    <app-voting-method-summary *ngIf="currentMethod" [method]="currentMethod"></app-voting-method-summary>

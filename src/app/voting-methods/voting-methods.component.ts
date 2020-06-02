@@ -8,6 +8,8 @@ import { VotingMethod, VotingMethodAttribute } from '../types';
 })
 export class VotingMethodsComponent implements OnInit {
 
+    currentMethod: VotingMethod;
+
     constructor() { }
 
     ngOnInit(): void {
