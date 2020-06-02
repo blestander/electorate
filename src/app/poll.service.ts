@@ -23,7 +23,7 @@ export class PollService {
         return this.http.get(
             `${GET_POLL_URL}/${id}`,
             {withCredentials: true}
-        ).pipe(tap({error:this.checkLoggedIn}));
+        ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
     castVote(id: string, choice, guild_proof: string): Observable<Object> {
@@ -95,18 +95,24 @@ export class PollService {
         return this.http.get(
             GET_HISTORY_URL,
             { withCredentials: true }
-        ).pipe(tap({error:this.checkLoggedIn}));
+        ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
     getVoters(id: string): Observable<any[]> {
         return this.http.get<any[]>(
             GET_VOTERS_URL.replace("{id}", id),
             { withCredentials: true }
-        ).pipe(tap({error:this.checkLoggedIn}));
+        ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
-    private checkLoggedIn(err) {
-        if (err.status == 401)
-            console.log("Not logged in");
+    private checkLoggedIn() {
+        return (err) => {
+            try {
+                if (err.status == 401)
+                    this.auth.reportLoginStatus(false);
+            } catch (e) {
+                console.error(e);
+            }
+        };
     }
 }

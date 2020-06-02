@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, LOGOUT_URL, CHECK_LOGIN_URL } from './constants';
@@ -10,6 +10,8 @@ import { map, catchError } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class AuthService {
+
+    loginStatus = new EventEmitter<boolean>();
 
     constructor(private httpClient: HttpClient) { }
 
@@ -40,7 +42,8 @@ export class AuthService {
                 remember: remember
             }, {withCredentials: true}).subscribe((response: any) => {
                 //localStorage.setItem("token", response.token)
-                location.replace(redirect)
+                this.loginStatus.emit(true);
+                location.replace(redirect);
             });
         else // This page should never have been loaded
             location.replace("/")
@@ -67,6 +70,10 @@ export class AuthService {
                     return of(false);
             }
         ));
+    }
+
+    reportLoginStatus(status: boolean) {
+        this.loginStatus.emit(status);
     }
 }
 
