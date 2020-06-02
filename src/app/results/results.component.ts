@@ -10,6 +10,7 @@ export class ResultsComponent implements OnInit {
     @Input() results: any;
     @Input() method: string;
     @Input() options: string[];
+    @Input() choice: any;
 
     smithState: string = "final";
 
