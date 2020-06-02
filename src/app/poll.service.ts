@@ -78,7 +78,7 @@ export class PollService {
         return this.http.get<any[]>(
             LIST_POLLS_URL,
             {withCredentials: true}
-        ).pipe(tap({error:this.checkLoggedIn}));
+        ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
     deletePoll(id: string) {
