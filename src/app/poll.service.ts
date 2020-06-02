@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, GET_VOTERS_URL } from './constants';
 import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +22,8 @@ export class PollService {
     getPoll(id: string): Observable<any> {
         return this.http.get(
             `${GET_POLL_URL}/${id}`,
-            {withCredentials: true})
+            {withCredentials: true}
+        ).pipe(tap({error:this.checkLoggedIn}));
     }
 
     castVote(id: string, choice, guild_proof: string): Observable<Object> {
@@ -76,7 +78,7 @@ export class PollService {
         return this.http.get<any[]>(
             LIST_POLLS_URL,
             {withCredentials: true}
-        );
+        ).pipe(tap({error:this.checkLoggedIn}));
     }
 
     deletePoll(id: string) {
@@ -93,13 +95,18 @@ export class PollService {
         return this.http.get(
             GET_HISTORY_URL,
             { withCredentials: true }
-        );
+        ).pipe(tap({error:this.checkLoggedIn}));
     }
 
     getVoters(id: string): Observable<any[]> {
         return this.http.get<any[]>(
             GET_VOTERS_URL.replace("{id}", id),
             { withCredentials: true }
-        );
+        ).pipe(tap({error:this.checkLoggedIn}));
+    }
+
+    private checkLoggedIn(err) {
+        if (err.status == 401)
+            console.log("Not logged in");
     }
 }
