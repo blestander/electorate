@@ -8,11 +8,58 @@ import { VotingMethod, VotingMethodAttribute } from '../types';
 })
 export class VotingMethodsComponent implements OnInit {
 
-    currentMethod: VotingMethod;
+    currentMethod: string = "";
 
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    // Display helpers
+
+    get methodNames(): string[] {
+        return [
+            this.fptp.name,
+            this.irv.name,
+            this.smithirv.name,
+            this.schulze.name,
+            this.approval.name,
+            "Combined Approval Voting",
+            this.mbc.name,
+            "Score Voting"
+        ];
+    }
+
+    get methodInternalNames(): string[] {
+        return [
+            "fptp",
+            "irv",
+            "smithirv",
+            "schulze",
+            "approval",
+            "score",
+            "mbc",
+            "score"
+        ];
+    }
+
+    method(name): VotingMethod {
+        switch (name) {
+            case "fptp":
+                return this.fptp;
+            case "irv":
+                return this.irv;
+            case "smithirv":
+                return this.smithirv;
+            case "approval":
+                return this.approval;
+            case "score":
+                return this.score;
+            case "schulze":
+                return this.schulze;
+            case "mbc":
+                return this.mbc;
+        }
     }
 
     // Voting Methods
@@ -374,12 +421,4 @@ export class VotingMethodsComponent implements OnInit {
                 "or help a candidate by ranking them lower."
         }
     }
-
-    linkClass(method): string {
-        if (this.currentMethod && method.name == this.currentMethod.name)
-            return "selected";
-        else
-            return "";
-    }
-
 }
