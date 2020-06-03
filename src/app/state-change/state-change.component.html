@@ -1,1 +1,7 @@
-<p>state-change works!</p>
+<nav [style.justifyContent]="justifyContentCSS()">
+    <a
+        *ngFor="let label of labels; let i=index"
+        (click)="onClick(i)">
+        {{label}}
+    </a>
+</nav>
