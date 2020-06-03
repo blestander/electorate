@@ -1,10 +1,8 @@
-<nav>
-    <a (click)="setState(0)" [class]="linkClass(0)">Pairwise Results</a>
-    |
-    <a (click)="setState(1)" [class]="linkClass(1)">Strongest Paths</a>
-    |
-    <a (click)="setState(2)" [class]="linkClass(2)">Final Ranking</a>
-</nav>
+<app-state-change
+    [labels]="['Pairwise Results', 'Strongest Paths', 'Final Ranking']"
+    [selected]="state"
+    (changedState)="setState($event)">
+</app-state-change>
 
 <!-- Pairwise Results -->
 <div *ngIf="state==0">
