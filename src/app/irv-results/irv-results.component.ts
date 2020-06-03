@@ -24,13 +24,22 @@ export class IRVResultsComponent implements OnInit {
         return "irv-stage";
     }
 
-    stageName(index) {
+    stageName(index): string {
         if (this.results.length == 1 || index + 1 == this.results.length)
             return "Final";
         else if (index == 0)
             return "Initial";
         else
             return `Stage ${index + 1}`;
+    }
+
+    get stageNames(): string[] {
+        let names: string[] = [];
+
+        for (let i = 0; i < this.results.length; i++)
+            names.push(this.stageName(i))
+
+        return names;
     }
 
     setStage(index) {

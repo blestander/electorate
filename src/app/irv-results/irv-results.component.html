@@ -1,11 +1,2 @@
-<nav>
-    <span *ngFor="let stage of results; let i=index">
-        <a
-            [class]="stageClass(i)"
-            (click)="setStage(i)">
-            <u>{{stageName(i)}}</u>
-        </a>
-        {{i!=results.length-1 ? " | ": ""}}
-    </span>
-</nav>
+<app-state-change [labels]="stageNames" [selected]="stage" (changedState)="stage = $event"></app-state-change>
 <app-simple-results [results]="results[stage]" [choice]="stageChoice"></app-simple-results>

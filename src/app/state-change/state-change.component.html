@@ -1,6 +1,7 @@
 <nav [style.justifyContent]="justifyContentCSS()">
     <a
         *ngFor="let label of labels; let i=index"
+        [class]="linkClass(i)"
         (click)="onClick(i)">
         {{label}}
     </a>
