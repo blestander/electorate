@@ -19,13 +19,12 @@
 
 <!-- Smith/IRV results -->
 <div *ngIf="method=='smithirv'">
-    <nav>
-        <a [class]="classSmithIRV('smith')" (click)="setSmithState('smith')">Smith</a>
-        |
-        <a [class]="classSmithIRV('irv')" (click)="setSmithState('irv')">IRV</a>
-        |
-        <a [class]="classSmithIRV('final')" (click)="setSmithState('final')">Final</a>
-    </nav>
+    <app-state-change
+        [labels]="['Smith','IRV','Final']"
+        [internalNames]="['smith','irv','final']"
+        [selected]="smithState"
+        (changedState)="setSmithState($event)">
+    </app-state-change>
     <div class="smithirv-inner">
         <!-- Smith results -->
         <app-voter-grid
