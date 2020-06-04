@@ -14,6 +14,11 @@ export class RankedChoiceComponent implements OnInit {
 
     choice: (string | string[])[] = [];
 
+    selectionMode: string = "";
+    selected: string[] = [];
+    startIndex: number = null;
+    endIndex: number = null;
+
     constructor() { }
 
     ngOnInit(): void {

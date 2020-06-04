@@ -14,3 +14,9 @@ export interface VotingMethodAttribute {
     name: string,
     description: string
 }
+
+export interface SelectionEvent {
+    selected: boolean,
+    option: string,
+    isArray: boolean
+}
