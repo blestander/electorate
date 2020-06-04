@@ -7,7 +7,12 @@
         cdkDropList
         (cdkDropListDropped)="onRankedDrop($event)">
         <h4>Ranked Options</h4>
-        <p class="rc-instructions">Drag to rerank or omit</p>
+        <p class="rc-instructions">
+            Drag to rerank or omit.
+            <ng-container *ngIf="allowEquals">
+                Select to mark/unmark equal.
+            </ng-container>
+        </p>
         <span class="option-list">
             <app-ranked-option *ngFor="let option of choice; let i=index"
                 cdkDrag
@@ -25,7 +30,9 @@
         cdkDropList
         (cdkDropListDropped)="onOmittedDrop($event)">
         <h4>Omitted Options</h4>
-        <p class="rc-instructions">Click or drag to rank options</p>
+        <p class="rc-instructions">
+            Click or drag to rank options.
+        </p>
         <span class="option-list">
             <a class="option-pane omitted-option"
                 *ngFor="let option of omittedOptions"
