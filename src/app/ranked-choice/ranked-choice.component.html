@@ -25,8 +25,11 @@
             </app-ranked-option>
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
-            <button class="generic-button">Mark Equal</button>
-            <button class="generic-button">Mark Unequal</button>
+            <button class="generic-button"
+                *ngIf="selectionMode == '' || selectionMode == 'equal'"
+                [disabled]="selectionMode != 'equal'">
+                Mark Equal
+            </button>
         </span>
     </div>
     <div class="column"
