@@ -16,6 +16,10 @@
                 [allowEquals]="allowEquals">
             </app-ranked-option>
         </span>
+        <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
+            <button class="generic-button">Mark Equal</button>
+            <button class="generic-button">Mark Unequal</button>
+        </span>
     </div>
     <div class="column"
         cdkDropList
