@@ -28,6 +28,7 @@
                 <app-ranked-option-list *ngIf="isArray(option)"
                     [options]="option" [index]="i"
                     cdkDrag
+                    [cdkDragDisabled]="selectionMode != '' && i >= startIndex && i <= endIndex"
                     (selected)="onSelection($event, i)"
                     (deselected)="onDeselection($event, i)">
                 </app-ranked-option-list>
