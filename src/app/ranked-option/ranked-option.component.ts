@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-ranked-option',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./ranked-option.component.css']
 })
 export class RankedOptionComponent implements OnInit {
+
+    @Input() option: string;
 
     constructor() { }
 

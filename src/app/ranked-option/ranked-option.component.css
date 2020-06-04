@@ -1,0 +1,14 @@
+div {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    padding: 2.5px;
+    border-radius: 2.5px;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #7289DA;
+    cursor: all-scroll;
+}
+div:hover {
+    background-color: orangered
+}
