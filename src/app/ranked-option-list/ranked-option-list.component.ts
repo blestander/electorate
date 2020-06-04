@@ -12,6 +12,9 @@ export class RankedOptionListComponent implements OnInit {
     @Input() options: string[];
     @Input() index: number;
 
+    @Input() selectionMode: string;
+    @Input() startIndex: number;
+
     @Output() selected = new EventEmitter<SelectionEvent>();
     @Output() deselected = new EventEmitter<SelectionEvent>();
 
@@ -45,6 +48,15 @@ export class RankedOptionListComponent implements OnInit {
                 option: this.options[index],
                 isArray: true,
             })
+    }
+
+    get checkboxesEnabled(): boolean {
+        if (this.selectionMode == '')
+            return true;
+        else if (this.selectionMode == 'equal')
+            return false;
+        else
+            return this.index == this.startIndex;
     }
 
 }

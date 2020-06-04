@@ -29,6 +29,7 @@
                     [options]="option" [index]="i"
                     cdkDrag
                     [cdkDragDisabled]="selectionMode != '' && i >= startIndex && i <= endIndex"
+                    [selectionMode]="selectionMode" [startIndex]="startIndex"
                     (selected)="onSelection($event, i)"
                     (deselected)="onDeselection($event, i)">
                 </app-ranked-option-list>
