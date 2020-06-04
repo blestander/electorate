@@ -14,11 +14,12 @@
             </ng-container>
         </p>
         <span class="option-list">
-            <app-ranked-option *ngFor="let option of choice; let i=index"
+            <app-ranked-option *ngFor="let option of choice; index as i"
                 cdkDrag
                 cdkDragBoundary=".ranked-choice"
-                [option]="option"
+                [option]="option" [index]="i"
                 [allowEquals]="allowEquals"
+                [selectionMode]="selectionMode" [startIndex]="startIndex" [endIndex]="endIndex"
                 (selected)="onSelection($event, i)">
             </app-ranked-option>
         </span>

@@ -1,4 +1,7 @@
 <div (click)="toggleCheckbox()">
-    <input *ngIf="allowEquals" type="checkbox" [formControl]="checkControl" />
+    <input *ngIf="allowEquals"
+        type="checkbox"
+        [attr.disabled]="!checkboxEnabled ? '' : null"
+        [formControl]="checkControl" />
     {{option}}
 </div>

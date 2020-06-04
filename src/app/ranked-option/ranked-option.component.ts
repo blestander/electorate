@@ -10,7 +10,12 @@ import { SelectionEvent } from '../types';
 export class RankedOptionComponent implements OnInit {
 
     @Input() option: string;
+    @Input() index: number;
     @Input() allowEquals: boolean;
+
+    @Input() selectionMode: string;
+    @Input() startIndex: number;
+    @Input() endIndex: number;
 
     @Output() selected = new EventEmitter<SelectionEvent>();
 
@@ -22,12 +27,36 @@ export class RankedOptionComponent implements OnInit {
     }
 
     toggleCheckbox(): void {
-        this.checkControl.setValue(!this.checkControl.value);
-        if (this.checkControl.value)
-            this.selected.emit({
-                option: this.option,
-                isArray: false
-            });
+        if (this.checkboxEnabled) {
+            this.checkControl.setValue(!this.checkControl.value);
+            if (this.checkControl.value)
+                this.selected.emit({
+                    option: this.option,
+                    isArray: false
+                });
+        }
+    }
+
+    get isArray(): boolean {
+        return false;
+    }
+
+    get checkboxEnabled(): boolean {
+        if (this.isArray)
+            return false; // TODO
+        else
+            if (this.selectionMode == "unequal")
+                return false;
+            else if (this.selectionMode == "equal")
+                if (this.index + 1 == this.startIndex ||
+                        this.index - 1 == this.endIndex ||
+                        this.index == this.startIndex ||
+                        this.index == this.endIndex)
+                    return true;
+                else
+                    return false;
+            else
+                return true;
     }
 
 }
