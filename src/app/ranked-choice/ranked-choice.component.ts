@@ -69,6 +69,11 @@ export class RankedChoiceComponent implements OnInit {
     onOmittedDrop(event: CdkDragDrop<string[]>) {
         if (event.previousContainer != event.container) { // Deranked item
             this.choice.splice(event.previousIndex, 1);
+            if (this.selectionMode != '' && event.previousIndex < this.startIndex) {
+                this.startIndex -= 1;
+                this.endIndex -= 1;
+                console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
+            }
         } // Couldn't care less otherwise
     }
 
