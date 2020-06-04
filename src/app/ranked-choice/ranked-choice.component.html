@@ -26,8 +26,10 @@
                     (deselected)="onDeselection($event, i)">
                 </app-ranked-option>
                 <app-ranked-option-list *ngIf="isArray(option)"
-                    [options]="option"
-                    cdkDrag>
+                    [options]="option" [index]="i"
+                    cdkDrag
+                    (selected)="onSelection($event, i)"
+                    (deselected)="onDeselection($event, i)">
                 </app-ranked-option-list>
             </ng-container>
         </span>

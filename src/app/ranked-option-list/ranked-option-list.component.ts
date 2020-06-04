@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { SelectionEvent } from '../types';
 
 @Component({
     selector: 'app-ranked-option-list',
@@ -9,6 +10,10 @@ import { FormBuilder, FormControl } from '@angular/forms';
 export class RankedOptionListComponent implements OnInit {
 
     @Input() options: string[];
+    @Input() index: number;
+
+    @Output() selected = new EventEmitter<SelectionEvent>();
+    @Output() deselected = new EventEmitter<SelectionEvent>();
 
     checkControls: FormControl[] = [];
 
@@ -30,6 +35,16 @@ export class RankedOptionListComponent implements OnInit {
     toggleCheckbox(index: number): void {
         let control = this.checkControls[index];
         control.setValue(!control.value);
+        if (control.value) {
+            this.selected.emit({
+                option: this.options[index],
+                isArray: true
+            });
+        } else
+            this.deselected.emit({
+                option: this.options[index],
+                isArray: true,
+            })
     }
 
 }

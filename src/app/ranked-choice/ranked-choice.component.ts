@@ -106,7 +106,12 @@ export class RankedChoiceComponent implements OnInit {
 
     onSelection(event: SelectionEvent, index: number) {
         if (event.isArray) {
-            // TODO
+            if (!this.selectionMode) {
+                this.selectionMode = "unequal";
+                this.startIndex = this.endIndex = index;
+            }
+            this.selected.push(event.option);
+            console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
         } else {
             if (!this.selectionMode) {
                 this.selectionMode = "equal";
@@ -123,7 +128,13 @@ export class RankedChoiceComponent implements OnInit {
 
     onDeselection(event: SelectionEvent, index: number) {
         if (event.isArray) {
-            // TODO
+            let selectedIndex = this.selected.indexOf(event.option);
+            this.selected.splice(selectedIndex, 1);
+            if (this.selected.length == 0) {
+                this.selectionMode = '';
+                this.startIndex = null;
+                this.endIndex = null;
+            }
         } else {
             if (this.startIndex == this.endIndex) {
                 this.selectionMode = "";
