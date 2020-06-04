@@ -37,10 +37,15 @@
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
             <button class="generic-button"
-                *ngIf="selectionMode == '' || selectionMode == 'equal'"
-                [disabled]="selectionMode != 'equal'"
+                *ngIf="selectionMode == 'equal'"
+                [disabled]="startIndex == endIndex"
                 (click)="onMakeEqual()">
-                Mark Equal
+                Make Equal
+            </button>
+            <button class="generic-button"
+                *ngIf="selectionMode == 'unequal'"
+                (click)="onMakeUnequal()">
+                Make Unequal
             </button>
         </span>
     </div>

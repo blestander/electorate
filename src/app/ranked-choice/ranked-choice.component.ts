@@ -152,6 +152,16 @@ export class RankedChoiceComponent implements OnInit {
 
     onMakeEqual(): void {
         this.choice.splice(this.startIndex, this.endIndex - this.startIndex + 1, this.selected);
+        this.resetSelection();
+    }
+
+    onMakeUnequal(): void {
+        this.choice[this.startIndex] = (<string[]> this.choice[this.startIndex]).filter(x => !this.selected.includes(x));
+        this.choice.splice(this.startIndex + 1, 0, ...this.selected);
+        this.resetSelection();
+    }
+
+    resetSelection(): void {
         this.selected = [];
         this.startIndex = 0;
         this.endIndex = 0;
