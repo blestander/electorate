@@ -14,21 +14,25 @@
             </ng-container>
         </p>
         <span class="option-list">
-            <app-ranked-option *ngFor="let option of choice; index as i"
-                cdkDrag
-                cdkDragBoundary=".ranked-choice"
-                [cdkDragDisabled]="selectionMode != '' && i >= startIndex && i <= endIndex"
-                [option]="option" [index]="i"
-                [allowEquals]="allowEquals"
-                [selectionMode]="selectionMode" [startIndex]="startIndex" [endIndex]="endIndex"
-                (selected)="onSelection($event, i)"
-                (deselected)="onDeselection($event, i)">
-            </app-ranked-option>
+            <ng-container *ngFor="let option of choice; index as i">
+                <app-ranked-option *ngIf="!isArray(option)"
+                    cdkDrag
+                    cdkDragBoundary=".ranked-choice"
+                    [cdkDragDisabled]="selectionMode != '' && i >= startIndex && i <= endIndex"
+                    [option]="option" [index]="i"
+                    [allowEquals]="allowEquals"
+                    [selectionMode]="selectionMode" [startIndex]="startIndex" [endIndex]="endIndex"
+                    (selected)="onSelection($event, i)"
+                    (deselected)="onDeselection($event, i)">
+                </app-ranked-option>
+                <p *ngIf="isArray(option)" cdkDrag>{{option}}</p>
+            </ng-container>
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
             <button class="generic-button"
                 *ngIf="selectionMode == '' || selectionMode == 'equal'"
-                [disabled]="selectionMode != 'equal'">
+                [disabled]="selectionMode != 'equal'"
+                (click)="onMakeEqual()">
                 Mark Equal
             </button>
         </span>

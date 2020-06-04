@@ -29,6 +29,10 @@ export class RankedChoiceComponent implements OnInit {
         return this.options.filter(x => !this.choice.includes(x));
     }
 
+    isArray(x): boolean {
+        return Array.isArray(x);
+    }
+
     appendOption(option) {
         this.choice.push(option);
     }
@@ -122,5 +126,13 @@ export class RankedChoiceComponent implements OnInit {
             this.selected.splice(selectedIndex, 1);
             console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
         }
+    }
+
+    onMakeEqual(): void {
+        this.choice.splice(this.startIndex, this.endIndex - this.startIndex + 1, this.selected);
+        this.selected = [];
+        this.startIndex = 0;
+        this.endIndex = 0;
+        this.selectionMode = '';
     }
 }
