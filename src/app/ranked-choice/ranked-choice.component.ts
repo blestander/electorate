@@ -10,9 +10,9 @@ export class RankedChoiceComponent implements OnInit {
 
     @Input() options: string[];
     @Input() allowEquals: boolean
-    @Output() vote = new EventEmitter<string[]>();
+    @Output() vote = new EventEmitter<(string | string[])[]>();
 
-    choice: string[] = [];
+    choice: (string | string[])[] = [];
 
     constructor() { }
 
