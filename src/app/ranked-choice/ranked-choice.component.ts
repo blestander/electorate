@@ -72,7 +72,7 @@ export class RankedChoiceComponent implements OnInit {
             if (event.previousIndex > event.currentIndex) { // Slide up
                 for (let i = event.previousIndex - 1; i >= event.currentIndex; i--)
                     this.choice[i + 1] = this.choice[i];
-                if (event.previousIndex > this.endIndex && event.currentIndex <= this.startIndex) {
+                if (this.selectionMode != '' &&event.previousIndex > this.endIndex && event.currentIndex <= this.startIndex) {
                     this.startIndex += 1;
                     this.endIndex += 1;
                     console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
@@ -81,7 +81,7 @@ export class RankedChoiceComponent implements OnInit {
             else { // Slide down
                 for (let i = event.previousIndex + 1; i <= event.currentIndex; i++)
                     this.choice[i - 1] = this.choice[i];
-                if (event.currentIndex >= this.endIndex && event.previousIndex < this.startIndex) {
+                if (this.selectionMode != '' && event.currentIndex >= this.endIndex && event.previousIndex < this.startIndex) {
                     this.startIndex -= 1;
                     this.endIndex -= 1;
                     console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
