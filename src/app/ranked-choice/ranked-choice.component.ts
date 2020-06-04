@@ -26,7 +26,18 @@ export class RankedChoiceComponent implements OnInit {
     }
 
     get omittedOptions(): string[] {
-        return this.options.filter(x => !this.choice.includes(x));
+        return this.options.filter(x => !this.deepIncludes(x));
+    }
+
+    private deepIncludes(x: string): boolean {
+        for (let i = 0; i < this.choice.length; i++)
+            if (this.isArray(this.choice[i])) {
+                if (this.choice[i].includes(x))
+                    return true;
+            } else
+                if (this.choice[i] == x)
+                    return true;
+        return false;
     }
 
     isArray(x): boolean {
