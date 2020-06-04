@@ -49,6 +49,10 @@ export class NonvoterComponent implements OnInit {
         return Array.isArray(this.choice);
     }
 
+    isArray(a) {
+        return Array.isArray(a);
+    }
+
     isRankedChoice() {
         return ['irv', 'smithirv', 'mbc', 'schulze'].includes(this.method);
     }

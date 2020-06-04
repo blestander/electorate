@@ -1,6 +1,11 @@
 <ol *ngIf="isRankedChoice()">
     <li *ngFor="let option of choice" class="selected">
-        {{option}}
+        <ng-container *ngIf="isArray(option); else single">
+            <ul>
+                <li *ngFor="let inner of option">{{inner}}</li>
+            </ul>
+        </ng-container>
+        <ng-template #single>{{option}}</ng-template>
     </li>
 </ol>
 <ul>
