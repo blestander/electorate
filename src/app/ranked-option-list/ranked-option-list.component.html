@@ -1,3 +1,6 @@
-<div *ngFor="let option of options; index as index" [class]="divClass(index)">
-    {{option}}
-</div>
+<span>
+    <div *ngFor="let option of options; index as index" [class]="divClass(index)" (click)="toggleCheckbox(index)">
+        <input type="checkbox" [formControl]="checkControls[index]" />
+        {{option}}
+    </div>
+</span>

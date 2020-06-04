@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-ranked-option-list',
@@ -9,9 +10,12 @@ export class RankedOptionListComponent implements OnInit {
 
     @Input() options: string[];
 
-    constructor() { }
+    checkControls: FormControl[] = [];
+
+    constructor(private fb: FormBuilder) { }
 
     ngOnInit(): void {
+        this.options.forEach(() => this.checkControls.push(this.fb.control(false)))
     }
 
     divClass(index: number) {
@@ -21,6 +25,11 @@ export class RankedOptionListComponent implements OnInit {
             return "bottom";
         else
             return "inner";
+    }
+
+    toggleCheckbox(index: number): void {
+        let control = this.checkControls[index];
+        control.setValue(!control.value);
     }
 
 }
