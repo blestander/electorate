@@ -63,7 +63,12 @@ export class RankedChoiceComponent implements OnInit {
     }
 
     onVote() {
-        this.vote.emit(this.choice);
+        this.vote.emit(this.choice.map(x => {
+            if (Array.isArray(x))
+                return x.join("\u0007");
+            else
+                return x;
+        }));
     }
 
     onRankedDrop(event: CdkDragDrop<string[]>) {
