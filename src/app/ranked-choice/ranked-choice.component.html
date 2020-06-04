@@ -18,7 +18,8 @@
                 cdkDrag
                 cdkDragBoundary=".ranked-choice"
                 [option]="option"
-                [allowEquals]="allowEquals">
+                [allowEquals]="allowEquals"
+                (selected)="onSelection($event, i)">
             </app-ranked-option>
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
