@@ -35,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VotingMethodsComponent } from './voting-methods/voting-methods.component';
 import { VotingMethodSummaryComponent } from './voting-method-summary/voting-method-summary.component';
 import { StateChangeComponent } from './state-change/state-change.component';
+import { RankedOptionComponent } from './ranked-option/ranked-option.component';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,8 @@ import { StateChangeComponent } from './state-change/state-change.component';
         VoterGridComponent,
         VotingMethodsComponent,
         VotingMethodSummaryComponent,
-        StateChangeComponent
+        StateChangeComponent,
+        RankedOptionComponent
     ],
     imports: [
         BrowserModule,
