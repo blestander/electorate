@@ -43,18 +43,20 @@ export class RankedOptionListComponent implements OnInit {
     }
 
     toggleCheckbox(index: number): void {
-        let control = this.checkControls[index];
-        control.setValue(!control.value);
-        if (control.value) {
-            this.selected.emit({
-                option: this.options[index],
-                isArray: true
-            });
-        } else
-            this.deselected.emit({
-                option: this.options[index],
-                isArray: true,
-            })
+        if (this.checkboxesEnabled) {
+            let control = this.checkControls[index];
+            control.setValue(!control.value);
+            if (control.value) {
+                this.selected.emit({
+                    option: this.options[index],
+                    isArray: true
+                });
+            } else
+                this.deselected.emit({
+                    option: this.options[index],
+                    isArray: true,
+                })
+        }
     }
 
     get checkboxesEnabled(): boolean {
