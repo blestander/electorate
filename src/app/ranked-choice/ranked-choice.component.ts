@@ -9,6 +9,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 export class RankedChoiceComponent implements OnInit {
 
     @Input() options: string[];
+    @Input() allowEquals: boolean
     @Output() vote = new EventEmitter<string[]>();
 
     choice: string[] = [];

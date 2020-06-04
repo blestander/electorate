@@ -12,7 +12,8 @@
             <app-ranked-option *ngFor="let option of choice; let i=index"
                 cdkDrag
                 cdkDragBoundary=".ranked-choice"
-                [option]="option">
+                [option]="option"
+                [allowEquals]="allowEquals">
             </app-ranked-option>
         </span>
     </div>

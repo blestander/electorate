@@ -12,3 +12,6 @@ div {
 div:hover {
     background-color: orangered
 }
+input {
+    float: left;
+}

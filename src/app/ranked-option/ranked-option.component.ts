@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-ranked-option',
@@ -8,10 +9,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RankedOptionComponent implements OnInit {
 
     @Input() option: string;
+    @Input() allowEquals: boolean;
+
+    checkControl = new FormControl(false);
 
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    toggleCheckbox(): void {
+        this.checkControl.setValue(!this.checkControl.value);
     }
 
 }

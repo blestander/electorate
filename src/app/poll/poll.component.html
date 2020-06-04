@@ -48,6 +48,7 @@
         <app-ranked-choice
             *ngIf="poll.can_vote && ['irv', 'smithirv', 'mbc', 'schulze'].includes(poll.method)"
             [options]="poll.options"
+            [allowEquals]="poll.method == 'schulze'"
             (vote)="vote($event)">
         </app-ranked-choice>
 
