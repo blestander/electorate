@@ -36,6 +36,7 @@ import { VotingMethodsComponent } from './voting-methods/voting-methods.componen
 import { VotingMethodSummaryComponent } from './voting-method-summary/voting-method-summary.component';
 import { StateChangeComponent } from './state-change/state-change.component';
 import { RankedOptionComponent } from './ranked-option/ranked-option.component';
+import { RankedOptionListComponent } from './ranked-option-list/ranked-option-list.component';
 
 @NgModule({
     declarations: [
@@ -67,7 +68,8 @@ import { RankedOptionComponent } from './ranked-option/ranked-option.component';
         VotingMethodsComponent,
         VotingMethodSummaryComponent,
         StateChangeComponent,
-        RankedOptionComponent
+        RankedOptionComponent,
+        RankedOptionListComponent
     ],
     imports: [
         BrowserModule,
