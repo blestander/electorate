@@ -43,26 +43,19 @@ export class RankedOptionComponent implements OnInit {
         }
     }
 
-    get isArray(): boolean {
-        return false;
-    }
-
     get checkboxEnabled(): boolean {
-        if (this.isArray)
-            return false; // TODO
-        else
-            if (this.selectionMode == "unequal")
-                return false;
-            else if (this.selectionMode == "equal")
-                if (this.index + 1 == this.startIndex ||
-                        this.index - 1 == this.endIndex ||
-                        this.index == this.startIndex ||
-                        this.index == this.endIndex)
-                    return true;
-                else
-                    return false;
-            else
+        if (this.selectionMode == "unequal")
+            return false;
+        else if (this.selectionMode == "equal")
+            if (this.index + 1 == this.startIndex ||
+                    this.index - 1 == this.endIndex ||
+                    this.index == this.startIndex ||
+                    this.index == this.endIndex)
                 return true;
+            else
+                return false;
+        else
+            return true;
     }
 
     get divClass(): string {
