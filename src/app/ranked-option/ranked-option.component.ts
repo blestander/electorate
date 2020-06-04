@@ -18,6 +18,7 @@ export class RankedOptionComponent implements OnInit {
     @Input() endIndex: number;
 
     @Output() selected = new EventEmitter<SelectionEvent>();
+    @Output() deselected = new EventEmitter<SelectionEvent>();
 
     checkControl = new FormControl(false);
 
@@ -34,6 +35,11 @@ export class RankedOptionComponent implements OnInit {
                     option: this.option,
                     isArray: false
                 });
+            else
+                this.deselected.emit({
+                    option: this.option,
+                    isArray: false,
+                })
         }
     }
 

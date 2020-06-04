@@ -88,4 +88,22 @@ export class RankedChoiceComponent implements OnInit {
             console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
         }
     }
+
+    onDeselection(event: SelectionEvent, index: number) {
+        if (event.isArray) {
+            // TODO
+        } else {
+            if (this.startIndex == this.endIndex) {
+                this.selectionMode = "";
+                this.startIndex = null;
+                this.endIndex = null;
+            } else if (index == this.startIndex)
+                this.startIndex += 1;
+            else
+                this.endIndex -= 1;
+            let selectedIndex = this.selected.indexOf(event.option);
+            this.selected.splice(selectedIndex, 1);
+            console.log(`${this.startIndex}-${this.endIndex}: ${this.selected.join(', ')}`);
+        }
+    }
 }

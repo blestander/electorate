@@ -20,7 +20,8 @@
                 [option]="option" [index]="i"
                 [allowEquals]="allowEquals"
                 [selectionMode]="selectionMode" [startIndex]="startIndex" [endIndex]="endIndex"
-                (selected)="onSelection($event, i)">
+                (selected)="onSelection($event, i)"
+                (deselected)="onDeselection($event, i)">
             </app-ranked-option>
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
