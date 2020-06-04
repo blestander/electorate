@@ -65,4 +65,11 @@ export class RankedOptionComponent implements OnInit {
                 return true;
     }
 
+    get divClass(): string {
+        if (this.selectionMode && this.index >= this.startIndex && this.index <= this.endIndex)
+            return "selected";
+        else
+            return "";
+    }
+
 }

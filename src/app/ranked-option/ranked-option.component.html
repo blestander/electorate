@@ -1,4 +1,4 @@
-<div (click)="toggleCheckbox()">
+<div [class]="divClass" (click)="toggleCheckbox()">
     <input *ngIf="allowEquals"
         type="checkbox"
         [attr.disabled]="!checkboxEnabled ? '' : null"

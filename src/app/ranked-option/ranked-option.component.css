@@ -11,6 +11,10 @@ div {
 div:hover {
     background-color: orangered
 }
+div.selected {
+    cursor: pointer;
+}
 input {
     float: left;
+    cursor: pointer;
 }

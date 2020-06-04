@@ -17,6 +17,7 @@
             <app-ranked-option *ngFor="let option of choice; index as i"
                 cdkDrag
                 cdkDragBoundary=".ranked-choice"
+                [cdkDragDisabled]="selectionMode != '' && i >= startIndex && i <= endIndex"
                 [option]="option" [index]="i"
                 [allowEquals]="allowEquals"
                 [selectionMode]="selectionMode" [startIndex]="startIndex" [endIndex]="endIndex"
