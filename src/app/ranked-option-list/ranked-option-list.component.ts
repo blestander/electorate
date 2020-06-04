@@ -14,4 +14,13 @@ export class RankedOptionListComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    divClass(index: number) {
+        if (index == 0)
+            return "top";
+        else if (index == this.options.length - 1)
+            return "bottom";
+        else
+            return "inner";
+    }
+
 }

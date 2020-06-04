@@ -1,0 +1,28 @@
+div {
+    padding: 2.5px;
+    border-radius: 2.5px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #7289DA;
+    cursor: all-scroll;
+}
+div.top {
+    margin-top: 2.5px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #99AAB5;
+}
+div.bottom {
+    margin-bottom: 2.5px;
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-color: #99AAB5;
+}
+div.inner {
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-color: #99AAB5;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #99AAB5;
+}
