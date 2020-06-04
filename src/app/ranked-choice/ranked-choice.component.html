@@ -25,7 +25,10 @@
                     (selected)="onSelection($event, i)"
                     (deselected)="onDeselection($event, i)">
                 </app-ranked-option>
-                <p *ngIf="isArray(option)" cdkDrag>{{option}}</p>
+                <app-ranked-option-list *ngIf="isArray(option)"
+                    [options]="option"
+                    cdkDrag>
+                </app-ranked-option-list>
             </ng-container>
         </span>
         <span *ngIf="allowEquals && choice.length > 0" class="button-centered">
