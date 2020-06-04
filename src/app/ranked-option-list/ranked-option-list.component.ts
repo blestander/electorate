@@ -27,12 +27,19 @@ export class RankedOptionListComponent implements OnInit {
     }
 
     divClass(index: number) {
+        let positional: string;
+
         if (index == 0)
-            return "top";
+            positional = "top";
         else if (index == this.options.length - 1)
-            return "bottom";
+            positional = "bottom";
         else
-            return "inner";
+            positional = "inner";
+
+        if (this.index == this.startIndex)
+            return `selected ${positional}`;
+        else
+            return positional;
     }
 
     toggleCheckbox(index: number): void {

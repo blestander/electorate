@@ -29,6 +29,9 @@ div.inner {
     border-bottom-style: solid;
     border-bottom-color: #99AAB5;
 }
+div.selected {
+    cursor: pointer;
+}
 input {
     float: left;
 }
