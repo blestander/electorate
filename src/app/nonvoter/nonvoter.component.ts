@@ -22,7 +22,7 @@ export class NonvoterComponent implements OnInit {
         else if (this.isScoreVoting())
             return this.choice;
         else if (this.arrayCheck())
-            return this.choice.includes(option);
+            return this.deepIncludes(option);
         else
             return this.choice == option;
     }
@@ -63,8 +63,20 @@ export class NonvoterComponent implements OnInit {
 
     optionList(): string[] {
         if (this.isRankedChoice())
-            return this.options.filter(x => !this.choice.includes(x));
+            return this.options.filter(x => !this.deepIncludes(x));
         else
             return this.options;
+    }
+
+    deepIncludes(x: string) {
+        for (let i = 0; i < this.choice.length; i++) {
+            if (Array.isArray(this.choice[i])) {
+                if (this.choice[i].includes(x))
+                    return true;
+            } else
+                if (this.choice[i] == x)
+                    return true;
+        }
+        return false;
     }
 }
