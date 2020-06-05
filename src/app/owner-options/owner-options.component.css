@@ -16,6 +16,7 @@ a:hover {
 }
 .reload-button {
     font-weight: bolder;
+    font-size: 20px;
 }
 .reload-button:hover {
     color: orangered;
@@ -24,4 +25,5 @@ a:hover {
 .reload-button-active {
     cursor: default;
     color: #7289DA;
+    font-size: 20px;
 }
