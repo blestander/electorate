@@ -79,7 +79,7 @@
             (conclude)="finishPoll()"
             (delete)="deletePoll()"
             (needVoters)="requestVoters()"
-            (setWebhook)="onSetWebhook()"
+            (setWebhook)="onSetWebhook($event)"
             (removeWebhook)="onRemoveWebhook()"
             [finished]="poll.finished"
             [voters]="voters"

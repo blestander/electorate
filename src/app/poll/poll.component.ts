@@ -84,8 +84,8 @@ export class PollComponent implements OnInit {
         this.voters = this.pollService.getVoters(this.id);
     }
 
-    onSetWebhook(): void {
-        this.pollService.setWebhook(this.id).subscribe({
+    onSetWebhook(newHook: string): void {
+        this.pollService.setWebhook(this.id, newHook).subscribe({
             next: o => this.poll = {...this.poll, ...o},
             error: err => {
                 if (err.status == 0)
