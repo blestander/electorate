@@ -18,7 +18,7 @@
 
 <h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
 <span class="voters" *ngIf="showVoters">
-    <table *ngIf="(voters | async) as voters; else loading">
+    <table *ngIf="voters != null; else loading">
         <tr><th colspan="2">Voters</th></tr>
         <tr *ngFor="let voter of voters">
             <app-voter-row [voter]="voter"></app-voter-row>

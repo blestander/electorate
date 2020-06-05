@@ -10,7 +10,7 @@ import { webhookRegex } from '../constants';
 export class OwnerOptionsComponent implements OnInit {
 
     @Input() finished: boolean;
-    @Input() voters: Observable<any[]>;
+    @Input() voterRequest: Observable<any[]>;
     @Input() webhook: string;
     @Output() conclude = new EventEmitter<void>();
     @Output() delete = new EventEmitter<void>();
@@ -19,6 +19,7 @@ export class OwnerOptionsComponent implements OnInit {
     expand: boolean = false;
     showVoters: boolean = false;
     showWebhook: boolean = false;
+    voters: any[] = null;
 
     constructor() { }
 
@@ -37,6 +38,10 @@ export class OwnerOptionsComponent implements OnInit {
 
     toggleVoters(): void {
         this.showVoters = !this.showVoters;
+        if (this.voters == null)
+            this.voterRequest.subscribe(results => {
+                this.voters = results;
+            })
     }
 
     onRemoveWebhook() {
