@@ -80,7 +80,8 @@
             (delete)="deletePoll()"
             (needVoters)="requestVoters()"
             [finished]="poll.finished"
-            [voters]="voters">
+            [voters]="voters"
+            [webhook]="poll.webhook">
         </app-owner-options>
     </span>
 

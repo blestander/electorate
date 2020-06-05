@@ -5,6 +5,8 @@
     <button class="red-button" (click)="kill()">Delete Poll</button>
 </span>
 
+<p *ngIf="expand">{{webhook}}</p>
+
 <h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
 <span class="voters" *ngIf="showVoters">
     <table *ngIf="(voters | async) as voters; else loading">

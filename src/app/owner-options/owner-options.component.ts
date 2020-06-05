@@ -10,6 +10,7 @@ export class OwnerOptionsComponent implements OnInit {
 
     @Input() finished: boolean;
     @Input() voters: Observable<any[]>;
+    @Input() webhook: string;
     @Output() conclude = new EventEmitter<void>();
     @Output() delete = new EventEmitter<void>();
     @Output() needVoters = new EventEmitter<void>();
