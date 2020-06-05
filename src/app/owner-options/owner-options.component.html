@@ -7,10 +7,14 @@
 
 <span class="panel" *ngIf="expand && !finished">
     <button class="generic-button" *ngIf="!webhook" (click)="onSetWebhook()">Add Webhook</button>
+    <button class="generic-button" *ngIf="webhook && !showWebhook" (click)="showWebhook = true">Show Webhook</button>
+    <button class="generic-button" *ngIf="webhook && showWebhook" (click)="showWebhook = false">Hide Webhook</button>
+    &nbsp;
     <button class="generic-button" *ngIf="webhook" (click)="onSetWebhook()">Change Webhook</button>
     &nbsp;
     <button class="generic-button" *ngIf="webhook" (click)="onRemoveWebhook()">Remove Webhook</button>
 </span>
+<p *ngIf="expand && showWebhook">Webhook: {{webhook}}</p>
 
 <h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
 <span class="voters" *ngIf="showVoters">

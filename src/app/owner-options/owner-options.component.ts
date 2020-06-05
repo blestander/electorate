@@ -19,6 +19,7 @@ export class OwnerOptionsComponent implements OnInit {
     @Output() removeWebhook = new EventEmitter<void>();
     expand: boolean = false;
     showVoters: boolean = false;
+    showWebhook: boolean = false;
 
     constructor() { }
 
