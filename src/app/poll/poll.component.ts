@@ -84,4 +84,21 @@ export class PollComponent implements OnInit {
         this.voters = this.pollService.getVoters(this.id);
     }
 
+    onRemoveWebhook(): void {
+        this.pollService.removeWebhook(this.id).subscribe({
+            next: o => this.poll = {...this.poll, ...o},
+            error: err => {
+                if (err.status == 0)
+                    window.alert("Unable to reach server");
+                else if (err.status == 409) {
+                    window.alert("Page state is out of date. This page will reload when you click okay.");
+                    location.reload();
+                } else if (err.status == 500)
+                    window.alert("Server error");
+                else
+                    window.alert(`Unknown error: ${err.status}`);
+            }
+        });
+    }
+
 }

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, GET_VOTERS_URL } from './constants';
+import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, GET_VOTERS_URL, WEBHOOK_URL } from './constants';
 import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
 import { tap } from 'rxjs/operators';
 
@@ -103,6 +103,13 @@ export class PollService {
             GET_VOTERS_URL.replace("{id}", id),
             { withCredentials: true }
         ).pipe(tap({error:this.checkLoggedIn()}));
+    }
+
+    removeWebhook(id: string): Observable<any> {
+        return this.http.delete<any>(
+            WEBHOOK_URL.replace("{id}", id),
+            { withCredentials: true }
+        );
     }
 
     private checkLoggedIn() {

@@ -9,7 +9,7 @@
     <button class="generic-button" *ngIf="!webhook">Add Webhook</button>
     <button class="generic-button" *ngIf="webhook">Change Webhook</button>
     &nbsp;
-    <button class="generic-button" *ngIf="webhook">Remove Webhook</button>
+    <button class="generic-button" *ngIf="webhook" (click)="onRemoveWebhook()">Remove Webhook</button>
 </span>
 
 <h4 *ngIf="expand"><a (click)="toggleVoters()">Voters</a></h4>
