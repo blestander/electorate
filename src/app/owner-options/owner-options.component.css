@@ -23,7 +23,19 @@ a:hover {
     cursor: pointer;
 }
 .reload-button-active {
+    display: inline-block;
     cursor: default;
     color: #7289DA;
     font-size: 20px;
+    animation-name: reload-animation;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes reload-animation {
+    0%      { transform: rotate(0deg); }
+    25%     { transform: rotate(90deg); }
+    50%     { transform: rotate(180deg); }
+    75%     { transform: rotate(270deg); }
+    100%    { transform: rotate(360deg); }
 }
