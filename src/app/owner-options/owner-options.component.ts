@@ -14,7 +14,6 @@ export class OwnerOptionsComponent implements OnInit {
     @Input() webhook: string;
     @Output() conclude = new EventEmitter<void>();
     @Output() delete = new EventEmitter<void>();
-    @Output() needVoters = new EventEmitter<void>();
     @Output() setWebhook = new EventEmitter<string>();
     @Output() removeWebhook = new EventEmitter<void>();
     expand: boolean = false;
@@ -38,8 +37,6 @@ export class OwnerOptionsComponent implements OnInit {
 
     toggleVoters(): void {
         this.showVoters = !this.showVoters;
-        if (this.showVoters && !this.voters)
-            this.needVoters.emit();
     }
 
     onRemoveWebhook() {

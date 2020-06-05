@@ -78,7 +78,6 @@
             *ngIf="poll.own"
             (conclude)="finishPoll()"
             (delete)="deletePoll()"
-            (needVoters)="requestVoters()"
             (setWebhook)="onSetWebhook($event)"
             (removeWebhook)="onRemoveWebhook()"
             [finished]="poll.finished"

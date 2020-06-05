@@ -29,6 +29,7 @@ export class PollComponent implements OnInit {
                 next: poll => this.poll = poll,
                 error: err => this.error = err.status
             });
+            this.requestVoters();
         });
     }
 
