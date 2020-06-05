@@ -48,7 +48,7 @@ export class OwnerOptionsComponent implements OnInit {
     onSetWebhook() {
         let newHook = window.prompt("Enter your new webhook", this.webhook);
         if (webhookRegex.test(newHook)) // Valid webhook
-            console.log(newHook);
+            this.setWebhook.emit(newHook);
         else // Invalid webhook
             window.alert("Invalid webhook syntax. Please double check the link Discord provided you.");
     }

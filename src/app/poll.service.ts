@@ -105,6 +105,13 @@ export class PollService {
         ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
+    setWebhook(id: string): Observable<any> {
+        return this.http.post<any>(
+            WEBHOOK_URL.replace("{id}", id),
+            { withCredentials: true }
+        );
+    }
+
     removeWebhook(id: string): Observable<any> {
         return this.http.delete<any>(
             WEBHOOK_URL.replace("{id}", id),

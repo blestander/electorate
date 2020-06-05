@@ -79,6 +79,7 @@
             (conclude)="finishPoll()"
             (delete)="deletePoll()"
             (needVoters)="requestVoters()"
+            (setWebhook)="onSetWebhook()"
             (removeWebhook)="onRemoveWebhook()"
             [finished]="poll.finished"
             [voters]="voters"
