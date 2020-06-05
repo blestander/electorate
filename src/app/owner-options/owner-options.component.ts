@@ -20,6 +20,7 @@ export class OwnerOptionsComponent implements OnInit {
     showVoters: boolean = false;
     showWebhook: boolean = false;
     voters: any[] = null;
+    currentlyReloading: boolean = false;
 
     constructor() { }
 
@@ -56,7 +57,18 @@ export class OwnerOptionsComponent implements OnInit {
             window.alert("Invalid webhook syntax. Please double check the link Discord provided you.");
     }
 
+    get reloadButtonClass() {
+        if (this.currentlyReloading)
+            return "reload-button-active"
+        else
+            return "reload-button";
+    }
+
     reloadVoters() {
-        this.voterRequest.subscribe(results => this.voters = results);
+        this.currentlyReloading = true;
+        this.voterRequest.subscribe({
+            next: results => this.voters = results,
+            complete: () => this.currentlyReloading = false
+        });
     }
 }

@@ -21,3 +21,7 @@ a:hover {
     color: orangered;
     cursor: pointer;
 }
+.reload-button-active {
+    cursor: default;
+    color: #7289DA;
+}

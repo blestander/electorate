@@ -21,7 +21,7 @@
     <table *ngIf="voters != null; else loading">
         <tr><th colspan="2">
             Voters
-            <span class="reload-button" (click)="reloadVoters()">&#8635;</span>
+            <span [class]="reloadButtonClass" (click)="reloadVoters()">&#8635;</span>
         </th></tr>
         <tr *ngFor="let voter of voters">
             <app-voter-row [voter]="voter"></app-voter-row>
