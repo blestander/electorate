@@ -22,4 +22,4 @@ export const GET_GUILDS_URL = `${BACKEND_PREFIX}/guilds`;
 export const WEBHOOK_URL = `${BACKEND_PREFIX}/poll/{id}/webhook`;
 
 // Important regex
-export const webhookRegex = /https:\/\/discordapp\.com\/api\/webhooks\/([0-9]*)\/([A-Za-z0-9\-_]*)/g;
+export const webhookRegex = /https:\/\/discordapp\.com\/api\/webhooks\/([0-9]*)\/([A-Za-z0-9\-_]*)/;
