@@ -3,8 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray, AbstractControl } from '
 import { PollService } from '../poll.service';
 import { AuthService } from '../auth.service';
 import { GuildService } from '../guild.service';
-
-const webhookRegex = /https:\/\/discordapp\.com\/api\/webhooks\/([0-9]*)\/([A-Za-z0-9\-_]*)/g;
+import { webhookRegex } from '../constants';
 
 @Component({
     selector: 'app-create',

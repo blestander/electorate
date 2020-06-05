@@ -6,7 +6,7 @@
 </span>
 
 <span class="panel" *ngIf="expand && !finished">
-    <button class="generic-button" *ngIf="!webhook">Add Webhook</button>
+    <button class="generic-button" *ngIf="!webhook" (click)="onSetWebhook()">Add Webhook</button>
     <button class="generic-button" *ngIf="webhook">Change Webhook</button>
     &nbsp;
     <button class="generic-button" *ngIf="webhook" (click)="onRemoveWebhook()">Remove Webhook</button>

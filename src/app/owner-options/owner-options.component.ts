@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { webhookRegex } from '../constants';
 
 @Component({
     selector: 'app-owner-options',
@@ -14,6 +15,7 @@ export class OwnerOptionsComponent implements OnInit {
     @Output() conclude = new EventEmitter<void>();
     @Output() delete = new EventEmitter<void>();
     @Output() needVoters = new EventEmitter<void>();
+    @Output() setWebhook = new EventEmitter<string>();
     @Output() removeWebhook = new EventEmitter<void>();
     expand: boolean = false;
     showVoters: boolean = false;
@@ -41,5 +43,13 @@ export class OwnerOptionsComponent implements OnInit {
 
     onRemoveWebhook() {
         this.removeWebhook.emit();
+    }
+
+    onSetWebhook() {
+        let newHook = window.prompt("Enter your new webhook", this.webhook);
+        if (webhookRegex.test(newHook)) // Valid webhook
+            console.log(newHook);
+        else // Invalid webhook
+            window.alert("Invalid webhook syntax. Please double check the link Discord provided you.");
     }
 }
