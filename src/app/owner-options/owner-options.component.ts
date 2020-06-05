@@ -55,4 +55,8 @@ export class OwnerOptionsComponent implements OnInit {
         else // Invalid webhook
             window.alert("Invalid webhook syntax. Please double check the link Discord provided you.");
     }
+
+    reloadVoters() {
+        this.voterRequest.subscribe(results => this.voters = results);
+    }
 }

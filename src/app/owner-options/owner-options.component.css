@@ -14,3 +14,10 @@ a:hover {
     text-decoration-color: orangered;
     cursor: pointer;
 }
+.reload-button {
+    font-weight: bolder;
+}
+.reload-button:hover {
+    color: orangered;
+    cursor: pointer;
+}
