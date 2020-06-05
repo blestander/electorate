@@ -46,7 +46,7 @@ export class OwnerOptionsComponent implements OnInit {
     }
 
     onSetWebhook() {
-        let newHook = window.prompt("Enter your new webhook", this.webhook);
+        let newHook = window.prompt("Enter your new webhook");
         if (webhookRegex.test(newHook)) // Valid webhook
             this.setWebhook.emit(newHook);
         else // Invalid webhook
