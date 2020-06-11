@@ -24,7 +24,11 @@ export class PollService {
         return this.http.get(
             `${GET_POLL_URL}/${id}`,
             {withCredentials: true}
-        ).pipe(tap({error:this.checkLoggedIn()}));
+        ).pipe(
+            tap({
+                error:this.checkLoggedIn()
+            })
+        );
     }
 
     castVote(id: string, choice, guild_proof: string): Observable<Poll> {
@@ -35,6 +39,10 @@ export class PollService {
                 guild_proof: guild_proof
             },
             {withCredentials: true}
+        ).pipe(
+            tap({
+                error:this.checkLoggedIn()
+            })
         );
     }
 

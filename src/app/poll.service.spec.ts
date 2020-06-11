@@ -124,7 +124,45 @@ describe('PollService', () => {
             can_vote: false,
             has_voted: true,
         });
-    })
+    });
+
+    it("#castVote passes through errors", () => {
+        // Build the initial parameters
+        let choice = "The only choice";
+        let guild_proof = "Not really proof";
+
+        // Send the request
+        service.castVote("beta", choice, guild_proof).subscribe({
+            next: poll => fail('Expected error; got poll'),
+            error: error => expect(error.status).toBe(404),
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/vote");
+
+        // Send response
+        request.flush('Not found', { status: 404, statusText: "Not found"});
+    });
+
+    it("#castVote notifies AuthService on unauthenticated user", () => {
+        let choice = "Who cares?";
+        let guild_proof = "Who cares?";
+
+        // Send the request
+        service.castVote("gamma", choice, guild_proof).subscribe({
+            next: poll => fail('Expected error; got poll'),
+            error: error => {
+                expect(error.status).toBe(401);
+                expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+            }
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/gamma/vote");
+
+        // Send response
+        request.flush('Unauthorized', { status: 401, statusText: "Unauthorized" });
+    });
 
     afterAll(() => {
         // Verify no oustanding requests
