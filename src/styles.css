@@ -27,7 +27,7 @@ button {
 }
 button.generic-button {
     font-size: 12pt;
-    font-weight: bold;
+    font-weight: 600;
     color: #FFFFFF;
 
     background-color: #7289DA;
@@ -48,7 +48,7 @@ button.generic-button:hover:enabled {
 }
 button.red-button {
     font-size: 12pt;
-    font-weight: bold;
+    font-weight: 600;
     color: #F04747;
 
     background-color: transparent;
