@@ -28,6 +28,10 @@ describe('PollService', () => {
         service = TestBed.inject(PollService);
     });
 
+    it("should be created", () => {
+        expect(service).toBeDefined();
+    });
+
     it('#getPoll can retrieve a poll', () => {
         // Ultimate response data
         let responseData: Poll = {
