@@ -3,8 +3,8 @@ import { PollService } from './poll.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from './../environments/environment';
 import { Poll } from './poll';
+import { AuthService } from './auth.service';
 
 describe('PollService', () => {
     let service: PollService;
@@ -14,7 +14,7 @@ describe('PollService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule, RouterTestingModule],
-            providers: [HttpClient],
+            providers: [HttpClient, AuthService],
         });
 
         httpClient = TestBed.inject(HttpClient);
