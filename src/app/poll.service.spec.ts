@@ -197,6 +197,20 @@ describe('PollService', () => {
         });
     });
 
+    it("#finishPoll passes through errors", () => {
+        // Send the request
+        service.finishPoll("beta").subscribe({
+            next: poll => fail("Expected error; got poll"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to be the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/finish");
+
+        // Send response
+        request.flush('Server error', {status: 500, statusText: "Server error"});
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();
