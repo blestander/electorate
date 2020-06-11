@@ -8,97 +8,94 @@ import { AuthService } from './auth.service';
 import { request } from 'http';
 
 describe('PollService', () => {
+    let service: PollService;
+    let authService;
+    let httpController: HttpTestingController;
 
-    describe('getPoll()', () => {
-        let service: PollService;
-        let authService;
-        let httpController: HttpTestingController;
+    beforeEach(() => {
+        // Create AuthService spy
+        authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
 
-        beforeEach(() => {
-            // Create AuthService spy
-            authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
-
-            TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule, RouterTestingModule],
-                providers: [
-                    HttpClient,
-                    { provide: AuthService, useValue: authService}
-                ],
-            });
-
-            httpController = TestBed.inject(HttpTestingController);
-            service = TestBed.inject(PollService);
+        TestBed.configureTestingModule({
+            imports: [HttpClientTestingModule, RouterTestingModule],
+            providers: [
+                HttpClient,
+                { provide: AuthService, useValue: authService}
+            ],
         });
 
-        it('can retrieve a poll', () => {
-            // Ultimate response data
-            let responseData: Poll = {
-                id: 'alpha',
-                name: 'Test Poll',
-                options: ["A", "B", "C"],
-                method: "fptp",
-                own: true,
-                finished: false,
-                has_voted: false,
-                can_vote: true,
-            }
+        httpController = TestBed.inject(HttpTestingController);
+        service = TestBed.inject(PollService);
+    });
 
-            // Request poll at ID 'alpha'
-            service.getPoll("alpha").subscribe({
-                next: poll => expect(poll).toBe(responseData),
-                error: error => fail(`Expected poll; got error code ${error.status}`)
-            });
+    it('#getPoll can retrieve a poll', () => {
+        // Ultimate response data
+        let responseData: Poll = {
+            id: 'alpha',
+            name: 'Test Poll',
+            options: ["A", "B", "C"],
+            method: "fptp",
+            own: true,
+            finished: false,
+            has_voted: false,
+            can_vote: true,
+        }
 
-            // Expecting a request to the correct URL
-            const request = httpController.expectOne("http://localhost:8080/api/poll/alpha");
-
-            // Expecting the request to be a GET request
-            expect(request.request.method).toEqual("GET");
-
-            // Send response
-            request.flush(responseData);
+        // Request poll at ID 'alpha'
+        service.getPoll("alpha").subscribe({
+            next: poll => expect(poll).toBe(responseData),
+            error: error => fail(`Expected poll; got error code ${error.status}`)
         });
 
-        it('handles unauthenticated users', () => {
-            // Send the request
-            service.getPoll("beta").subscribe({
-                next: poll => fail('Expected error 401; got poll'),
-                error: error => expect(error.status).toEqual(401)
-            });
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha");
 
-            // Expecting a request to the correct URL
-            const request = httpController.expectOne("http://localhost:8080/api/poll/beta");
+        // Expecting the request to be a GET request
+        expect(request.request.method).toEqual("GET");
 
-            // Expecting the request to be a GET request
-            expect(request.request.method).toEqual("GET");
+        // Send response
+        request.flush(responseData);
+    });
 
-            // Send response
-            request.flush('Not logged in', { status: 401, statusText: "Unauthorized"});
-
-            // Verify AuthService notified
-            expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    it('#getPoll handles unauthenticated users', () => {
+        // Send the request
+        service.getPoll("beta").subscribe({
+            next: poll => fail('Expected error 401; got poll'),
+            error: error => expect(error.status).toEqual(401)
         });
 
-        it('passes through errors', () => {
-            // Send the request
-            service.getPoll("gamma").subscribe({
-                next: poll => fail('Expected error 500; got poll'),
-                error: error => expect(error.status).toEqual(500)
-            });
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta");
 
-            // Expecting a request to the correct URL
-            const request = httpController.expectOne("http://localhost:8080/api/poll/gamma");
+        // Expecting the request to be a GET request
+        expect(request.request.method).toEqual("GET");
 
-            // Expecting the request to be a GET request
-            expect(request.request.method).toEqual("GET");
+        // Send response
+        request.flush('Not logged in', { status: 401, statusText: "Unauthorized"});
 
-            // Send response
-            request.flush('Server error', { status: 500, statusText: "Server error"});
+        // Verify AuthService notified
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
+    it('#getPoll passes through errors', () => {
+        // Send the request
+        service.getPoll("gamma").subscribe({
+            next: poll => fail('Expected error 500; got poll'),
+            error: error => expect(error.status).toEqual(500)
         });
 
-        afterAll(() => {
-            // Verify no oustanding requests
-            httpController.verify();
-        });
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/gamma");
+
+        // Expecting the request to be a GET request
+        expect(request.request.method).toEqual("GET");
+
+        // Send response
+        request.flush('Server error', { status: 500, statusText: "Server error"});
+    });
+
+    afterAll(() => {
+        // Verify no oustanding requests
+        httpController.verify();
     });
 });
