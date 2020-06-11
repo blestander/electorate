@@ -5,7 +5,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
-import { request } from 'http';
 
 describe('PollService', () => {
     let service: PollService;
@@ -166,6 +165,36 @@ describe('PollService', () => {
 
         // Send response
         request.flush('Unauthorized', { status: 401, statusText: "Unauthorized" });
+    });
+
+    it("#finishPoll succeed correctly", () => {
+        // Send the request
+        service.finishPoll("alpha").subscribe({
+            next: poll => {
+                expect(poll.finished).toBeTrue();
+                expect(poll.results.A).toBe(5);
+                expect(poll.results.B).toBe(4);
+            },
+            error: error => fail(`Expected poll; got error code ${error.status}`)
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha/finish");
+
+        // Expecting the request to be a POST request
+        expect(request.request.method).toBe("POST");
+
+        // Expecting empty body of request
+        expect(request.request.body).toEqual({});
+
+        // Send response
+        request.flush({
+            finished: true,
+            results: {
+                "A": 5,
+                "B": 4
+            }
+        });
     });
 
     afterAll(() => {
