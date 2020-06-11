@@ -23,6 +23,7 @@ select {
     font-family: Nunito, sans-serif;
     color: #FFFFFF;
     font-weight: 600;
+    cursor: pointer;
 
     background-color: #7289DA;
     border: none;
