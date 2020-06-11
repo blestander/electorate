@@ -5,35 +5,30 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
+import { request } from 'http';
 
 describe('PollService', () => {
-    let service: PollService;
-    let authService;
-    let httpClient: HttpClient;
-    let httpController: HttpTestingController;
-
-    beforeEach(() => {
-        // Create AuthService spy
-        authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
-
-        TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule, RouterTestingModule],
-            providers: [
-                HttpClient,
-                { provide: AuthService, useValue: authService}
-            ],
-        });
-
-        httpClient = TestBed.inject(HttpClient);
-        httpController = TestBed.inject(HttpTestingController);
-        service = TestBed.inject(PollService);
-    });
-
-    it('should be created', () => {
-        expect(service).toBeDefined();
-    });
 
     describe('getPoll()', () => {
+        let service: PollService;
+        let authService;
+        let httpController: HttpTestingController;
+
+        beforeEach(() => {
+            // Create AuthService spy
+            authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
+
+            TestBed.configureTestingModule({
+                imports: [HttpClientTestingModule, RouterTestingModule],
+                providers: [
+                    HttpClient,
+                    { provide: AuthService, useValue: authService}
+                ],
+            });
+
+            httpController = TestBed.inject(HttpTestingController);
+            service = TestBed.inject(PollService);
+        });
 
         it('can retrieve a poll', () => {
             // Ultimate response data
@@ -62,9 +57,6 @@ describe('PollService', () => {
 
             // Send response
             request.flush(responseData);
-
-            // Verify no outstanding requests
-            httpController.verify();
         });
 
         it('handles unauthenticated users', () => {
@@ -83,11 +75,30 @@ describe('PollService', () => {
             // Send response
             request.flush('Not logged in', { status: 401, statusText: "Unauthorized"});
 
-            // Verify no outstanding requests
-            httpController.verify();
-
             // Verify AuthService notified
             expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
-        })
+        });
+
+        it('passes through errors', () => {
+            // Send the request
+            service.getPoll("gamma").subscribe({
+                next: poll => fail('Expected error 500; got poll'),
+                error: error => expect(error.status).toEqual(500)
+            });
+
+            // Expecting a request to the correct URL
+            const request = httpController.expectOne("http://localhost:8080/api/poll/gamma");
+
+            // Expecting the request to be a GET request
+            expect(request.request.method).toEqual("GET");
+
+            // Send response
+            request.flush('Server error', { status: 500, statusText: "Server error"});
+        });
+
+        afterAll(() => {
+            // Verify no oustanding requests
+            httpController.verify();
+        });
     });
 });
