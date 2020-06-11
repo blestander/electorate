@@ -26,7 +26,7 @@ export class PollService {
             {withCredentials: true}
         ).pipe(
             tap({
-                error:this.checkLoggedIn()
+                error: this.checkLoggedIn()
             })
         );
     }
@@ -41,7 +41,7 @@ export class PollService {
             {withCredentials: true}
         ).pipe(
             tap({
-                error:this.checkLoggedIn()
+                error: this.checkLoggedIn()
             })
         );
     }
@@ -51,6 +51,10 @@ export class PollService {
             FINISH_POLL_URL.replace("{id}", id),
             {},
             {withCredentials: true}
+        ).pipe(
+            tap({
+                error: this.checkLoggedIn()
+            })
         );
     }
 

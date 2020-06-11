@@ -211,6 +211,20 @@ describe('PollService', () => {
         request.flush('Server error', {status: 500, statusText: "Server error"});
     });
 
+    it("#finishPoll informs AuthService of 401 error", () => {
+        // Send the request
+        service.finishPoll("gamma").subscribe({
+            next: poll => fail("Expected 401; got poll"),
+            error: error => expect(authService.reportLoginStatus).toHaveBeenCalledWith(false)
+        });
+
+        // Expecting a requets to be the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/gamma/finish");
+
+        // Send response
+        request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();
