@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SingleChoiceComponent } from './single-choice.component';
 
-describe('SingleChoiceComponent', () => {
+xdescribe('SingleChoiceComponent', () => {
     let component: SingleChoiceComponent;
     let fixture: ComponentFixture<SingleChoiceComponent>;
 

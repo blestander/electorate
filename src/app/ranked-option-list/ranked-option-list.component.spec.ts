@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RankedOptionListComponent } from './ranked-option-list.component';
 
-describe('RankedOptionListComponent', () => {
+xdescribe('RankedOptionListComponent', () => {
     let component: RankedOptionListComponent;
     let fixture: ComponentFixture<RankedOptionListComponent>;
 

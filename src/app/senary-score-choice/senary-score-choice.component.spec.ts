@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SenaryScoreChoiceComponent } from './senary-score-choice.component';
 
-describe('SenaryScoreChoiceComponent', () => {
+xdescribe('SenaryScoreChoiceComponent', () => {
     let component: SenaryScoreChoiceComponent;
     let fixture: ComponentFixture<SenaryScoreChoiceComponent>;
 
