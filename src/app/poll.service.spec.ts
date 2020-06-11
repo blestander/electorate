@@ -94,6 +94,38 @@ describe('PollService', () => {
         request.flush('Server error', { status: 500, statusText: "Server error"});
     });
 
+    it('#castVote succeeds correctly', () => {
+        // Build the initial parameters
+        let choice = ["A", "B", "C"];
+        let guild_proof = "proof";
+
+        // Send the request
+        service.castVote("alpha", choice, guild_proof).subscribe({
+            next: poll => {
+                expect(poll.choice).toEqual(choice);
+                expect(poll.can_vote).toBeFalse();
+                expect(poll.has_voted).toBeTrue();
+            }
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha/vote");
+
+        // Expecting a request to be a POST request
+        expect(request.request.method).toEqual("POST");
+
+        // Expecting the body to be structured correctly
+        expect(request.request.body.choice).toBe(choice);
+        expect(request.request.body.guild_proof).toBe(guild_proof);
+
+        // Send response
+        request.flush({
+            choice: choice,
+            can_vote: false,
+            has_voted: true,
+        });
+    })
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();

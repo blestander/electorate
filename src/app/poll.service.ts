@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, GET_VOTERS_URL, WEBHOOK_URL } from './constants';
 import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
 import { tap } from 'rxjs/operators';
+import { Poll } from './poll';
 
 @Injectable({
     providedIn: 'root'
@@ -19,15 +20,15 @@ export class PollService {
         private router: Router,
     ) { }
 
-    getPoll(id: string): Observable<any> {
+    getPoll(id: string): Observable<Poll> {
         return this.http.get(
             `${GET_POLL_URL}/${id}`,
             {withCredentials: true}
         ).pipe(tap({error:this.checkLoggedIn()}));
     }
 
-    castVote(id: string, choice, guild_proof: string): Observable<Object> {
-        return this.http.post<Object>(
+    castVote(id: string, choice, guild_proof: string): Observable<Poll> {
+        return this.http.post<Poll>(
             CAST_VOTE_URL.replace("{id}", id),
             {
                 choice: choice,

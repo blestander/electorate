@@ -9,6 +9,7 @@ export interface Poll {
     results?: any,
     startTime?: string,
     endTime?: string,
+    voteTime?: string,
     has_voted?: boolean,
     can_vote?: boolean,
     choice?: any
