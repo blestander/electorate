@@ -8,13 +8,20 @@ import { AuthService } from './auth.service';
 
 describe('PollService', () => {
     let service: PollService;
+    let authService;
     let httpClient: HttpClient;
     let httpController: HttpTestingController;
 
     beforeEach(() => {
+        // Create AuthService spy
+        authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
+
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule, RouterTestingModule],
-            providers: [HttpClient, AuthService],
+            providers: [
+                HttpClient,
+                { provide: AuthService, useValue: authService}
+            ],
         });
 
         httpClient = TestBed.inject(HttpClient);
@@ -59,5 +66,28 @@ describe('PollService', () => {
             // Verify no outstanding requests
             httpController.verify();
         });
+
+        it('handles unauthenticated users', () => {
+            // Send the request
+            service.getPoll("beta").subscribe({
+                next: poll => fail('Expected error 401; got poll'),
+                error: error => expect(error.status).toEqual(401)
+            });
+
+            // Expecting a request to the correct URL
+            const request = httpController.expectOne("http://localhost:8080/api/poll/beta");
+
+            // Expecting the request to be a GET request
+            expect(request.request.method).toEqual("GET");
+
+            // Send response
+            request.flush('Not logged in', { status: 401, statusText: "Unauthorized"});
+
+            // Verify no outstanding requests
+            httpController.verify();
+
+            // Verify AuthService notified
+            expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+        })
     });
 });
