@@ -566,6 +566,56 @@ describe('PollService', () => {
         expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
     });
 
+    it("#removeWebhook succeeds correctly", () => {
+        // Send the request
+        service.removeWebhook("alpha").subscribe({
+            next: poll => expect(poll.webhook).toBe(""),
+            error: error => fail(`Expected poll; got error code ${error.status}`)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha/webhook");
+
+        // Expecting request to be a POST request
+        expect(request.request.method).toBe("DELETE");
+
+        // Respond to request
+        request.flush({
+            webhook: ""
+        });
+    });
+
+    it("#removeWebhook passes through errors", () => {
+        // Send the request
+        service.removeWebhook("beta").subscribe({
+            next: () => fail("Expected error; got poll"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/webhook");
+
+        // Respond to request
+        request.flush("", {status: 500, statusText: ""});
+    });
+
+    it("#removeWebhook handles 401s correctly", () => {
+        // Send the request
+        service.removeWebhook("beta").subscribe({
+            next: () => fail("Expected error; got poll"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/webhook");
+
+        // Respond to request
+        request.flush("", {status: 401, statusText: ""});
+
+        // Expect call out to AuthService
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
     afterEach(() => {
         // Verify no oustanding requests
         httpController.verify();
