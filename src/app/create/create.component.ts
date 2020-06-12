@@ -4,6 +4,7 @@ import { PollService } from '../poll.service';
 import { AuthService } from '../auth.service';
 import { GuildService } from '../guild.service';
 import { webhookRegex } from '../constants';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create',
@@ -32,7 +33,8 @@ export class CreateComponent implements OnInit {
 
     constructor(
         private guildService: GuildService,
-        private pollService: PollService
+        private pollService: PollService,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -55,6 +57,25 @@ export class CreateComponent implements OnInit {
             this.pollService.createPoll({
                 ...this.createForm.value,
                 guild_proof: this.getGuildProof()
+            }).subscribe({
+                next: path => this.router.navigateByUrl(path),
+                error: err => {
+                    if (err.status == 0)
+                        window.alert("Unable to reach server to submit poll");
+                    else if (err.status == 400)
+                        window.alert('Server has rejected creation request');
+                    else if (err.status == 401) {
+                        window.alert("Your login has expired. The page will now reload.");
+                        location.reload();
+                    } else if (err.status == 403)
+                        window.alert('Authorization error');
+                    else if (err.status == 404)
+                        window.alert('URL error');
+                    else if (err.status == 500)
+                        window.alert('Server error');
+                    else
+                        window.alert(`Unknown error: Code ${err.status}`);
+                }
             });
         }
     }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POLLS_URL, GET_VOTERS_URL, WEBHOOK_URL } from './constants';
 import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { Poll } from './poll';
 
 @Injectable({
@@ -58,34 +58,19 @@ export class PollService {
         );
     }
 
-    createPoll(poll: Poll) {
-        this.http.post<any>(
+    createPoll(poll: Poll): Observable<string> {
+        return this.http.post<void>(
             CREATE_POLL_URL,
             poll,
             {
                 withCredentials: true,
                 observe: 'response'
             }
-        ).subscribe({
-            next: res => this.router.navigateByUrl(res.headers.get('Location')),
-            error: err => {
-                if (err.status == 0)
-                    window.alert("Unable to reach server to submit poll");
-                else if (err.status == 400)
-                    window.alert('Server has rejected creation request');
-                else if (err.status == 401) {
-                    window.alert("Your login has expired. The page will now reload.");
-                    location.reload();
-                } else if (err.status == 403)
-                    window.alert('Authorization error');
-                else if (err.status == 404)
-                    window.alert('URL error');
-                else if (err.status == 500)
-                    window.alert('Server error');
-                else
-                    window.alert(`Unknown error: Code ${err.status}`);
-            }
-        });
+        ).pipe(map((res: HttpResponse<void>): string => {
+            return res.headers.get('Location');
+        })).pipe(tap({
+            error: this.checkLoggedIn()
+        }));
     }
 
     listPolls(): Observable<Poll[]> {

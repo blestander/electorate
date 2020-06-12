@@ -244,6 +244,9 @@ describe('PollService', () => {
         service.createPoll({
             name: "Poll name",
             description: "Description",
+        }).subscribe({
+            next: path => expect(path).toBe("/poll/alpha"),
+            error: error => fail(`Expected path; got error code ${error.status}`)
         });
 
         // Expecting a request to be the correct URL
@@ -260,34 +263,15 @@ describe('PollService', () => {
                 "Location": "/poll/alpha"
             }
         });
-
-        // Expecting a call to route to /poll/alpha
-        expect(router.navigateByUrl).toHaveBeenCalledWith("/poll/alpha");
     });
 
-    it("#createPoll handles network error correctly", () => {
+    it("#createPoll passes through errors", () => {
         // Send the request
         service.createPoll({
             name: "Who cares?"
-        });
-
-        // Expecting a request to the correct URL
-        const request = httpController.expectOne("http://localhost:8080/api/poll/create");
-
-        // Create and return mock error
-        let event = new ErrorEvent('Network error', {
-            message: 'Simulated network error'
-        });
-        request.error(event);
-
-        // Expect window.alert to be called
-        expect(window.alert).toHaveBeenCalledWith("Unable to reach server to submit poll");
-    });
-
-    it("#createPoll alerts the user to errors", () => {
-        // Send the request
-        service.createPoll({
-            name: "Who cares?"
+        }).subscribe({
+            next: path => fail(`Expected error; got path ${path}`),
+            error: error => expect(error.status).toBe(500)
         });
 
         // Expecting a request to the correct URL
@@ -295,15 +279,15 @@ describe('PollService', () => {
 
         // Respond to request
         request.flush("Server error", {status: 500, statusText: "Server error"});
-
-        // Expect window.alert to be called
-        expect(window.alert).toHaveBeenCalled();
     });
 
-    xit("#createPoll handles unauthenticaed users properly", () => {
+    it("#createPoll handles unauthenticaed users properly", () => {
         // Send the request
         service.createPoll({
             name: "Who cares?"
+        }).subscribe({
+            next: path => fail(`Expected error; got path ${path}`),
+            error: error => expect(error.status).toBe(401)
         });
 
         // Expecting a request to the correct URL
@@ -312,11 +296,8 @@ describe('PollService', () => {
         // Respond to request
         request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
 
-        // Expect window.alert to be called
-        expect(window.alert).toHaveBeenCalledWith("Your login has expired. The page will now reload.");
-
-        // Handle reload
-        // TODO
+        // Expect AuthService to be informed
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
     });
 
     it("#listPolls succeeds correctly", () => {
