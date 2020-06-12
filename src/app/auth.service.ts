@@ -1,9 +1,9 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, LOGOUT_URL, CHECK_LOGIN_URL } from './constants';
 import { environment } from './../environments/environment';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class AuthService {
 
-    loginStatus = new EventEmitter<boolean>();
+    loginStatus = new BehaviorSubject<boolean>(true);
 
     constructor(private httpClient: HttpClient) { }
 
@@ -42,7 +42,7 @@ export class AuthService {
                 remember: remember
             }, {withCredentials: true}).subscribe((response: any) => {
                 //localStorage.setItem("token", response.token)
-                this.loginStatus.emit(true);
+                this.loginStatus.next(true);
                 location.replace(redirect);
             });
         else // This page should never have been loaded
@@ -73,7 +73,7 @@ export class AuthService {
     }
 
     reportLoginStatus(status: boolean) {
-        this.loginStatus.emit(status);
+        this.loginStatus.next(status);
     }
 }
 
