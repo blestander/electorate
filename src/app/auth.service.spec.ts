@@ -136,6 +136,23 @@ describe('AuthService', () => {
         expect(sessionStorage.length).toBe(0);
     });
 
+    it("#logout works", () => {
+        // Call function
+        service.logout();
+
+        // Expecting request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/logout");
+
+        // Expecting request to be POST request
+        expect(request.request.method).toBe("GET");
+
+        // Respond to request
+        request.flush(null);
+
+        // Expecting call to reload
+        expect(service['reload']).toHaveBeenCalled();
+    });
+
     afterAll(() => {
         // Verify there are no outstanding HTTP request
         httpController.verify();
