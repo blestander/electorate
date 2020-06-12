@@ -5,21 +5,27 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 describe('PollService', () => {
     let service: PollService;
     let authService;
+    let router;
     let httpController: HttpTestingController;
 
     beforeEach(() => {
         // Create AuthService spy
         authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
 
+        // Create Router spy
+        router = jasmine.createSpyObj('Router', ['navigateByUrl']);
+
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule, RouterTestingModule],
+            imports: [HttpClientTestingModule],
             providers: [
                 HttpClient,
-                { provide: AuthService, useValue: authService}
+                { provide: AuthService, useValue: authService },
+                { provide: Router, useValue: router }
             ],
         });
 
@@ -218,11 +224,37 @@ describe('PollService', () => {
             error: error => expect(authService.reportLoginStatus).toHaveBeenCalledWith(false)
         });
 
-        // Expecting a requets to be the correct URL
+        // Expecting a request to be the correct URL
         const request = httpController.expectOne("http://localhost:8080/api/poll/gamma/finish");
 
         // Send response
         request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+    });
+
+    it("#createPoll succeeds correctly", () => {
+        // Send the request
+        service.createPoll({
+            name: "Poll name",
+            description: "Description",
+        });
+
+        // Expecting a request to be the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/create");
+
+        // Expecting the request to be a POST request
+        expect(request.request.method).toBe("POST");
+
+        // Send response
+        request.flush("", {
+            status: 204,
+            statusText: "No content",
+            headers: {
+                "Location": "/poll/alpha"
+            }
+        });
+
+        // Expecting a call to route to /poll/alpha
+        expect(router.navigateByUrl).toHaveBeenCalledWith("/poll/alpha");
     });
 
     afterAll(() => {

@@ -58,7 +58,7 @@ export class PollService {
         );
     }
 
-    createPoll(poll: object) {
+    createPoll(poll: Poll) {
         this.http.post<any>(
             CREATE_POLL_URL,
             poll,
