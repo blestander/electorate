@@ -23,6 +23,9 @@ describe('PollService', () => {
         // Setup spy on window
         spyOn(window, "alert");
 
+        // Setup spy on location
+        // spyOn(location, "reload");
+
         // Configure test bed
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
@@ -279,6 +282,41 @@ describe('PollService', () => {
 
         // Expect window.alert to be called
         expect(window.alert).toHaveBeenCalledWith("Unable to reach server to submit poll");
+    });
+
+    it("#createPoll alerts the user to errors", () => {
+        // Send the request
+        service.createPoll({
+            name: "Who cares?"
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/create");
+
+        // Respond to request
+        request.flush("Server error", {status: 500, statusText: "Server error"});
+
+        // Expect window.alert to be called
+        expect(window.alert).toHaveBeenCalled();
+    });
+
+    xit("#createPoll handles unauthenticaed users properly", () => {
+        // Send the request
+        service.createPoll({
+            name: "Who cares?"
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/create");
+
+        // Respond to request
+        request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+
+        // Expect window.alert to be called
+        expect(window.alert).toHaveBeenCalledWith("Your login has expired. The page will now reload.");
+
+        // Handle reload
+        // TODO
     });
 
     afterAll(() => {

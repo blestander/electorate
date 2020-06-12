@@ -73,9 +73,10 @@ export class PollService {
                     window.alert("Unable to reach server to submit poll");
                 else if (err.status == 400)
                     window.alert('Server has rejected creation request');
-                else if (err.status == 401)
-                    window.alert('Authentication error');
-                else if (err.status == 403)
+                else if (err.status == 401) {
+                    window.alert("Your login has expired. The page will now reload.");
+                    location.reload();
+                } else if (err.status == 403)
                     window.alert('Authorization error');
                 else if (err.status == 404)
                     window.alert('URL error');
