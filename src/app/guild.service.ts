@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { GET_GUILDS_URL } from './constants';
 import { AuthService } from './auth.service';
 import { tap } from 'rxjs/operators';
+import { Guild } from './guild';
 
 @Injectable({
     providedIn: 'root'
@@ -15,8 +16,8 @@ export class GuildService {
         private auth: AuthService
     ) { }
 
-    getGuilds(): Observable<any[]> {
-        return this.http.get<any[]>(
+    getGuilds(): Observable<Guild[]> {
+        return this.http.get<Guild[]>(
             GET_GUILDS_URL,
             {withCredentials: true}
         ).pipe(tap({error: err => {

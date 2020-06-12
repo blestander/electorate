@@ -14,4 +14,5 @@ export interface Poll {
     can_vote?: boolean,
     choice?: any,
     webhook?: string,
+    guild_proof?: string,
 }
