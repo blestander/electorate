@@ -86,7 +86,9 @@ export class PollService {
         return this.http.delete<void>(
             `${DELETE_POLL_URL}/${id}`,
             {withCredentials: true}
-        );
+        ).pipe(tap({
+            error: this.checkLoggedIn()
+        }));
     }
 
     getHistory() {
