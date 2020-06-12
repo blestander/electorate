@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { PollService } from './poll.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
@@ -425,7 +424,38 @@ describe('PollService', () => {
 
         // Respond to request
         request.flush(response);
-    })
+    });
+
+    it("#getHistory passes through errors", () => {
+        // Send the request
+        service.getHistory().subscribe({
+            next: () => fail("Expected error; got list of polls"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/history");
+
+        // Respond to request
+        request.flush("Server error", {status: 500, statusText: "Server error"});
+    });
+
+    it("#getHistory handles 401s correctly", () => {
+        // Send the request
+        service.getHistory().subscribe({
+            next: () => fail("Expected error; got list of polls"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/history");
+
+        // Respond to request
+        request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+
+        // Expecting call to AuthService
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
 
     afterEach(() => {
         // Verify no oustanding requests
