@@ -8,6 +8,7 @@ import { GET_POLL_URL, CAST_VOTE_URL, FINISH_POLL_URL, CREATE_POLL_URL, LIST_POL
 import { DELETE_POLL_URL, GET_HISTORY_URL } from './constants';
 import { tap, map } from 'rxjs/operators';
 import { Poll } from './poll';
+import { Voter } from './voter';
 
 @Injectable({
     providedIn: 'root'
@@ -100,7 +101,7 @@ export class PollService {
         }));
     }
 
-    getVoters(id: string): Observable<any[]> {
+    getVoters(id: string): Observable<Voter[]> {
         return this.http.get<any[]>(
             GET_VOTERS_URL.replace("{id}", id),
             { withCredentials: true }
