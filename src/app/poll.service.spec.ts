@@ -485,6 +485,37 @@ describe('PollService', () => {
         request.flush(response);
     });
 
+    it("#getVoters passes through errors", () => {
+        // Send the request
+        service.getVoters("beta").subscribe({
+            next: () => fail("Expected error; got array of voters"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/voters");
+
+        // Respond to request
+        request.flush("Server error", {status: 500, statusText: "Server error"});
+    });
+
+    it("#getVoters handles 401s correctly", () => {
+        // Send the request
+        service.getVoters("beta").subscribe({
+            next: () => fail("Expected error; got array of voters"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/voters");
+
+        // Respond to request
+        request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+
+        // Expect call out to AuthService
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    })
+
     afterEach(() => {
         // Verify no oustanding requests
         httpController.verify();
