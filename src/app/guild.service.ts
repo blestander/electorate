@@ -20,9 +20,12 @@ export class GuildService {
         return this.http.get<Guild[]>(
             GET_GUILDS_URL,
             {withCredentials: true}
-        ).pipe(tap({error: err => {
-            if (err.status == 401)
-                this.auth.reportLoginStatus(false);
-        }}));
+        ).pipe(tap({
+            error: err => {
+                if (err.status == 401) {
+                    this.auth.reportLoginStatus(false);
+                }
+            }
+        }));
     }
 }

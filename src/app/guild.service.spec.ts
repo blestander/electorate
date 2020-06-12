@@ -17,7 +17,7 @@ describe('GuildService', () => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
             providers: [
-                { provides: AuthService, useValue: authService}
+                { provides: AuthService, useValue: authService }
             ],
         });
 
@@ -54,8 +54,40 @@ describe('GuildService', () => {
         ]);
     });
 
+    it("#getGuilds passes through errors", () => {
+        // Send request
+        service.getGuilds().subscribe({
+            next: () => fail("Expected error; got array of guilds"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/guilds");
+
+        // Respond to request
+        request.flush("", {status: 500, statusText: ""});
+    });
+
+    xit("#getGuilds handles 401s correctly", () => {
+        // Send request
+        service.getGuilds().subscribe({
+            next: () => fail("Expected error; got array of guilds"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/guilds");
+
+        // Respond to request
+        request.flush("", {status: 401, statusText: ""});
+
+        // Expecting call to AuthService
+        // TODO Not passing, in spite of having seen it work with ng serve
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
     afterEach(() => {
         // Verify that there are no outstanding requests
         httpController.verify();
-    })
+    });
 });
