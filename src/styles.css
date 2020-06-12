@@ -65,7 +65,7 @@ button.red-button:hover {
 }
 .instructions {
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
 }
 .button-centered {
     display: flex;
