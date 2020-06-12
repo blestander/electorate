@@ -5,6 +5,7 @@ import { DISCORD_AUTH_URL, DISCORD_CLIENT_ID, DISCORD_SCOPE, TOKEN_OBTAIN_URL, L
 import { environment } from './../environments/environment';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -13,13 +14,16 @@ export class AuthService {
 
     loginStatus = new BehaviorSubject<boolean>(true);
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(
+        private httpClient: HttpClient,
+        private router: Router,
+    ) { }
 
     authorize(remember: boolean): void {
         // Store state and generate state key
         let state = window.btoa(window.crypto.getRandomValues(new Uint8Array(8)).toString())
         sessionStorage.setItem(state, JSON.stringify({
-            redirect: location.href,
+            redirect: this.router.url,
             remember: remember
         }));
 
@@ -31,22 +35,26 @@ export class AuthService {
     }
 
     retrieveToken(code: string, state: string): void {
-        // Get eventual redirect
-        let { redirect, remember } = JSON.parse(sessionStorage.getItem(state));
-        sessionStorage.removeItem(state);
+        try {
+            // Get eventual redirect
+            let { redirect, remember } = JSON.parse(sessionStorage.getItem(state));
+            sessionStorage.removeItem(state);
 
-        // If we did originate this code, get the token and redirect
-        if (redirect)
-            this.httpClient.post(TOKEN_OBTAIN_URL, {
-                code: code,
-                remember: remember
-            }, {withCredentials: true}).subscribe((response: any) => {
-                //localStorage.setItem("token", response.token)
-                this.loginStatus.next(true);
-                location.replace(redirect);
-            });
-        else // This page should never have been loaded
-            location.replace("/")
+            // If we did originate this code, get the token and redirect
+            if (redirect)
+                this.httpClient.post(TOKEN_OBTAIN_URL, {
+                    code: code,
+                    remember: remember
+                }, {withCredentials: true}).subscribe((response: any) => {
+                    //localStorage.setItem("token", response.token)
+                    this.loginStatus.next(true);
+                    this.router.navigateByUrl(redirect);
+                });
+            else // This page should never have been loaded
+                this.router.navigateByUrl("/");
+        } catch (e) { // This page should never have been loaded
+            this.router.navigateByUrl("/");
+        }
     }
 
     logout(): void {
