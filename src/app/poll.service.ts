@@ -91,8 +91,8 @@ export class PollService {
         }));
     }
 
-    getHistory() {
-        return this.http.get(
+    getHistory(): Observable<Poll[]> {
+        return this.http.get<Poll[]>(
             GET_HISTORY_URL,
             { withCredentials: true }
         ).pipe(tap({error:this.checkLoggedIn()}));

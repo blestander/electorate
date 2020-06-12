@@ -398,9 +398,36 @@ describe('PollService', () => {
 
         // Expecting a call to AuthService
         expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
+    it("#getHistory succeeds correctly", () => {
+        // Response
+        let response = [
+            { name: "Poll 1" },
+            { name: "Poll 2" }
+        ];
+
+        // Send the request
+        service.getHistory().subscribe({
+            next: (res: Poll[]) => {
+                expect(res.length).toBe(2);
+                expect(res[0].name).toBe("Poll 1");
+                expect(res[1].name).toBe("Poll 2");
+            },
+            error: error => fail(`Expected array of polls; got error code ${error.status}`)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/history");
+
+        // Expecting request to be a GET request
+        expect(request.request.method).toBe("GET");
+
+        // Respond to request
+        request.flush(response);
     })
 
-    afterAll(() => {
+    afterEach(() => {
         // Verify no oustanding requests
         httpController.verify();
     });
