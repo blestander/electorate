@@ -120,5 +120,24 @@ describe('AuthService', () => {
 
         // Expecting call to router
         expect(router.navigateByUrl).toHaveBeenCalledWith('/somewhere');
+
+        // Expecting sessionStorage to be empty
+        expect(sessionStorage.length).toBe(0);
+    });
+
+    it("#retrieveToken redirects to home when call at invalid time", () => {
+        // Call function
+        service.retrieveToken('code-beta', 'state-beta');
+
+        // Expecting call to router
+        expect(router.navigateByUrl).toHaveBeenCalledWith('/');
+
+        // Expecting sessionStorage to be empty
+        expect(sessionStorage.length).toBe(0);
+    });
+
+    afterAll(() => {
+        // Verify there are no outstanding HTTP request
+        httpController.verify();
     });
 });
