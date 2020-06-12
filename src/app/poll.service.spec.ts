@@ -514,7 +514,25 @@ describe('PollService', () => {
 
         // Expect call out to AuthService
         expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
-    })
+    });
+
+    it("#setWebhook succeeds correctly", () => {
+        // Send the request
+        service.setWebhook("alpha", "dummy_webhook").subscribe({
+            next: poll => expect(poll.webhook).toBe("dummy_webhook")
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha/webhook");
+
+        // Expecting request to be a POST request
+        expect(request.request.method).toBe("POST");
+
+        // Respond to request
+        request.flush({
+            webhook: "dummy_webhook"
+        });
+    });
 
     afterEach(() => {
         // Verify no oustanding requests
