@@ -371,6 +371,22 @@ describe('PollService', () => {
         expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
     });
 
+    it("#deletePoll succeeds correctly", () => {
+        // Send the request
+        service.deletePoll("alpha");
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha");
+
+        // Expecting request to be a DELETE request
+        expect(request.request.method).toBe("DELETE");
+
+        // Respond to request
+        request.flush(null);
+
+        expect(router.navigateByUrl).toHaveBeenCalledWith("/");
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();
