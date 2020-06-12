@@ -5,6 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { Voter } from './voter';
 
 describe('PollService', () => {
     let service: PollService;
@@ -401,7 +402,7 @@ describe('PollService', () => {
 
     it("#getHistory succeeds correctly", () => {
         // Response
-        let response = [
+        let response: Poll[] = [
             { name: "Poll 1" },
             { name: "Poll 2" }
         ];
@@ -455,6 +456,33 @@ describe('PollService', () => {
 
         // Expecting call to AuthService
         expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
+    it("#getVoters succeeds correctly", () => {
+        // Make response
+        let response: Voter[] = [
+            { name: "Voter 1" },
+            { name: "Voter 2" },
+        ];
+
+        // Send the request
+        service.getVoters("alpha").subscribe({
+            next: voters => {
+                expect(voters.length).toBe(2);
+                expect(voters[0].name).toBe("Voter 1");
+                expect(voters[1].name).toBe("Voter 2");
+            },
+            error: error => fail(`Expected array of voters; got error code ${error.status}`)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/alpha/voters");
+
+        // Expecting request to be a GET request
+        expect(request.request.method).toBe("GET");
+
+        // Respond to request
+        request.flush(response);
     });
 
     afterEach(() => {
