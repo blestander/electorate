@@ -28,7 +28,7 @@ export class AuthService {
         }));
 
         // Generate redirect URI
-        let redirect_uri = environment.production ? `${location.origin}/auth` : `${location.origin}/auth`
+        let redirect_uri = `${this.origin()}/auth`;
         let auth_url = `${DISCORD_AUTH_URL}?response_type=code&scope=${DISCORD_SCOPE}&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect_uri}&state=${state}&prompt=none`
 
         this.externalRedirect(auth_url);
@@ -76,6 +76,10 @@ export class AuthService {
 
     private reload(): void {
         location.reload();
+    }
+
+    private origin(): string {
+        return location.origin;
     }
 }
 
