@@ -103,7 +103,17 @@ export class PollService {
             {withCredentials: true}
         ).subscribe({
             next: () => this.router.navigateByUrl('/'),
-            error: err => console.error(`${err.status}: ${err.error}`)
+            error: err => {
+                if (err.status == 0)
+                    window.alert("Unable to reach server.");
+                else if (err.status == 404) {
+                    window.alert("Poll already deleted.");
+                    this.router.navigateByUrl('/');
+                } else if (err.status == 500)
+                    window.alert("Server error.");
+                else
+                    window.alert(`Unknown error: code ${err.status}`);
+            }
         })
     }
 
