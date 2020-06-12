@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { PollService } from './poll.service';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Poll } from './poll';
 import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
 import { Voter } from './voter';
 
 describe('PollService', () => {
@@ -19,14 +17,10 @@ describe('PollService', () => {
         // Setup spy on window
         spyOn(window, "alert");
 
-        // Setup spy on location
-        // spyOn(location, "reload");
-
         // Configure test bed
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
             providers: [
-                HttpClient,
                 { provide: AuthService, useValue: authService },
             ],
         });
