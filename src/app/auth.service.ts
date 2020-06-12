@@ -27,7 +27,7 @@ export class AuthService {
         let redirect_uri = environment.production ? `${location.origin}/auth` : `${location.origin}/auth`
         let auth_url = `${DISCORD_AUTH_URL}?response_type=code&scope=${DISCORD_SCOPE}&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect_uri}&state=${state}&prompt=none`
 
-        location.href = auth_url;
+        this.externalRedirect(auth_url);
     }
 
     retrieveToken(code: string, state: string): void {
@@ -74,6 +74,10 @@ export class AuthService {
 
     reportLoginStatus(status: boolean) {
         this.loginStatus.next(status);
+    }
+
+    private externalRedirect(url): void {
+        location.assign(url);
     }
 }
 
