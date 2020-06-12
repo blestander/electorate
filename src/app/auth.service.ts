@@ -62,7 +62,7 @@ export class AuthService {
             LOGOUT_URL,
             {withCredentials: true}
         ).subscribe(
-            () => location.reload()
+            () => this.reload()
         );
     }
 
@@ -86,6 +86,10 @@ export class AuthService {
 
     private externalRedirect(url): void {
         location.assign(url);
+    }
+
+    private reload(): void {
+        location.reload();
     }
 }
 
