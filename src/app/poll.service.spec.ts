@@ -354,6 +354,23 @@ describe('PollService', () => {
         request.flush("Server error", {status: 500, statusText: "Server error"});
     });
 
+    it("#listPolls informs AuthService of 401", () => {
+        // Send the request
+        service.listPolls().subscribe({
+            next: polls => fail("Expected error; got array of polls"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/polls");
+
+        // Respond to request
+        request.flush("Unauthorized", {status: 401, statusText: "Unauthorized"});
+
+        // Expecting call to AuthService
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();
