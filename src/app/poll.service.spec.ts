@@ -20,6 +20,10 @@ describe('PollService', () => {
         // Create Router spy
         router = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
+        // Setup spy on window
+        spyOn(window, "alert");
+
+        // Configure test bed
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
             providers: [
@@ -29,6 +33,7 @@ describe('PollService', () => {
             ],
         });
 
+        // Get the objects we need to test
         httpController = TestBed.inject(HttpTestingController);
         service = TestBed.inject(PollService);
     });
@@ -255,6 +260,25 @@ describe('PollService', () => {
 
         // Expecting a call to route to /poll/alpha
         expect(router.navigateByUrl).toHaveBeenCalledWith("/poll/alpha");
+    });
+
+    it("#createPoll handles network error correctly", () => {
+        // Send the request
+        service.createPoll({
+            name: "Who cares?"
+        });
+
+        // Expecting a request to the correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/create");
+
+        // Create and return mock error
+        let event = new ErrorEvent('Network error', {
+            message: 'Simulated network error'
+        });
+        request.error(event);
+
+        // Expect window.alert to be called
+        expect(window.alert).toHaveBeenCalledWith("Unable to reach server to submit poll");
     });
 
     afterAll(() => {
