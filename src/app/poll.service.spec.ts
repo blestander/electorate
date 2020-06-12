@@ -340,6 +340,20 @@ describe('PollService', () => {
         request.flush([{name: "Poll 1"}, {name: "Poll 2"}]);
     });
 
+    it("#listPolls passes throught errors", () => {
+        // Send the request
+        service.listPolls().subscribe({
+            next: polls => fail("Expected error; got array of polls"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/polls");
+
+        // Respond to request
+        request.flush("Server error", {status: 500, statusText: "Server error"});
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();
