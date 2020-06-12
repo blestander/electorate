@@ -95,14 +95,18 @@ export class PollService {
         return this.http.get<Poll[]>(
             GET_HISTORY_URL,
             { withCredentials: true }
-        ).pipe(tap({error:this.checkLoggedIn()}));
+        ).pipe(tap({
+            error:this.checkLoggedIn()
+        }));
     }
 
     getVoters(id: string): Observable<any[]> {
         return this.http.get<any[]>(
             GET_VOTERS_URL.replace("{id}", id),
             { withCredentials: true }
-        ).pipe(tap({error:this.checkLoggedIn()}));
+        ).pipe(tap({
+            error:this.checkLoggedIn()
+        }));
     }
 
     setWebhook(id: string, webhook: string): Observable<any> {
