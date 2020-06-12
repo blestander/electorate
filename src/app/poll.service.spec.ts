@@ -319,6 +319,27 @@ describe('PollService', () => {
         // TODO
     });
 
+    it("#listPolls succeeds correctly", () => {
+        // Send the request
+        service.listPolls().subscribe({
+            next: polls => {
+                expect(polls.length).toBe(2);
+                expect(polls[0].name).toBe("Poll 1");
+                expect(polls[1].name).toBe("Poll 2");
+            },
+            error: error => fail("Expected array of polls; got error")
+        });
+
+        // Expecting a request to corerct URL
+        const request = httpController.expectOne("http://localhost:8080/api/polls");
+
+        // Expecting request to be a GET request
+        expect(request.request.method).toBe("GET");
+
+        // Respond to request
+        request.flush([{name: "Poll 1"}, {name: "Poll 2"}]);
+    });
+
     afterAll(() => {
         // Verify no oustanding requests
         httpController.verify();

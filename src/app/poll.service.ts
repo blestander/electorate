@@ -88,11 +88,13 @@ export class PollService {
         });
     }
 
-    listPolls() {
-        return this.http.get<any[]>(
+    listPolls(): Observable<Poll[]> {
+        return this.http.get<Poll[]>(
             LIST_POLLS_URL,
             {withCredentials: true}
-        ).pipe(tap({error:this.checkLoggedIn()}));
+        ).pipe(tap({
+            error: this.checkLoggedIn()
+        }));
     }
 
     deletePoll(id: string) {
