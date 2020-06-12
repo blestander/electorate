@@ -519,7 +519,8 @@ describe('PollService', () => {
     it("#setWebhook succeeds correctly", () => {
         // Send the request
         service.setWebhook("alpha", "dummy_webhook").subscribe({
-            next: poll => expect(poll.webhook).toBe("dummy_webhook")
+            next: poll => expect(poll.webhook).toBe("dummy_webhook"),
+            error: error => fail(`Expected poll; got error code ${error.status}`)
         });
 
         // Expecting a request to correct URL
@@ -532,6 +533,37 @@ describe('PollService', () => {
         request.flush({
             webhook: "dummy_webhook"
         });
+    });
+
+    it("#setWebhook passes through errors", () => {
+        // Send the request
+        service.setWebhook("beta", "dummy_webhook").subscribe({
+            next: () => fail("Expected error; got poll"),
+            error: error => expect(error.status).toBe(500)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/webhook");
+
+        // Respond to request
+        request.flush("", {status: 500, statusText: ""});
+    });
+
+    it("#setWebhook handles 401s correctly", () => {
+        // Send the request
+        service.setWebhook("beta", "dummy_webhook").subscribe({
+            next: () => fail("Expected error; got poll"),
+            error: error => expect(error.status).toBe(401)
+        });
+
+        // Expecting a request to correct URL
+        const request = httpController.expectOne("http://localhost:8080/api/poll/beta/webhook");
+
+        // Respond to request
+        request.flush("", {status: 401, statusText: ""});
+
+        // Expect call out to AuthService
+        expect(authService.reportLoginStatus).toHaveBeenCalledWith(false);
     });
 
     afterEach(() => {

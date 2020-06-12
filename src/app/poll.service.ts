@@ -115,14 +115,18 @@ export class PollService {
             WEBHOOK_URL.replace("{id}", id),
             { webhook: webhook },
             { withCredentials: true }
-        );
+        ).pipe(tap({
+            error: this.checkLoggedIn()
+        }));
     }
 
     removeWebhook(id: string): Observable<Poll> {
         return this.http.delete<Poll>(
             WEBHOOK_URL.replace("{id}", id),
             { withCredentials: true }
-        );
+        ).pipe(tap({
+            error: this.checkLoggedIn()
+        }));
     }
 
     private checkLoggedIn() {
