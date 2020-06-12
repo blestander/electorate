@@ -12,5 +12,6 @@ export interface Poll {
     voteTime?: string,
     has_voted?: boolean,
     can_vote?: boolean,
-    choice?: any
+    choice?: any,
+    webhook?: string,
 }

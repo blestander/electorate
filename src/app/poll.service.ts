@@ -110,16 +110,16 @@ export class PollService {
         }));
     }
 
-    setWebhook(id: string, webhook: string): Observable<any> {
-        return this.http.post<any>(
+    setWebhook(id: string, webhook: string): Observable<Poll> {
+        return this.http.post<Poll>(
             WEBHOOK_URL.replace("{id}", id),
             { webhook: webhook },
             { withCredentials: true }
         );
     }
 
-    removeWebhook(id: string): Observable<any> {
-        return this.http.delete<any>(
+    removeWebhook(id: string): Observable<Poll> {
+        return this.http.delete<Poll>(
             WEBHOOK_URL.replace("{id}", id),
             { withCredentials: true }
         );
