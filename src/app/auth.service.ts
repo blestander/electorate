@@ -66,20 +66,6 @@ export class AuthService {
         );
     }
 
-    checkLogin(): Observable<boolean> {
-        return this.httpClient.get(
-            CHECK_LOGIN_URL,
-            {withCredentials: true}
-        ).pipe(map(
-            o => true
-        )).pipe(catchError(
-            err => {
-                if (err.status == 401)
-                    return of(false);
-            }
-        ));
-    }
-
     reportLoginStatus(status: boolean) {
         this.loginStatus.next(status);
     }
