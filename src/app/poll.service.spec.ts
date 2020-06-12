@@ -10,15 +10,11 @@ import { Voter } from './voter';
 describe('PollService', () => {
     let service: PollService;
     let authService;
-    let router;
     let httpController: HttpTestingController;
 
     beforeEach(() => {
         // Create AuthService spy
-        authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus'])
-
-        // Create Router spy
-        router = jasmine.createSpyObj('Router', ['navigateByUrl']);
+        authService = jasmine.createSpyObj('AuthService', ['reportLoginStatus']);
 
         // Setup spy on window
         spyOn(window, "alert");
@@ -32,7 +28,6 @@ describe('PollService', () => {
             providers: [
                 HttpClient,
                 { provide: AuthService, useValue: authService },
-                { provide: Router, useValue: router }
             ],
         });
 

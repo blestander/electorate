@@ -18,7 +18,6 @@ export class PollService {
     constructor(
         private auth: AuthService,
         private http: HttpClient,
-        private router: Router,
     ) { }
 
     getPoll(id: string): Observable<Poll> {
