@@ -354,7 +354,10 @@ describe('PollService', () => {
 
     it("#deletePoll succeeds correctly", () => {
         // Send the request
-        service.deletePoll("alpha");
+        service.deletePoll("alpha").subscribe({
+            next: res => expect(res).toBeNull(),
+            error: error => fail("Expected nothing; got error")
+        });
 
         // Expecting a request to correct URL
         const request = httpController.expectOne("http://localhost:8080/api/poll/alpha");
@@ -364,8 +367,6 @@ describe('PollService', () => {
 
         // Respond to request
         request.flush(null);
-
-        expect(router.navigateByUrl).toHaveBeenCalledWith("/");
     });
 
     afterAll(() => {

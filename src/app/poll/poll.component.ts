@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PollService } from '../poll.service';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ export class PollComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private pollService: PollService,
         public auth: AuthService
     ) { }
@@ -78,7 +79,20 @@ export class PollComponent implements OnInit {
 
     deletePoll(): void {
         console.log("Deleting poll!");
-        this.pollService.deletePoll(this.id);
+        this.pollService.deletePoll(this.id).subscribe({
+            next: () => this.router.navigateByUrl('/'),
+            error: err => {
+                if (err.status == 0)
+                    window.alert("Unable to reach server.");
+                else if (err.status == 404) {
+                    window.alert("Poll already deleted.");
+                    this.router.navigateByUrl('/');
+                } else if (err.status == 500)
+                    window.alert("Server error.");
+                else
+                    window.alert(`Unknown error: code ${err.status}`);
+            }
+        });
     }
 
     requestVoters(): void {
