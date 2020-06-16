@@ -28,8 +28,7 @@ export class PollService {
             tap({
                 error: this.checkLoggedIn()
             })
-        ).pipe(map(this.processDates))
-        .pipe(tap({next: poll => console.log(poll)}));
+        ).pipe(map(this.processDates));
     }
 
     castVote(id: string, choice, guild_proof: string): Observable<Poll> {
