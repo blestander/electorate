@@ -18,8 +18,4 @@ export class DashboardItemComponent implements OnInit {
     goto(id: string) {
         this.router.navigateByUrl(`/poll/${id}`);
     }
-
-    formatDate(d: Date): string {
-        return d.toLocaleString();
-    }
 }

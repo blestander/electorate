@@ -1,7 +1,7 @@
 <div class="dashboard-item" (click)="goto(poll.id)">
     <h4>{{poll.name}}</h4>
     <p class="description">Description: {{poll.description ? poll.description : "None"}}</p>
-    <p *ngIf="poll.start_time">Created {{formatDate(poll.start_time)}}</p>
-    <p *ngIf="poll.finish_time">Finished {{formatDate(poll.finish_time)}}</p>
-    <p *ngIf="poll.vote_time">Voted {{formatDate(poll.vote_time)}}</p>
+    <p *ngIf="poll.start_time">Created {{poll.start_time | date:'short'}}</p>
+    <p *ngIf="poll.finish_time">Finished {{poll.finish_time | date:'short'}}</p>
+    <p *ngIf="poll.vote_time">Voted {{poll.vote_time | date:'short'}}</p>
 </div>
