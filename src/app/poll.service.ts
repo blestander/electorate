@@ -28,7 +28,8 @@ export class PollService {
             tap({
                 error: this.checkLoggedIn()
             })
-        );
+        ).pipe(map(this.processDates))
+        .pipe(tap({next: poll => console.log(poll)}));
     }
 
     castVote(id: string, choice, guild_proof: string): Observable<Poll> {
@@ -43,7 +44,7 @@ export class PollService {
             tap({
                 error: this.checkLoggedIn()
             })
-        );
+        ).pipe(map(this.processDates));
     }
 
     finishPoll(id: string): Observable<Poll> {
@@ -55,7 +56,7 @@ export class PollService {
             tap({
                 error: this.checkLoggedIn()
             })
-        );
+        ).pipe(map(this.processDates));
     }
 
     createPoll(poll: Poll): Observable<string> {
@@ -79,7 +80,7 @@ export class PollService {
             {withCredentials: true}
         ).pipe(tap({
             error: this.checkLoggedIn()
-        }));
+        })).pipe(map(this.processDatesOnArray));
     }
 
     deletePoll(id: string): Observable<void> {
@@ -97,7 +98,7 @@ export class PollService {
             { withCredentials: true }
         ).pipe(tap({
             error:this.checkLoggedIn()
-        }));
+        })).pipe(map(this.processDatesOnArray));
     }
 
     getVoters(id: string): Observable<Voter[]> {
@@ -116,7 +117,7 @@ export class PollService {
             { withCredentials: true }
         ).pipe(tap({
             error: this.checkLoggedIn()
-        }));
+        })).pipe(map(this.processDates));
     }
 
     removeWebhook(id: string): Observable<Poll> {
@@ -125,7 +126,7 @@ export class PollService {
             { withCredentials: true }
         ).pipe(tap({
             error: this.checkLoggedIn()
-        }));
+        })).pipe(map(this.processDates));
     }
 
     private checkLoggedIn() {
@@ -137,5 +138,27 @@ export class PollService {
                 console.error(e);
             }
         };
+    }
+
+    private processDates(poll: Poll): Poll {
+        if (poll.start_time)
+            poll.start_time = new Date(poll.start_time);
+        if (poll.finish_time)
+            poll.finish_time = new Date(poll.finish_time);
+        if (poll.vote_time)
+            poll.vote_time = new Date(poll.vote_time);
+        return poll;
+    }
+
+    private processDatesOnArray(polls: Poll[]): Poll[] {
+        return polls.map(poll => {
+            if (poll.start_time)
+                poll.start_time = new Date(poll.start_time);
+            if (poll.finish_time)
+                poll.finish_time = new Date(poll.finish_time);
+            if (poll.vote_time)
+                poll.vote_time = new Date(poll.vote_time);
+            return poll;
+        });
     }
 }

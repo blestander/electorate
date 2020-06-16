@@ -19,7 +19,7 @@ export class DashboardItemComponent implements OnInit {
         this.router.navigateByUrl(`/poll/${id}`);
     }
 
-    formatDate(d: string): string {
-        return new Date(d).toLocaleString();
+    formatDate(d: Date): string {
+        return d.toLocaleString();
     }
 }
